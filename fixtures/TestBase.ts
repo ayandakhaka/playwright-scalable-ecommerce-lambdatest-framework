@@ -1,20 +1,38 @@
 import { test as base } from '@playwright/test';
+import { HomePage } from '../pages/HomePage';
 import { ActionHelper } from '../utils/ActionHelper';
-import { registerAccountPage as RegisterAccountPage } from '../pages/RegisterAccountPage'; // ✅ Import the class
+import { Database } from '../utils/Database';
+import { registerAccountPage as RegisterAccountPage } from '../pages/RegisterAccountPage';
+import { LoginPage } from '../pages/LoginPage';
+import { LogoutPage } from '../pages/LogoutPage';
 
 type MyFixtures = {
+  homePage: HomePage;
   actionHelper: ActionHelper;
-  registerAccountPage: RegisterAccountPage; // ✅ Use class type
+  registerAccountPage: RegisterAccountPage;
+  loginPage: LoginPage;
+  logoutPage: LogoutPage;
+  data: typeof Database; // Pass class itself
 };
 
 export const test = base.extend<MyFixtures>({
+  homePage: async ({ page, actionHelper }, use) => {
+    await use(new HomePage(page, actionHelper));
+  },
   actionHelper: async ({ page }, use) => {
-    const actionHelper = new ActionHelper(page);
-    await use(actionHelper);
+    await use(new ActionHelper(page));
   },
   registerAccountPage: async ({ page, actionHelper }, use) => {
-    const pageInstance = new RegisterAccountPage(page, actionHelper); // ✅ Variable can be named differently
-    await use(pageInstance);
+    await use(new RegisterAccountPage(page, actionHelper));
+  },
+  loginPage: async ({ page, actionHelper }, use) => {
+    await use(new LoginPage(page, actionHelper));
+  },
+  logoutPage: async ({ page, actionHelper }, use) => {
+    await use(new LogoutPage(page, actionHelper));
+  },
+  data: async ({}, use) => {
+    await use(Database); // no need to instantiate static class
   },
 });
 

@@ -50,7 +50,7 @@
         "testDir": "C:/Users/USER/repos/playwright-scalable-ecommerce-lambdatest-framework",
         "testIgnore": [],
         "testMatch": [
-          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+          "tests/Login.test.ts"
         ],
         "timeout": 30000
       }
@@ -64,20 +64,20 @@
   },
   "suites": [
     {
-      "title": "tests\\RegisterAccount.test.ts",
-      "file": "tests/RegisterAccount.test.ts",
+      "title": "tests\\Login.test.ts",
+      "file": "tests/Login.test.ts",
       "column": 0,
       "line": 0,
       "specs": [],
       "suites": [
         {
-          "title": "Register Account Tests",
-          "file": "tests/RegisterAccount.test.ts",
-          "line": 4,
+          "title": "Login Tests",
+          "file": "tests/Login.test.ts",
+          "line": 7,
           "column": 6,
           "specs": [
             {
-              "title": "Register a new account successfully",
+              "title": "Login with valid credentials",
               "ok": true,
               "tags": [],
               "tests": [
@@ -92,7 +92,7 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 25773,
+                      "duration": 22840,
                       "errors": [],
                       "stdout": [
                         {
@@ -102,51 +102,30 @@
                           "text": "[ActionHelper] Hovering over My Account Menu\n"
                         },
                         {
-                          "text": "[ActionHelper] Clicking on Register Link\n"
+                          "text": "[ActionHelper] Clicking on Login Link\n"
                         },
                         {
-                          "text": "(763) 746-9687\n"
+                          "text": "[ActionHelper] Typing \"khakaalwande@gmail.com\" into Email Input\n"
                         },
                         {
-                          "text": "[ActionHelper] Typing \"Carlos\" into First Name Input\n"
+                          "text": "[ActionHelper] Typing \"hlongwane@2011\" into Password Input\n"
                         },
                         {
-                          "text": "[ActionHelper] Typing \"Shanahan\" into Last Name Input\n"
+                          "text": "[ActionHelper] Clicking on Login Button\n"
                         },
                         {
-                          "text": "[ActionHelper] Typing \"Carlos.Shanahan57@gmail.com\" into Email Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"(763) 746-9687\" into Telephone Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"5uHH_0lZciJj3c\" into Password Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"5uHH_0lZciJj3c\" into Confirm Password Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Clicking on Privacy Policy Checkbox\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Clicking on Continue Button\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Waiting for visibility of Success Message\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Verifying text of Success Message is \"Your Account Has Been Created!\"\n"
+                          "text": "Current URL: https://ecommerce-playground.lambdatest.io/index.php?route=account/account\n"
                         }
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-15T09:54:39.649Z",
+                      "startTime": "2025-09-15T17:57:58.526Z",
                       "annotations": [],
                       "attachments": [
                         {
                           "name": "screenshot",
                           "contentType": "image/png",
-                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-RegisterAccount-Regi-aaf12--a-new-account-successfully\\test-finished-1.png"
+                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-Login-Login-Tests-Login-with-valid-credentials\\test-finished-1.png"
                         }
                       ]
                     }
@@ -154,13 +133,72 @@
                   "status": "expected"
                 }
               ],
-              "id": "60360bde56c95f95f2d6-0cefc2382620e5082c92",
-              "file": "tests/RegisterAccount.test.ts",
-              "line": 12,
+              "id": "dcb31983a82c67060828-ba0d0ee8ddf4c7d18990",
+              "file": "tests/Login.test.ts",
+              "line": 16,
+              "column": 7
+            },
+            {
+              "title": "Login with invalid credentials",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 27978,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "[ActionHelper] Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home\n"
+                        },
+                        {
+                          "text": "[ActionHelper] Hovering over My Account Menu\n"
+                        },
+                        {
+                          "text": "[ActionHelper] Clicking on Login Link\n"
+                        },
+                        {
+                          "text": "[ActionHelper] Typing \"Zaria66@yahoo.com\" into Email Input\n"
+                        },
+                        {
+                          "text": "[ActionHelper] Typing \"r2o4HddJ2N54_vs\" into Password Input\n"
+                        },
+                        {
+                          "text": "[ActionHelper] Clicking on Login Button\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-15T17:58:22.872Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-Login-Login-Tests-Login-with-invalid-credentials\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "dcb31983a82c67060828-39cbd737ff4bbfc95df3",
+              "file": "tests/Login.test.ts",
+              "line": 29,
               "column": 9
             },
             {
-              "title": "Attempt to register without agreeing to the privacy policy",
+              "title": "Logout after login",
               "ok": true,
               "tags": [],
               "tests": [
@@ -175,7 +213,7 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 21118,
+                      "duration": 25184,
                       "errors": [],
                       "stdout": [
                         {
@@ -185,45 +223,45 @@
                           "text": "[ActionHelper] Hovering over My Account Menu\n"
                         },
                         {
-                          "text": "[ActionHelper] Clicking on Register Link\n"
+                          "text": "[ActionHelper] Clicking on Login Link\n"
                         },
                         {
-                          "text": "(509) 758-1492\n"
+                          "text": "[ActionHelper] Typing \"khakaalwande@gmail.com\" into Email Input\n"
                         },
                         {
-                          "text": "[ActionHelper] Typing \"Elda\" into First Name Input\n"
+                          "text": "[ActionHelper] Typing \"hlongwane@2011\" into Password Input\n"
                         },
                         {
-                          "text": "[ActionHelper] Typing \"Konopelski-Marks\" into Last Name Input\n"
+                          "text": "[ActionHelper] Clicking on Login Button\n"
                         },
                         {
-                          "text": "[ActionHelper] Typing \"Elda_Konopelski-Marks@hotmail.com\" into Email Input\n"
+                          "text": "Current URL: https://ecommerce-playground.lambdatest.io/index.php?route=account/account\n"
                         },
                         {
-                          "text": "[ActionHelper] Typing \"(509) 758-1492\" into Telephone Input\n"
+                          "text": "[ActionHelper] Hovering over My Account Menu\n"
                         },
                         {
-                          "text": "[ActionHelper] Typing \"pRS2YurqfZBxah\" into Password Input\n"
+                          "text": "[ActionHelper] Waiting for visibility of Logout Link\n"
                         },
                         {
-                          "text": "[ActionHelper] Typing \"pRS2YurqfZBxah\" into Confirm Password Input\n"
+                          "text": "[ActionHelper] Clicking on Logout Link\n"
                         },
                         {
-                          "text": "[ActionHelper] Clicking on Continue Button\n"
+                          "text": "[ActionHelper] Waiting for visibility of Logout Message\n"
                         },
                         {
-                          "text": "[ActionHelper] Verifying text of Privacy Policy Warning is \"Warning: You must agree to the Privacy Policy!\"\n"
+                          "text": "[ActionHelper] Verifying text of Logout Message is \"Account Logout\"\n"
                         }
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-15T09:55:06.796Z",
+                      "startTime": "2025-09-15T17:58:50.956Z",
                       "annotations": [],
                       "attachments": [
                         {
                           "name": "screenshot",
                           "contentType": "image/png",
-                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-RegisterAccount-Regi-6d3f7-eeing-to-the-privacy-policy\\test-finished-1.png"
+                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-Login-Login-Tests-Logout-after-login\\test-finished-1.png"
                         }
                       ]
                     }
@@ -231,9 +269,68 @@
                   "status": "expected"
                 }
               ],
-              "id": "60360bde56c95f95f2d6-4bc8ab82d57b365cdbe8",
-              "file": "tests/RegisterAccount.test.ts",
-              "line": 31,
+              "id": "dcb31983a82c67060828-6e519f4dcf19704bb8fa",
+              "file": "tests/Login.test.ts",
+              "line": 41,
+              "column": 9
+            },
+            {
+              "title": "Login with empty credentials",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 18858,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "[ActionHelper] Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home\n"
+                        },
+                        {
+                          "text": "[ActionHelper] Hovering over My Account Menu\n"
+                        },
+                        {
+                          "text": "[ActionHelper] Clicking on Login Link\n"
+                        },
+                        {
+                          "text": "[ActionHelper] Typing \"\" into Email Input\n"
+                        },
+                        {
+                          "text": "[ActionHelper] Typing \"\" into Password Input\n"
+                        },
+                        {
+                          "text": "[ActionHelper] Clicking on Login Button\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-15T17:59:16.235Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-Login-Login-Tests-Login-with-empty-credentials\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "dcb31983a82c67060828-717b8ff38805b0bd83be",
+              "file": "tests/Login.test.ts",
+              "line": 56,
               "column": 9
             }
           ]
@@ -243,9 +340,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-09-15T09:54:32.345Z",
-    "duration": 56487.216,
-    "expected": 2,
+    "startTime": "2025-09-15T17:57:50.445Z",
+    "duration": 105957.475,
+    "expected": 4,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

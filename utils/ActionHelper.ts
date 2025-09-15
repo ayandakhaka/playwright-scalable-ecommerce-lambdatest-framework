@@ -25,6 +25,13 @@ export class ActionHelper {
         }
     }
 
+    async clickForVisibility(locator: string | Locator, description?: string) {
+    this.log(`Clicking on ${description || locator}`);
+    const element = typeof locator === 'string' ? this.page.locator(locator) : locator;
+    await element.waitFor({ state: 'visible' });
+    await element.click();
+}
+
     async type(locator: Locator | string, text: string, description?: string) {
         this.log(`Typing "${text}" into ${description || locator}`);
         if (typeof locator === 'string') {
@@ -44,13 +51,35 @@ export class ActionHelper {
     }
 
     async verifyText(locator: Locator | string, expected: string, description?: string) {
-        this.log(`Verifying text of ${description || locator} is "${expected}"`);
-        if (typeof locator === 'string') {
-            await expect(this.page.locator(locator)).toHaveText(expected);
+    this.log(`Verifying text of ${description || locator} is "${expected}"`);
+
+    if (typeof locator === 'string') {
+        // Handle role-based locators: format like "role=heading:My Account"
+        if (locator.startsWith('role=')) {
+            const [role, name] = locator.replace('role=', '').split(':');
+            await expect(
+                this.page.getByRole(role as any, { name: name.trim() })
+            ).toHaveText(expected);
         } else {
-            await expect(locator).toHaveText(expected);
+            // Normal string locator
+            await expect(this.page.locator(locator)).toHaveText(expected);
         }
+    } else {
+        // Locator object passed directly
+        await expect(locator).toHaveText(expected);
     }
+}
+
+
+    // async verifyText(locator: Locator | string, expected: string, description?: string) {
+    //     this.log(`Verifying text of ${description || locator} is "${expected}"`);
+    //     if (typeof locator === 'string') {
+    //         await expect(this.page.locator(locator)).toHaveText(expected);
+    //     } else {
+    //         await expect(locator).toHaveText(expected);
+    //     }
+    // }
+
 
     async waitForVisible(locator: Locator | string, description?: string) {
         this.log(`Waiting for visibility of ${description || locator}`);
