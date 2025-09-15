@@ -21,7 +21,7 @@ export class registerAccountPage {
     private telephoneInput = '#input-telephone';
     private passwordInput = '#input-password';
     private confirmPasswordInput = '#input-confirm';
-    private privacyPolicyCheckbox = 'input[name="agree"]';
+    private privacyPolicyCheckbox = "//label[@for='input-agree']";
     private continueButton = 'input[value="Continue"]';
     private successMessage = 'h1:has-text("Your Account Has Been Created!")';   
     private logoutLink = 'a:has-text("Logout")';
@@ -37,6 +37,14 @@ export class registerAccountPage {
 
     async submitRegistration() {
         await this.actionHelper.click(this.privacyPolicyCheckbox, 'Privacy Policy Checkbox');
+        await this.actionHelper.click(this.continueButton, 'Continue Button');
+    }
+
+    async clickPrivacyPolicyCheckbox() {
+        await this.actionHelper.click(this.privacyPolicyCheckbox, 'Privacy Policy Checkbox');
+    }
+
+    async clickContinueButton() {   
         await this.actionHelper.click(this.continueButton, 'Continue Button');
     }
 

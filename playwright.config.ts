@@ -1,7 +1,7 @@
 import { PlaywrightTestConfig } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
-  testMatch: ["tests/RegisterAccount.test.ts"],
+ // testMatch: ["tests/RegisterAccount.test.ts"],
   use: {
     headless: false,
     screenshot: "on",
