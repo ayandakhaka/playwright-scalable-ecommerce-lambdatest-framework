@@ -1,10 +1,10 @@
 import { PlaywrightTestConfig } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
-  testMatch: ["tests/Login.test.ts"],
+  testMatch: ["tests/RegisterAccount.test.ts"],
   use: {
     headless: false,
-    slowMo: 50,
+    //slowMo: 50,
     screenshot: "on",
     video: "retain-on-failure"
   },

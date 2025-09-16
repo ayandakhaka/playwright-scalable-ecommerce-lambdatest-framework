@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { Page, expect } from '@playwright/test';
 import { ActionHelper } from '../utils/ActionHelper';
 import { faker } from '@faker-js/faker';
 
@@ -28,6 +28,8 @@ export class registerAccountPage {
     private continueButton = 'input[value="Continue"]';
     private successMessage = 'h1:has-text("Your Account Has Been Created!")';
     private logoutLink = 'a:has-text("Logout")';
+    private emailInvalidFormatWarning = 'div.alert.alert-danger.alert-dismissible';
+    private fieldValidationMessage = '.text-danger';
 
     // ------------------------------
     // Methods to interact with elements
@@ -43,6 +45,18 @@ export class registerAccountPage {
         await this.actionHelper.type(this.telephoneInput, telephone, 'Telephone Input');
         await this.actionHelper.type(this.passwordInput, password, 'Password Input');
         await this.actionHelper.type(this.confirmPasswordInput, password, 'Confirm Password Input');
+    }
+
+     /**
+     * Fill the registration form with provided data
+     */
+    async fillRegistrationWithDifferentPassword(firstName: string, lastName: string, email: string, telephone: string, password: string, confirmPassword: string) {
+        await this.actionHelper.type(this.firstNameInput, firstName, 'First Name Input');
+        await this.actionHelper.type(this.lastNameInput, lastName, 'Last Name Input');
+        await this.actionHelper.type(this.emailInput, email, 'Email Input');
+        await this.actionHelper.type(this.telephoneInput, telephone, 'Telephone Input');
+        await this.actionHelper.type(this.passwordInput, password, 'Password Input');
+        await this.actionHelper.type(this.confirmPasswordInput, confirmPassword, 'Confirm Password Input');
     }
 
     /**
@@ -79,4 +93,42 @@ export class registerAccountPage {
             'Success Message'
         );
     }
+
+    async verifyEmailAlreadyRegisteredError() {
+        await this.actionHelper.waitForVisible(this.emailInvalidFormatWarning, 'Duplicate Email Warning');
+        await this.actionHelper.verifyText(
+            this.emailInvalidFormatWarning,
+            'Warning: E-Mail Address is already registered!',
+            'Duplicate Email Warning'
+        );
+    }
+
+    async verifyInvalidEmailFormatError() {
+        const validationMessage = await this.page.locator(this.emailInput).evaluate((el) => (el as HTMLInputElement).validationMessage);
+        expect(validationMessage).toContain("invalid-email-format");
+    }
+
+    async verifyPasswordValidationMessage(expectedMessage: string) {
+        await this.actionHelper.waitForVisible(this.fieldValidationMessage, 'Password Validation Message');
+        await this.actionHelper.verifyText(
+            this.fieldValidationMessage,
+            expectedMessage,
+            'Password Validation Message'
+        );
+    }
+
+    async verifyFieldValidationMessage(expectedMessage: string) {
+        await this.actionHelper.waitForVisible(this.fieldValidationMessage, 'Field Validation Message');
+        await this.actionHelper.verifyText(
+            this.fieldValidationMessage,
+            expectedMessage,
+            'Field Validation Message'
+        );
+    }
+
+    async verifyFieldValidationMessages(expectedMessages: string[]) {
+    const actualMessages = await this.page.locator('.text-danger').allTextContents();
+    expect(actualMessages).toEqual(expectedMessages);
+}
+
 }
