@@ -23,7 +23,7 @@ export class LoginPage {
     private logoutLink = 'a:has-text("Logout")';                      // Logout link
     private myAccountHeader = "'heading', { name: 'My Account' }";   // Account header (role-based locator)
     private loginErrorMessage = '.alert.alert-danger.alert-dismissible'; // Error message for invalid login
-
+    private editAccountLink = 'a.list-group-item:has-text("Edit Account")'; // Edit Account link in My Account menu
     // ------------------------------
     // Methods
     // ------------------------------
@@ -37,6 +37,10 @@ export class LoginPage {
         await this.actionHelper.type(this.emailInput, email, 'Email Input');
         await this.actionHelper.type(this.passwordInput, password, 'Password Input');
         await this.actionHelper.click(this.loginButton, 'Login Button');
+    }
+
+    async clickContinueButton() {
+        await this.actionHelper.click('input[value="Continue"]', 'Continue Button');
     }
 
     /**
@@ -62,5 +66,10 @@ export class LoginPage {
      */
     async logout() {
         await this.actionHelper.click(this.logoutLink, 'Logout Link');
+    }
+
+    async clickEditAccountLink() {
+        await this.actionHelper.waitForVisible(this.editAccountLink, 'Edit Account Link');
+        await this.actionHelper.click(this.editAccountLink, 'Edit Account Link');
     }
 }

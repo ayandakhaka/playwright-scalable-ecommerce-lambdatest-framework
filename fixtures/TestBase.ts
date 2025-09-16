@@ -1,10 +1,11 @@
-import { test as base } from '@playwright/test';
+import { test as base, Page } from '@playwright/test';
 import { HomePage } from '../pages/HomePage';
 import { ActionHelper } from '../utils/ActionHelper';
 import { Database } from '../utils/Database';
 import { registerAccountPage as RegisterAccountPage } from '../pages/RegisterAccountPage';
 import { LoginPage } from '../pages/LoginPage';
 import { LogoutPage } from '../pages/LogoutPage';
+import EditAccountPage from '../pages/EditAccountPage';
 
 /**
  * Define custom fixtures for Playwright tests.
@@ -17,6 +18,8 @@ type MyFixtures = {
   loginPage: LoginPage;              // Page object for Login page
   logoutPage: LogoutPage;            // Page object for Logout page
   data: typeof Database;             // Reference to database helper class for test data
+  page: Page;                        // Playwright's Page object for browser interactions
+  editAccountPage: EditAccountPage;  // Page object for Edit Account page
 };
 
 /**
@@ -70,6 +73,14 @@ export const test = base.extend<MyFixtures>({
    */
   data: async ({}, use) => {
     await use(Database);
+  },
+
+  /**
+   * Fixture for EditAccountPage object.
+   * Provides methods to interact with the Edit Account page.
+   */
+  editAccountPage: async ({ page, actionHelper }, use) => {
+    await use(new EditAccountPage(page, actionHelper));
   },
 });
 

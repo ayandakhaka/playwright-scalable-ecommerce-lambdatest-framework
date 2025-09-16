@@ -1,7 +1,7 @@
 import { PlaywrightTestConfig } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
-  testMatch: ["tests/RegisterAccount.test.ts"],
+  testMatch: ["tests/EditAccount.test.ts"],
   use: {
     headless: false,
     //slowMo: 50,
