@@ -1,5 +1,6 @@
 import { Page, expect } from '@playwright/test';
 import { ActionHelper } from '../utils/ActionHelper';
+import * as loginData from '../test-data/login.test.data.json';
 
 /**
  * Page Object Model for the Login page
@@ -24,6 +25,7 @@ export class LoginPage {
     private myAccountHeader = "'heading', { name: 'My Account' }";   // Account header (role-based locator)
     private loginErrorMessage = '.alert.alert-danger.alert-dismissible'; // Error message for invalid login
     private editAccountLink = 'a.list-group-item:has-text("Edit Account")'; // Edit Account link in My Account menu
+    private loginData = loginData;
     // ------------------------------
     // Methods
     // ------------------------------
@@ -49,7 +51,7 @@ export class LoginPage {
     async verifyLoginSuccess() {
         console.log('Current URL:', this.page.url());
         // Wait until account page loads after login
-        await expect(this.page).toHaveURL(/.*route=account\/account.*/);
+        await expect(this.page).toHaveURL(this.loginData.url);
     }
 
     /**

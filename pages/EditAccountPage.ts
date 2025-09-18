@@ -26,7 +26,7 @@ export default class EditAccountPage {
     private successMessage = '.alert.alert-success.alert-dismissible'; // Success message after form submission
     private warningMessage = '.alert.alert-danger.alert-dismissible';  // Warning message for errors  
     private editAccountLink = 'a:has-text("Edit your account information")'; // Edit Account Information link  
-
+    private editMessageError = 'div.alert.alert-danger.alert-dismissible'; // Error message for edit account failures
     // ------------------------------
     // Methods
     // ------------------------------   
@@ -60,9 +60,19 @@ export default class EditAccountPage {
     async clickBackButton() {
         await this.actionHelper.click(this.backButton, 'Back Button');
     }   
- 
+    /*
+     Verify the success message after form submission
+    */
     async verifyUpdateSuccessMessage(expectedMessage: string) {
         await this.actionHelper.waitForVisible(this.successMessage, 'Success Message'); 
         await this.actionHelper.verifyText(this.successMessage, expectedMessage, 'Success Message');
+    }
+
+    /*
+     Verify the warning message for errors
+    */
+    async verifyUpdateWarningMessage(expectedMessage: string) {
+        await this.actionHelper.waitForVisible(this.editMessageError, 'Account Update Warning'); 
+        await this.actionHelper.verifyText(this.editMessageError, expectedMessage, 'Account Update Warning');
     }
 }

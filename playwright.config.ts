@@ -1,12 +1,18 @@
-import { PlaywrightTestConfig } from '@playwright/test';
+import "./setupEnv";
+import { defineConfig } from '@playwright/test';
 
-const config: PlaywrightTestConfig = {
-  testMatch: ["tests/EditAccount.test.ts"],
+export default defineConfig({
+
+  timeout: Number(process.env.TIMEOUT) || 30000,
   use: {
-    headless: false,
-    //slowMo: 50,
+    baseURL: process.env.BASE_URL,
+    headless: process.env.HEADLESS?.toLowerCase() === 'false',
     screenshot: "on",
-    video: "retain-on-failure"
+    video: "retain-on-failure",
+    browserName:
+      (process.env.BROWSER as "chromium" | "firefox" | "webkit") || "chromium",
+
+    //browserName: process.env.BROWSER || 'chromium',
   },
   retries: 0,
   reporter: [["dot"], ["json", {
@@ -14,6 +20,4 @@ const config: PlaywrightTestConfig = {
   }], ["html", {
     open: "never"
   }]]
-};
-
-export default config;
+});

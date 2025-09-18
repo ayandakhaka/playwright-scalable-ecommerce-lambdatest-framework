@@ -7,9 +7,7 @@ test.describe("Register Account Tests", () => {
     // ✅ Runs before each test case to ensure a clean state
     test.beforeEach(async ({ actionHelper, registerAccountPage, homePage }) => {
         // Navigate to homepage
-        await actionHelper.navigateTo(
-            "https://ecommerce-playground.lambdatest.io/index.php?route=common/home"
-        );
+        await actionHelper.navigateTo("/index.php?route=common/home");
 
         // Open registration page via "My Account" → "Register"
         await homePage.hoverMyAccountMenu();

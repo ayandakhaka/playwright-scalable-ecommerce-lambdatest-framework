@@ -29,7 +29,8 @@ export class LogoutPage {
      * Waits until the link is visible before clicking
      */
     async clickLogoutLink() {
-        await this.actionHelper.waitForVisible(this.logoutLink, 'Logout Link');
+        await this.actionHelper.waitForVisible(this.logoutLink, 'Logout button', 40000);
+        //await this.actionHelper.waitForVisible(this.logoutLink, 'Logout Link');
         await this.actionHelper.click(this.logoutLink, 'Logout Link');
     }
 
