@@ -130,7 +130,7 @@ export class registerAccountPage {
         // Wait until at least one validation message is visible
         await this.page.locator('.text-danger').first().waitFor({ state: 'visible', timeout: 5000 });
 
-        const actualMessages = await this.page.locator('.text-danger').allTextContents();
+        const actualMessages = await this.page.locator(this.fieldValidationMessage).allTextContents();
         console.log('Actual validation messages:', actualMessages);
         expect(actualMessages).toEqual(expectedMessages);
     }

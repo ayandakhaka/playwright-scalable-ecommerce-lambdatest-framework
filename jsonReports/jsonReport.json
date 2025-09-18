@@ -64,20 +64,20 @@
   },
   "suites": [
     {
-      "title": "tests\\RegisterAccount.test.ts",
-      "file": "tests/RegisterAccount.test.ts",
+      "title": "tests\\EditAccount.test.ts",
+      "file": "tests/EditAccount.test.ts",
       "column": 0,
       "line": 0,
       "specs": [],
       "suites": [
         {
           "title": "Register Account Tests",
-          "file": "tests/RegisterAccount.test.ts",
-          "line": 5,
+          "file": "tests/EditAccount.test.ts",
+          "line": 14,
           "column": 6,
           "specs": [
             {
-              "title": "Register a new account successfully",
+              "title": "Edit Account Information successfully",
               "ok": false,
               "tags": [],
               "tests": [
@@ -92,14 +92,33 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "timedOut",
-                      "duration": 46777,
+                      "duration": 44113,
                       "error": {
-                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
-                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded while running \"beforeEach\" hook.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded while running \"beforeEach\" hook.\u001b[39m\n    at C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\EditAccount.test.ts:16:10",
+                        "location": {
+                          "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\EditAccount.test.ts",
+                          "column": 10,
+                          "line": 16
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 14 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m\"Register Account Tests\"\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 15 |\u001b[39m     \u001b[90m// ✅ Runs before each test case to ensure a clean state\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m     test\u001b[33m.\u001b[39mbeforeEach(\u001b[36masync\u001b[39m ({ actionHelper\u001b[33m,\u001b[39m registerAccountPage\u001b[33m,\u001b[39m homePage\u001b[33m,\u001b[39m loginPage\u001b[33m,\u001b[39m editAccountPage }) \u001b[33m=>\u001b[39m {\n \u001b[90m    |\u001b[39m          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 |\u001b[39m         \u001b[90m// Navigate to homepage\u001b[39m\n \u001b[90m 18 |\u001b[39m         \u001b[36mawait\u001b[39m actionHelper\u001b[33m.\u001b[39mnavigateTo(\n \u001b[90m 19 |\u001b[39m             \u001b[32m\"https://ecommerce-playground.lambdatest.io/index.php?route=common/home\"\u001b[39m\u001b[0m"
                       },
                       "errors": [
                         {
-                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                          "location": {
+                            "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\EditAccount.test.ts",
+                            "column": 10,
+                            "line": 16
+                          },
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded while running \"beforeEach\" hook.\u001b[39m\n\n\u001b[0m \u001b[90m 14 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m\"Register Account Tests\"\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 15 |\u001b[39m     \u001b[90m// ✅ Runs before each test case to ensure a clean state\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m     test\u001b[33m.\u001b[39mbeforeEach(\u001b[36masync\u001b[39m ({ actionHelper\u001b[33m,\u001b[39m registerAccountPage\u001b[33m,\u001b[39m homePage\u001b[33m,\u001b[39m loginPage\u001b[33m,\u001b[39m editAccountPage }) \u001b[33m=>\u001b[39m {\n \u001b[90m    |\u001b[39m          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 |\u001b[39m         \u001b[90m// Navigate to homepage\u001b[39m\n \u001b[90m 18 |\u001b[39m         \u001b[36mawait\u001b[39m actionHelper\u001b[33m.\u001b[39mnavigateTo(\n \u001b[90m 19 |\u001b[39m             \u001b[32m\"https://ecommerce-playground.lambdatest.io/index.php?route=common/home\"\u001b[39m\u001b[0m\n\u001b[2m    at C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\EditAccount.test.ts:16:10\u001b[22m"
+                        },
+                        {
+                          "location": {
+                            "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ActionHelper.ts",
+                            "column": 19,
+                            "line": 163
+                          },
+                          "message": "Error: Timeout waiting for element to be visible: Edit Account Link\n\n\u001b[90m   at \u001b[39mutils\\ActionHelper.ts:163\n\n\u001b[0m \u001b[90m 161 |\u001b[39m             }\n \u001b[90m 162 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 163 |\u001b[39m             \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\n \u001b[90m     |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 164 |\u001b[39m                 \u001b[32m`Timeout waiting for element to be visible: ${description || locator}`\u001b[39m\n \u001b[90m 165 |\u001b[39m             )\u001b[33m;\u001b[39m\n \u001b[90m 166 |\u001b[39m         }\u001b[0m\n\u001b[2m    at ActionHelper.waitForVisible (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ActionHelper.ts:163:19)\u001b[22m\n\u001b[2m    at LoginPage.clickEditAccountLink (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\pages\\LoginPage.ts:74:9)\u001b[22m\n\u001b[2m    at C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\EditAccount.test.ts:26:9\u001b[22m"
                         }
                       ],
                       "stdout": [
@@ -110,525 +129,50 @@
                           "text": "[ActionHelper] Hovering over My Account Menu\n"
                         },
                         {
-                          "text": "[ActionHelper] Clicking on Register Link\n"
-                        },
-                        {
-                          "text": "Generated phone: (913) 714-4000, email: Tyree_Abbott@yahoo.com\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"Tyree\" into First Name Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"Abbott\" into Last Name Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"Tyree_Abbott@yahoo.com\" into Email Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"(913) 714-4000\" into Telephone Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"OIqNZulLu5N3@2025\" into Password Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"OIqNZulLu5N3@2025\" into Confirm Password Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Clicking on Privacy Policy Checkbox\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Clicking on Continue Button\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Waiting for visibility of Success Message\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Verifying text of Success Message is \"Your Account Has Been Created!\"\n"
-                        }
-                      ],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-09-18T07:29:25.858Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-RegisterAccount-Regi-aaf12--a-new-account-successfully\\video.webm"
-                        },
-                        {
-                          "name": "error-context",
-                          "contentType": "text/markdown",
-                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-RegisterAccount-Regi-aaf12--a-new-account-successfully\\error-context.md"
-                        }
-                      ]
-                    }
-                  ],
-                  "status": "unexpected"
-                }
-              ],
-              "id": "60360bde56c95f95f2d6-0cefc2382620e5082c92",
-              "file": "tests/RegisterAccount.test.ts",
-              "line": 22,
-              "column": 9
-            },
-            {
-              "title": "Attempt to register without agreeing to the privacy policy",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "",
-                  "projectName": "",
-                  "results": [
-                    {
-                      "workerIndex": 1,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 31515,
-                      "errors": [],
-                      "stdout": [
-                        {
-                          "text": "[ActionHelper] Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Hovering over My Account Menu\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Clicking on Register Link\n"
-                        },
-                        {
-                          "text": "Generated phone: (432) 362-6260, email: Cesar_Haag@hotmail.com\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"Cesar\" into First Name Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"Haag\" into Last Name Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"Cesar_Haag@hotmail.com\" into Email Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"(432) 362-6260\" into Telephone Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"NLeoGifC4F0o@2025\" into Password Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"NLeoGifC4F0o@2025\" into Confirm Password Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Clicking on Continue Button\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Verifying text of Privacy Policy Warning is \"Warning: You must agree to the Privacy Policy!\"\n"
-                        }
-                      ],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-09-18T07:30:27.478Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-RegisterAccount-Regi-6d3f7-eeing-to-the-privacy-policy\\test-finished-1.png"
-                        }
-                      ]
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "60360bde56c95f95f2d6-4bc8ab82d57b365cdbe8",
-              "file": "tests/RegisterAccount.test.ts",
-              "line": 42,
-              "column": 9
-            },
-            {
-              "title": "Attempt to register with an already registered email",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "",
-                  "projectName": "",
-                  "results": [
-                    {
-                      "workerIndex": 1,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 29619,
-                      "errors": [],
-                      "stdout": [
-                        {
-                          "text": "[ActionHelper] Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Hovering over My Account Menu\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Clicking on Register Link\n"
-                        },
-                        {
-                          "text": "Generated phone: (370) 847-3306, email: khakaalwande@gmail.com\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"Vida\" into First Name Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"Bartoletti\" into Last Name Input\n"
+                          "text": "[ActionHelper] Clicking on Login Link\n"
                         },
                         {
                           "text": "[ActionHelper] Typing \"khakaalwande@gmail.com\" into Email Input\n"
                         },
                         {
-                          "text": "[ActionHelper] Typing \"(370) 847-3306\" into Telephone Input\n"
+                          "text": "[ActionHelper] Typing \"hlongwane@2011\" into Password Input\n"
                         },
                         {
-                          "text": "[ActionHelper] Typing \"Pu_5gd42Qlta@2025\" into Password Input\n"
+                          "text": "[ActionHelper] Clicking on Login Button\n"
                         },
                         {
-                          "text": "[ActionHelper] Typing \"Pu_5gd42Qlta@2025\" into Confirm Password Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Clicking on Privacy Policy Checkbox\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Clicking on Continue Button\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Waiting for visibility of Duplicate Email Warning\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Verifying text of Duplicate Email Warning is \"Warning: E-Mail Address is already registered!\"\n"
+                          "text": "[ActionHelper] Waiting for visibility of Edit Account Link\n"
                         }
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-18T07:31:00.752Z",
+                      "startTime": "2025-09-18T07:40:48.613Z",
                       "annotations": [],
                       "attachments": [
                         {
                           "name": "screenshot",
                           "contentType": "image/png",
-                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-RegisterAccount-Regi-756a5-an-already-registered-email\\test-finished-1.png"
-                        }
-                      ]
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "60360bde56c95f95f2d6-a16e2371f161c6caa140",
-              "file": "tests/RegisterAccount.test.ts",
-              "line": 66,
-              "column": 9
-            },
-            {
-              "title": "Attempt to register with invalid email format",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "",
-                  "projectName": "",
-                  "results": [
-                    {
-                      "workerIndex": 1,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 26323,
-                      "errors": [],
-                      "stdout": [
-                        {
-                          "text": "[ActionHelper] Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home\n"
+                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-EditAccount-Register-96d2a-nt-Information-successfully\\test-failed-1.png"
                         },
                         {
-                          "text": "[ActionHelper] Hovering over My Account Menu\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Clicking on Register Link\n"
-                        },
-                        {
-                          "text": "Generated phone: (829) 452-2454, email: invalid-email-format\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"Christ\" into First Name Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"Wilderman\" into Last Name Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"invalid-email-format\" into Email Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"(829) 452-2454\" into Telephone Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"7aF9bIAk9v8r@2025\" into Password Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"7aF9bIAk9v8r@2025\" into Confirm Password Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Clicking on Privacy Policy Checkbox\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Clicking on Continue Button\n"
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-EditAccount-Register-96d2a-nt-Information-successfully\\video.webm"
                         }
                       ],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-09-18T07:31:30.588Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-RegisterAccount-Regi-82120-r-with-invalid-email-format\\test-finished-1.png"
-                        }
-                      ]
+                      "errorLocation": {
+                        "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\EditAccount.test.ts",
+                        "column": 10,
+                        "line": 16
+                      }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
-              "id": "60360bde56c95f95f2d6-36d0123a288b59a69276",
-              "file": "tests/RegisterAccount.test.ts",
-              "line": 87,
-              "column": 9
-            },
-            {
-              "title": "Attempt to register with weak password",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "",
-                  "projectName": "",
-                  "results": [
-                    {
-                      "workerIndex": 1,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 24741,
-                      "errors": [],
-                      "stdout": [
-                        {
-                          "text": "[ActionHelper] Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Hovering over My Account Menu\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Clicking on Register Link\n"
-                        },
-                        {
-                          "text": "Generated phone: (286) 549-4993, email: Johanna_Hand93@yahoo.com\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"Johanna\" into First Name Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"Hand\" into Last Name Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"Johanna_Hand93@yahoo.com\" into Email Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"(286) 549-4993\" into Telephone Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"123\" into Password Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"123\" into Confirm Password Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Clicking on Privacy Policy Checkbox\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Clicking on Continue Button\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Waiting for visibility of Password Validation Message\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Verifying text of Password Validation Message is \"Password must be between 4 and 20 characters!\"\n"
-                        }
-                      ],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-09-18T07:31:57.055Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-RegisterAccount-Regi-e1025-register-with-weak-password\\test-finished-1.png"
-                        }
-                      ]
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "60360bde56c95f95f2d6-a0194f364a0e56e930a2",
-              "file": "tests/RegisterAccount.test.ts",
-              "line": 108,
-              "column": 9
-            },
-            {
-              "title": "Attempt to register with missing mandatory fields",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "",
-                  "projectName": "",
-                  "results": [
-                    {
-                      "workerIndex": 1,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 26916,
-                      "errors": [],
-                      "stdout": [
-                        {
-                          "text": "[ActionHelper] Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Hovering over My Account Menu\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Clicking on Register Link\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Clicking on Privacy Policy Checkbox\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Clicking on Continue Button\n"
-                        },
-                        {
-                          "text": "Actual validation messages: [\n  \u001b[32m'First Name must be between 1 and 32 characters!'\u001b[39m,\n  \u001b[32m'Last Name must be between 1 and 32 characters!'\u001b[39m,\n  \u001b[32m'E-Mail Address does not appear to be valid!'\u001b[39m,\n  \u001b[32m'Telephone must be between 3 and 32 characters!'\u001b[39m,\n  \u001b[32m'Password must be between 4 and 20 characters!'\u001b[39m\n]\n"
-                        }
-                      ],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-09-18T07:32:21.912Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-RegisterAccount-Regi-01e00-th-missing-mandatory-fields\\test-finished-1.png"
-                        }
-                      ]
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "60360bde56c95f95f2d6-657101d0c375333e4fd6",
-              "file": "tests/RegisterAccount.test.ts",
-              "line": 131,
-              "column": 9
-            },
-            {
-              "title": "Attempt to register with mismatched password and confirm password",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "",
-                  "projectName": "",
-                  "results": [
-                    {
-                      "workerIndex": 1,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 35775,
-                      "errors": [],
-                      "stdout": [
-                        {
-                          "text": "[ActionHelper] Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Hovering over My Account Menu\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Clicking on Register Link\n"
-                        },
-                        {
-                          "text": "Generated phone: (609) 732-9105, email: Isidro.Osinski@hotmail.com\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"Isidro\" into First Name Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"Osinski\" into Last Name Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"Isidro.Osinski@hotmail.com\" into Email Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"(609) 732-9105\" into Telephone Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"Password@2025\" into Password Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"DifferentPassword@2025\" into Confirm Password Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Clicking on Privacy Policy Checkbox\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Clicking on Continue Button\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Verifying text of Confirm Password Mismatch Warning is \"Password confirmation does not match password!\"\n"
-                        }
-                      ],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-09-18T07:32:48.913Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-RegisterAccount-Regi-aac91-ssword-and-confirm-password\\test-finished-1.png"
-                        }
-                      ]
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "60360bde56c95f95f2d6-ae6a4e699f84d2e1064d",
-              "file": "tests/RegisterAccount.test.ts",
-              "line": 149,
+              "id": "9b8bc05e9f75ce205794-c4b234f687174a279025",
+              "file": "tests/EditAccount.test.ts",
+              "line": 33,
               "column": 9
             }
           ]
@@ -638,9 +182,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-09-18T07:29:11.524Z",
-    "duration": 254471.34100000001,
-    "expected": 6,
+    "startTime": "2025-09-18T07:40:08.597Z",
+    "duration": 91903.57,
+    "expected": 0,
     "skipped": 0,
     "unexpected": 1,
     "flaky": 0
