@@ -45,8 +45,24 @@
         "metadata": {
           "actualWorkers": 1
         },
-        "id": "",
-        "name": "",
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/USER/repos/playwright-scalable-ecommerce-lambdatest-framework",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Users/USER/repos/playwright-scalable-ecommerce-lambdatest-framework/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "firefox",
+        "name": "firefox",
         "testDir": "C:/Users/USER/repos/playwright-scalable-ecommerce-lambdatest-framework",
         "testIgnore": [],
         "testMatch": [
@@ -73,7 +89,7 @@
         {
           "title": "Register Account Tests",
           "file": "tests/EditAccount.test.ts",
-          "line": 14,
+          "line": 8,
           "column": 6,
           "specs": [
             {
@@ -85,94 +101,627 @@
                   "timeout": 30000,
                   "annotations": [],
                   "expectedStatus": "passed",
-                  "projectId": "",
-                  "projectName": "",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
                   "results": [
                     {
                       "workerIndex": 0,
                       "parallelIndex": 0,
-                      "status": "timedOut",
-                      "duration": 44113,
+                      "status": "failed",
+                      "duration": 2941,
                       "error": {
-                        "message": "\u001b[31mTest timeout of 30000ms exceeded while running \"beforeEach\" hook.\u001b[39m",
-                        "stack": "\u001b[31mTest timeout of 30000ms exceeded while running \"beforeEach\" hook.\u001b[39m\n    at C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\EditAccount.test.ts:16:10",
+                        "message": "Error: ❌ Missing environment variable: BASE_URL",
+                        "stack": "Error: ❌ Missing environment variable: BASE_URL\n    at Function.getEnvVar (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:13:19)\n    at Function.url (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:19:21)\n    at ActionHelper.navigateTo (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ActionHelper.ts:27:39)\n    at C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\EditAccount.test.ts:12:28",
                         "location": {
-                          "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\EditAccount.test.ts",
-                          "column": 10,
-                          "line": 16
+                          "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts",
+                          "column": 19,
+                          "line": 13
                         },
-                        "snippet": "\u001b[0m \u001b[90m 14 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m\"Register Account Tests\"\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 15 |\u001b[39m     \u001b[90m// ✅ Runs before each test case to ensure a clean state\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m     test\u001b[33m.\u001b[39mbeforeEach(\u001b[36masync\u001b[39m ({ actionHelper\u001b[33m,\u001b[39m registerAccountPage\u001b[33m,\u001b[39m homePage\u001b[33m,\u001b[39m loginPage\u001b[33m,\u001b[39m editAccountPage }) \u001b[33m=>\u001b[39m {\n \u001b[90m    |\u001b[39m          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 |\u001b[39m         \u001b[90m// Navigate to homepage\u001b[39m\n \u001b[90m 18 |\u001b[39m         \u001b[36mawait\u001b[39m actionHelper\u001b[33m.\u001b[39mnavigateTo(\n \u001b[90m 19 |\u001b[39m             \u001b[32m\"https://ecommerce-playground.lambdatest.io/index.php?route=common/home\"\u001b[39m\u001b[0m"
+                        "snippet": "\u001b[90m   at \u001b[39mutils\\ConfigManager.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m         \u001b[36mconst\u001b[39m value \u001b[33m=\u001b[39m process\u001b[33m.\u001b[39menv[key]\u001b[33m;\u001b[39m\n \u001b[90m 12 |\u001b[39m         \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mvalue \u001b[33m&&\u001b[39m required) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m             \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`❌ Missing environment variable: ${key}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m         }\n \u001b[90m 15 |\u001b[39m         \u001b[36mreturn\u001b[39m value \u001b[33m||\u001b[39m \u001b[32m\"\"\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 16 |\u001b[39m     }\u001b[0m"
                       },
                       "errors": [
                         {
                           "location": {
-                            "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\EditAccount.test.ts",
-                            "column": 10,
-                            "line": 16
-                          },
-                          "message": "\u001b[31mTest timeout of 30000ms exceeded while running \"beforeEach\" hook.\u001b[39m\n\n\u001b[0m \u001b[90m 14 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m\"Register Account Tests\"\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 15 |\u001b[39m     \u001b[90m// ✅ Runs before each test case to ensure a clean state\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m     test\u001b[33m.\u001b[39mbeforeEach(\u001b[36masync\u001b[39m ({ actionHelper\u001b[33m,\u001b[39m registerAccountPage\u001b[33m,\u001b[39m homePage\u001b[33m,\u001b[39m loginPage\u001b[33m,\u001b[39m editAccountPage }) \u001b[33m=>\u001b[39m {\n \u001b[90m    |\u001b[39m          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 |\u001b[39m         \u001b[90m// Navigate to homepage\u001b[39m\n \u001b[90m 18 |\u001b[39m         \u001b[36mawait\u001b[39m actionHelper\u001b[33m.\u001b[39mnavigateTo(\n \u001b[90m 19 |\u001b[39m             \u001b[32m\"https://ecommerce-playground.lambdatest.io/index.php?route=common/home\"\u001b[39m\u001b[0m\n\u001b[2m    at C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\EditAccount.test.ts:16:10\u001b[22m"
-                        },
-                        {
-                          "location": {
-                            "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ActionHelper.ts",
+                            "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts",
                             "column": 19,
-                            "line": 163
+                            "line": 13
                           },
-                          "message": "Error: Timeout waiting for element to be visible: Edit Account Link\n\n\u001b[90m   at \u001b[39mutils\\ActionHelper.ts:163\n\n\u001b[0m \u001b[90m 161 |\u001b[39m             }\n \u001b[90m 162 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 163 |\u001b[39m             \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\n \u001b[90m     |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 164 |\u001b[39m                 \u001b[32m`Timeout waiting for element to be visible: ${description || locator}`\u001b[39m\n \u001b[90m 165 |\u001b[39m             )\u001b[33m;\u001b[39m\n \u001b[90m 166 |\u001b[39m         }\u001b[0m\n\u001b[2m    at ActionHelper.waitForVisible (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ActionHelper.ts:163:19)\u001b[22m\n\u001b[2m    at LoginPage.clickEditAccountLink (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\pages\\LoginPage.ts:74:9)\u001b[22m\n\u001b[2m    at C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\EditAccount.test.ts:26:9\u001b[22m"
+                          "message": "Error: ❌ Missing environment variable: BASE_URL\n\n\u001b[90m   at \u001b[39mutils\\ConfigManager.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m         \u001b[36mconst\u001b[39m value \u001b[33m=\u001b[39m process\u001b[33m.\u001b[39menv[key]\u001b[33m;\u001b[39m\n \u001b[90m 12 |\u001b[39m         \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mvalue \u001b[33m&&\u001b[39m required) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m             \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`❌ Missing environment variable: ${key}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m         }\n \u001b[90m 15 |\u001b[39m         \u001b[36mreturn\u001b[39m value \u001b[33m||\u001b[39m \u001b[32m\"\"\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 16 |\u001b[39m     }\u001b[0m\n\u001b[2m    at Function.getEnvVar (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:13:19)\u001b[22m\n\u001b[2m    at Function.url (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:19:21)\u001b[22m\n\u001b[2m    at ActionHelper.navigateTo (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ActionHelper.ts:27:39)\u001b[22m\n\u001b[2m    at C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\EditAccount.test.ts:12:28\u001b[22m"
                         }
                       ],
-                      "stdout": [
-                        {
-                          "text": "[ActionHelper] Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Hovering over My Account Menu\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Clicking on Login Link\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"khakaalwande@gmail.com\" into Email Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Typing \"hlongwane@2011\" into Password Input\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Clicking on Login Button\n"
-                        },
-                        {
-                          "text": "[ActionHelper] Waiting for visibility of Edit Account Link\n"
-                        }
-                      ],
+                      "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-18T07:40:48.613Z",
+                      "startTime": "2025-10-03T12:49:45.406Z",
                       "annotations": [],
                       "attachments": [
                         {
                           "name": "screenshot",
                           "contentType": "image/png",
-                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-EditAccount-Register-96d2a-nt-Information-successfully\\test-failed-1.png"
+                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-EditAccount-Register-96d2a-nt-Information-successfully-chromium\\test-failed-1.png"
                         },
                         {
                           "name": "video",
                           "contentType": "video/webm",
-                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-EditAccount-Register-96d2a-nt-Information-successfully\\video.webm"
+                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-EditAccount-Register-96d2a-nt-Information-successfully-chromium\\video.webm"
                         }
                       ],
                       "errorLocation": {
-                        "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\EditAccount.test.ts",
-                        "column": 10,
-                        "line": 16
+                        "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts",
+                        "column": 19,
+                        "line": 13
                       }
                     }
                   ],
                   "status": "unexpected"
+                },
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
                 }
               ],
-              "id": "9b8bc05e9f75ce205794-c4b234f687174a279025",
+              "id": "9b8bc05e9f75ce205794-12da61523851960415c2",
               "file": "tests/EditAccount.test.ts",
-              "line": 33,
+              "line": 25,
+              "column": 9
+            },
+            {
+              "title": "Attempt to edit account information with invalid details",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 3686,
+                      "error": {
+                        "message": "Error: ❌ Missing environment variable: BASE_URL",
+                        "stack": "Error: ❌ Missing environment variable: BASE_URL\n    at Function.getEnvVar (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:13:19)\n    at Function.url (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:19:21)\n    at ActionHelper.navigateTo (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ActionHelper.ts:27:39)\n    at C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\EditAccount.test.ts:12:28",
+                        "location": {
+                          "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts",
+                          "column": 19,
+                          "line": 13
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39mutils\\ConfigManager.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m         \u001b[36mconst\u001b[39m value \u001b[33m=\u001b[39m process\u001b[33m.\u001b[39menv[key]\u001b[33m;\u001b[39m\n \u001b[90m 12 |\u001b[39m         \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mvalue \u001b[33m&&\u001b[39m required) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m             \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`❌ Missing environment variable: ${key}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m         }\n \u001b[90m 15 |\u001b[39m         \u001b[36mreturn\u001b[39m value \u001b[33m||\u001b[39m \u001b[32m\"\"\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 16 |\u001b[39m     }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts",
+                            "column": 19,
+                            "line": 13
+                          },
+                          "message": "Error: ❌ Missing environment variable: BASE_URL\n\n\u001b[90m   at \u001b[39mutils\\ConfigManager.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m         \u001b[36mconst\u001b[39m value \u001b[33m=\u001b[39m process\u001b[33m.\u001b[39menv[key]\u001b[33m;\u001b[39m\n \u001b[90m 12 |\u001b[39m         \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mvalue \u001b[33m&&\u001b[39m required) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m             \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`❌ Missing environment variable: ${key}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m         }\n \u001b[90m 15 |\u001b[39m         \u001b[36mreturn\u001b[39m value \u001b[33m||\u001b[39m \u001b[32m\"\"\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 16 |\u001b[39m     }\u001b[0m\n\u001b[2m    at Function.getEnvVar (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:13:19)\u001b[22m\n\u001b[2m    at Function.url (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:19:21)\u001b[22m\n\u001b[2m    at ActionHelper.navigateTo (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ActionHelper.ts:27:39)\u001b[22m\n\u001b[2m    at C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\EditAccount.test.ts:12:28\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-03T12:50:00.963Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-EditAccount-Register-910c0-mation-with-invalid-details-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-EditAccount-Register-910c0-mation-with-invalid-details-chromium\\video.webm"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts",
+                        "column": 19,
+                        "line": 13
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                },
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "9b8bc05e9f75ce205794-ac97a8271f26ff63a1ce",
+              "file": "tests/EditAccount.test.ts",
+              "line": 48,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tests\\Login.test.ts",
+      "file": "tests/Login.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Login Tests",
+          "file": "tests/Login.test.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Login with valid credentials",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1841,
+                      "error": {
+                        "message": "Error: ❌ Missing environment variable: BASE_URL",
+                        "stack": "Error: ❌ Missing environment variable: BASE_URL\n    at Function.getEnvVar (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:13:19)\n    at Function.url (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:19:21)\n    at ActionHelper.navigateTo (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ActionHelper.ts:27:39)\n    at C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\Login.test.ts:11:24",
+                        "location": {
+                          "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts",
+                          "column": 19,
+                          "line": 13
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39mutils\\ConfigManager.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m         \u001b[36mconst\u001b[39m value \u001b[33m=\u001b[39m process\u001b[33m.\u001b[39menv[key]\u001b[33m;\u001b[39m\n \u001b[90m 12 |\u001b[39m         \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mvalue \u001b[33m&&\u001b[39m required) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m             \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`❌ Missing environment variable: ${key}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m         }\n \u001b[90m 15 |\u001b[39m         \u001b[36mreturn\u001b[39m value \u001b[33m||\u001b[39m \u001b[32m\"\"\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 16 |\u001b[39m     }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts",
+                            "column": 19,
+                            "line": 13
+                          },
+                          "message": "Error: ❌ Missing environment variable: BASE_URL\n\n\u001b[90m   at \u001b[39mutils\\ConfigManager.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m         \u001b[36mconst\u001b[39m value \u001b[33m=\u001b[39m process\u001b[33m.\u001b[39menv[key]\u001b[33m;\u001b[39m\n \u001b[90m 12 |\u001b[39m         \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mvalue \u001b[33m&&\u001b[39m required) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m             \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`❌ Missing environment variable: ${key}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m         }\n \u001b[90m 15 |\u001b[39m         \u001b[36mreturn\u001b[39m value \u001b[33m||\u001b[39m \u001b[32m\"\"\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 16 |\u001b[39m     }\u001b[0m\n\u001b[2m    at Function.getEnvVar (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:13:19)\u001b[22m\n\u001b[2m    at Function.url (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:19:21)\u001b[22m\n\u001b[2m    at ActionHelper.navigateTo (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ActionHelper.ts:27:39)\u001b[22m\n\u001b[2m    at C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\Login.test.ts:11:24\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-03T12:50:22.945Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-Login-Login-Tests-Login-with-valid-credentials-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-Login-Login-Tests-Login-with-valid-credentials-chromium\\video.webm"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts",
+                        "column": 19,
+                        "line": 13
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                },
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "dcb31983a82c67060828-bff9e897ba15f8a02ba6",
+              "file": "tests/Login.test.ts",
+              "line": 15,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tests\\RegisterAccount.test.ts",
+      "file": "tests/RegisterAccount.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Register Account Tests",
+          "file": "tests/RegisterAccount.test.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Register a new account successfully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 2133,
+                      "error": {
+                        "message": "Error: ❌ Missing environment variable: BASE_URL",
+                        "stack": "Error: ❌ Missing environment variable: BASE_URL\n    at Function.getEnvVar (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:13:19)\n    at Function.url (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:19:21)\n    at ActionHelper.navigateTo (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ActionHelper.ts:27:39)\n    at C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\RegisterAccount.test.ts:9:28",
+                        "location": {
+                          "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts",
+                          "column": 19,
+                          "line": 13
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39mutils\\ConfigManager.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m         \u001b[36mconst\u001b[39m value \u001b[33m=\u001b[39m process\u001b[33m.\u001b[39menv[key]\u001b[33m;\u001b[39m\n \u001b[90m 12 |\u001b[39m         \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mvalue \u001b[33m&&\u001b[39m required) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m             \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`❌ Missing environment variable: ${key}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m         }\n \u001b[90m 15 |\u001b[39m         \u001b[36mreturn\u001b[39m value \u001b[33m||\u001b[39m \u001b[32m\"\"\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 16 |\u001b[39m     }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts",
+                            "column": 19,
+                            "line": 13
+                          },
+                          "message": "Error: ❌ Missing environment variable: BASE_URL\n\n\u001b[90m   at \u001b[39mutils\\ConfigManager.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m         \u001b[36mconst\u001b[39m value \u001b[33m=\u001b[39m process\u001b[33m.\u001b[39menv[key]\u001b[33m;\u001b[39m\n \u001b[90m 12 |\u001b[39m         \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mvalue \u001b[33m&&\u001b[39m required) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m             \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`❌ Missing environment variable: ${key}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m         }\n \u001b[90m 15 |\u001b[39m         \u001b[36mreturn\u001b[39m value \u001b[33m||\u001b[39m \u001b[32m\"\"\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 16 |\u001b[39m     }\u001b[0m\n\u001b[2m    at Function.getEnvVar (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:13:19)\u001b[22m\n\u001b[2m    at Function.url (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:19:21)\u001b[22m\n\u001b[2m    at ActionHelper.navigateTo (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ActionHelper.ts:27:39)\u001b[22m\n\u001b[2m    at C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\RegisterAccount.test.ts:9:28\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-03T12:50:52.114Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-RegisterAccount-Regi-aaf12--a-new-account-successfully-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-RegisterAccount-Regi-aaf12--a-new-account-successfully-chromium\\video.webm"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts",
+                        "column": 19,
+                        "line": 13
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                },
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "60360bde56c95f95f2d6-273bbfcc5ee4e560bcf8",
+              "file": "tests/RegisterAccount.test.ts",
+              "line": 21,
+              "column": 9
+            },
+            {
+              "title": "Attempt to register without agreeing to the privacy policy",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1979,
+                      "error": {
+                        "message": "Error: ❌ Missing environment variable: BASE_URL",
+                        "stack": "Error: ❌ Missing environment variable: BASE_URL\n    at Function.getEnvVar (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:13:19)\n    at Function.url (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:19:21)\n    at ActionHelper.navigateTo (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ActionHelper.ts:27:39)\n    at C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\RegisterAccount.test.ts:9:28",
+                        "location": {
+                          "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts",
+                          "column": 19,
+                          "line": 13
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39mutils\\ConfigManager.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m         \u001b[36mconst\u001b[39m value \u001b[33m=\u001b[39m process\u001b[33m.\u001b[39menv[key]\u001b[33m;\u001b[39m\n \u001b[90m 12 |\u001b[39m         \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mvalue \u001b[33m&&\u001b[39m required) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m             \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`❌ Missing environment variable: ${key}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m         }\n \u001b[90m 15 |\u001b[39m         \u001b[36mreturn\u001b[39m value \u001b[33m||\u001b[39m \u001b[32m\"\"\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 16 |\u001b[39m     }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts",
+                            "column": 19,
+                            "line": 13
+                          },
+                          "message": "Error: ❌ Missing environment variable: BASE_URL\n\n\u001b[90m   at \u001b[39mutils\\ConfigManager.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m         \u001b[36mconst\u001b[39m value \u001b[33m=\u001b[39m process\u001b[33m.\u001b[39menv[key]\u001b[33m;\u001b[39m\n \u001b[90m 12 |\u001b[39m         \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mvalue \u001b[33m&&\u001b[39m required) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m             \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`❌ Missing environment variable: ${key}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m         }\n \u001b[90m 15 |\u001b[39m         \u001b[36mreturn\u001b[39m value \u001b[33m||\u001b[39m \u001b[32m\"\"\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 16 |\u001b[39m     }\u001b[0m\n\u001b[2m    at Function.getEnvVar (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:13:19)\u001b[22m\n\u001b[2m    at Function.url (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:19:21)\u001b[22m\n\u001b[2m    at ActionHelper.navigateTo (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ActionHelper.ts:27:39)\u001b[22m\n\u001b[2m    at C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\RegisterAccount.test.ts:9:28\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-03T12:51:11.290Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-RegisterAccount-Regi-6d3f7-eeing-to-the-privacy-policy-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-RegisterAccount-Regi-6d3f7-eeing-to-the-privacy-policy-chromium\\video.webm"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts",
+                        "column": 19,
+                        "line": 13
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                },
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "60360bde56c95f95f2d6-49050646cdbd76a5f41e",
+              "file": "tests/RegisterAccount.test.ts",
+              "line": 41,
+              "column": 9
+            },
+            {
+              "title": "Attempt to register with an already registered email",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1576,
+                      "error": {
+                        "message": "Error: ❌ Missing environment variable: BASE_URL",
+                        "stack": "Error: ❌ Missing environment variable: BASE_URL\n    at Function.getEnvVar (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:13:19)\n    at Function.url (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:19:21)\n    at ActionHelper.navigateTo (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ActionHelper.ts:27:39)\n    at C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\RegisterAccount.test.ts:9:28",
+                        "location": {
+                          "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts",
+                          "column": 19,
+                          "line": 13
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39mutils\\ConfigManager.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m         \u001b[36mconst\u001b[39m value \u001b[33m=\u001b[39m process\u001b[33m.\u001b[39menv[key]\u001b[33m;\u001b[39m\n \u001b[90m 12 |\u001b[39m         \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mvalue \u001b[33m&&\u001b[39m required) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m             \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`❌ Missing environment variable: ${key}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m         }\n \u001b[90m 15 |\u001b[39m         \u001b[36mreturn\u001b[39m value \u001b[33m||\u001b[39m \u001b[32m\"\"\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 16 |\u001b[39m     }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts",
+                            "column": 19,
+                            "line": 13
+                          },
+                          "message": "Error: ❌ Missing environment variable: BASE_URL\n\n\u001b[90m   at \u001b[39mutils\\ConfigManager.ts:13\n\n\u001b[0m \u001b[90m 11 |\u001b[39m         \u001b[36mconst\u001b[39m value \u001b[33m=\u001b[39m process\u001b[33m.\u001b[39menv[key]\u001b[33m;\u001b[39m\n \u001b[90m 12 |\u001b[39m         \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mvalue \u001b[33m&&\u001b[39m required) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m             \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`❌ Missing environment variable: ${key}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m         }\n \u001b[90m 15 |\u001b[39m         \u001b[36mreturn\u001b[39m value \u001b[33m||\u001b[39m \u001b[32m\"\"\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 16 |\u001b[39m     }\u001b[0m\n\u001b[2m    at Function.getEnvVar (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:13:19)\u001b[22m\n\u001b[2m    at Function.url (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts:19:21)\u001b[22m\n\u001b[2m    at ActionHelper.navigateTo (C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ActionHelper.ts:27:39)\u001b[22m\n\u001b[2m    at C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\tests\\RegisterAccount.test.ts:9:28\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-03T12:51:25.697Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-RegisterAccount-Regi-756a5-an-already-registered-email-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\test-results\\tests-RegisterAccount-Regi-756a5-an-already-registered-email-chromium\\video.webm"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\USER\\repos\\playwright-scalable-ecommerce-lambdatest-framework\\utils\\ConfigManager.ts",
+                        "column": 19,
+                        "line": 13
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                },
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "60360bde56c95f95f2d6-01218e0d1c3e9662e0e2",
+              "file": "tests/RegisterAccount.test.ts",
+              "line": 65,
+              "column": 9
+            },
+            {
+              "title": "Attempt to register with invalid email format",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "interrupted",
+                      "duration": 22,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-03T12:51:39.237Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "60360bde56c95f95f2d6-d516443e953d09ddfcb5",
+              "file": "tests/RegisterAccount.test.ts",
+              "line": 86,
+              "column": 9
+            },
+            {
+              "title": "Attempt to register with weak password",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "60360bde56c95f95f2d6-b951c532deb6dd807f0a",
+              "file": "tests/RegisterAccount.test.ts",
+              "line": 107,
+              "column": 9
+            },
+            {
+              "title": "Attempt to register with missing mandatory fields",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "60360bde56c95f95f2d6-19bfbc642d6087f351e2",
+              "file": "tests/RegisterAccount.test.ts",
+              "line": 130,
+              "column": 9
+            },
+            {
+              "title": "Attempt to register with mismatched password and confirm password",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "60360bde56c95f95f2d6-ddfb182314f21ddedd40",
+              "file": "tests/RegisterAccount.test.ts",
+              "line": 148,
               "column": 9
             }
           ]
@@ -182,11 +731,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-09-18T07:40:08.597Z",
-    "duration": 91903.57,
+    "startTime": "2025-10-03T12:49:31.595Z",
+    "duration": 141073.784,
     "expected": 0,
-    "skipped": 0,
-    "unexpected": 1,
+    "skipped": 14,
+    "unexpected": 6,
     "flaky": 0
   }
 }

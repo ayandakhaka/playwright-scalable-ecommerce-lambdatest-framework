@@ -1,69 +1,110 @@
-import { test, expect } from "../fixtures/TestBase";
+import fs from "fs";
+import path from "path";
+import { test, expect } from "../fixtures/TestBase.js";
+import { ConfigManager } from "../utils/ConfigManager.js";
+import { generateFakeUser, saveRegisteredUser, getOrCreateTestUser } from "../utils/FakeDataGenerator.js";
+import { resetLoginAttemptsDb } from "../utils/dbUtils.js";
+import registeredUsers from "../test-data/registeredUsers.json" with { type: "json" };
 import { faker } from "@faker-js/faker";
-import { Page } from "@playwright/test";
-//import * as loginData from "../test-data/login.test.data.json";
-import { ConfigManager } from "utils/ConfigManager";
+import { step } from "../utils/testStepHelper.js";
 
 
-// Test data
-//const email = "khakaalwande@gmail.com";
-//const password = "hlongwane@2011";
-/**
- * Test suite for editing account information.
- */
-test.describe("Register Account Tests", () => {
-    // ✅ Runs before each test case to ensure a clean state
-    test.beforeEach(async ({ actionHelper, registerAccountPage, homePage, loginPage, editAccountPage }) => {
-        // Navigate to homepage
-        await actionHelper.navigateTo(
-            "https://ecommerce-playground.lambdatest.io/index.php?route=common/home"
-        );
+const registeredUsersFile = path.resolve(process.cwd(), "test-data/registeredUsers.json");
 
-        // Open login page
-        await homePage.hoverMyAccountMenu();
-        await homePage.clickLoginLink();
-        await loginPage.login(ConfigManager.username(), ConfigManager.password()); // Perform login
-        await loginPage.clickEditAccountLink(); // Navigate to Edit Account page
+let user: any;
+
+// ✅ Increase timeout for slower test environments
+test.setTimeout(60000);
+
+test.describe("Edit Account Tests", () => {
+
+  test.beforeEach(async ({ page, homePage, actionHelper }, testInfo) => {
+    await step("Navigate to home page and open login", async () => {
+      await actionHelper.navigateToFullUrl(`${ConfigManager.url()}/index.php?route=common/home`);
+      await homePage.hoverMyAccountMenu();
+      await homePage.clickLoginLink();
     });
-    /**
-     * ✅ Positive Test
-     * Edits account information successfully with valid details.
-     * Expects: Account update success message is displayed.
-     */
-    test("Edit Account Information successfully", async ({ editAccountPage, actionHelper, loginPage, homePage }) => {
+  });
 
+  test("Edit Account Information successfully", async ({ editAccountPage, loginPage }, testInfo) => {
+    user = registeredUsers[0];
+    if (!user || !user.email || !user.password)
+      throw new Error("Invalid or missing user data in JSON");
 
-        // Navigate to Edit Account page
-
-        const newFirstName = faker.person.firstName();
-        const newLastName = faker.person.lastName();
-        const newEmail = faker.internet.email({ firstName: newFirstName, lastName: newLastName });
-        const phone = faker.phone.number({ style: "national" });
-        console.log(`Generated phone: ${phone}, email: ${newEmail}`);
-        await editAccountPage.fillMyAccountDetails(newFirstName, newLastName, newEmail, phone);
-        await editAccountPage.clickContinueButton();
-
-        // Verify success message
-        await editAccountPage.verifyUpdateSuccessMessage('Success: Your account has been successfully updated.');
-
+    await step(`Login with valid user: ${user.email}`, async () => {
+      await loginPage.login(user.email, user.password);
     });
-    
-    /**
-     * ❌ Negative Test
-     * Attempts to edit account information with invalid details.   
-     * Expects: Warning message is displayed for invalid input.
-     */
-    // test("Attempt to edit account information with invalid details", async ({ editAccountPage, actionHelper, loginPage, homePage }) => {
-    //     // Navigate to Edit Account page       
-    //     const newFirstName = ""; // Invalid first name  
-    //     const newLastName = faker.person.lastName();
-    //     const newEmail = "invalid-email-format"; // Invalid email
-    //     const phone = faker.phone.number({ style: "national" });
-    //     console.log(`Generated phone: ${phone}, email: ${loginData.email}`);
-    //     await editAccountPage.fillMyAccountDetails(newFirstName, newLastName, newEmail, phone);
-    //     await editAccountPage.clickContinueButton();
-    //     // Verify warning message
-    //     await editAccountPage.verifyUpdateWarningMessage('Warning: Please check the form carefully for errors!'); 
-    // });
 
+    await step("Open Edit Account page", async () => {
+      await loginPage.clickEditAccountLink();
+    });
+
+    await step("Edit and save account information", async () => {
+      await editAccountPage.fillMyAccountDetails("Elihle", "Khaka", user.email, "073 6409898");
+      await editAccountPage.clickContinueButton();
+    });
+
+    await step("Verify success message", async () => {
+      await editAccountPage.verifyUpdateSuccessMessage(
+        "Success: Your account has been successfully updated."
+      );
+    });
+  });
+
+  test("Attempt to edit account with invalid email address", async ({ editAccountPage, loginPage, registerAccountPage }, testInfo) => {
+    user = registeredUsers[0];
+    if (!user) throw new Error("User data not initialized");
+
+    await step("Login with valid user", async () => {
+      await loginPage.login(user.email, user.password);
+    });
+
+    await step("Try editing with invalid email format", async () => {
+      await loginPage.clickEditAccountLink();
+      await editAccountPage.fillMyAccountDetails("Elihle", "Khaka", "invalid-email", "0736723126");
+      await editAccountPage.clickContinueButton();
+    });
+
+    await step("Verify invalid email error message", async () => {
+      await registerAccountPage.verifyInvalidEmailFormatError();
+    });
+  });
+
+  test("Attempt to edit account without first name", async ({ editAccountPage, loginPage }, testInfo) => {
+    user = registeredUsers[0];
+    if (!user) throw new Error("User data not initialized");
+
+    await step("Login user", async () => {
+      await loginPage.login(user.email, user.password);
+    });
+
+    await step("Try saving without first name", async () => {
+      await loginPage.clickEditAccountLink();
+      await editAccountPage.fillMyAccountDetails("", "Khaka", user.email, "0736723126");
+      await editAccountPage.clickContinueButton();
+    });
+
+    await step("Verify first name field error", async () => {
+      await editAccountPage.verifyFirstNameFieldErrorMessage();
+    });
+  });
+
+  test("Attempt to edit account with existing email", async ({ editAccountPage, loginPage }, testInfo) => {
+    user = registeredUsers[0];
+    if (!user) throw new Error("User data not initialized");
+
+    await step("Login user", async () => {
+      await loginPage.login(user.email, user.password);
+    });
+
+    await step("Attempt to change to existing email", async () => {
+      await loginPage.clickEditAccountLink();
+      await editAccountPage.fillMyAccountDetails("Elihle", "Khaka", "khakaalwande@gmail.com", "0736723126");
+      await editAccountPage.clickContinueButton();
+    });
+
+    await step("Verify duplicate email warning", async () => {
+      await editAccountPage.verifyUpdateWarningMessage("Warning: E-Mail address is already registered!");
+    });
+  });
 });

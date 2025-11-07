@@ -1,179 +1,172 @@
-import { test, expect } from "../fixtures/TestBase";
+import { test, expect } from "../fixtures/TestBase.js";
 import { faker } from "@faker-js/faker";
-import { Page } from "@playwright/test";
+import * as FakeDataGenerator from "../utils/FakeDataGenerator.js";
+import { generateFakeUser, saveRegisteredUser } from "../utils/FakeDataGenerator.js";
+import { step } from "../utils/testStepHelper.js";
+
+
+test.setTimeout(60000);
+const user = generateFakeUser();
 
 test.describe("Register Account Tests", () => {
 
-    // ✅ Runs before each test case to ensure a clean state
-    test.beforeEach(async ({ actionHelper, registerAccountPage, homePage }) => {
-        // Navigate to homepage
-        await actionHelper.navigateTo("/index.php?route=common/home");
+  test.beforeEach(async ({ actionHelper, registerAccountPage, homePage }, testInfo) => {
+    await step("Navigate to homepage and open Register page", async () => {
+      await actionHelper.navigateTo("/index.php?route=common/home");
+      await homePage.hoverMyAccountMenu();
+      await homePage.clickRegisterLink();
+    });
+  });
 
-        // Open registration page via "My Account" → "Register"
-        await homePage.hoverMyAccountMenu();
-        await homePage.clickRegisterLink();
+  /**
+   * ✅ Positive Test - Register successfully
+   */
+  test("Register a new account successfully", async ({ registerAccountPage }, testInfo) => {
+    console.log(`Generated user for test: ${JSON.stringify(user)}`);
+
+    await step("Fill registration form with valid user details", async () => {
+      await registerAccountPage.fillRegistrationForm(
+        user.firstName,
+        user.lastName,
+        user.email,
+        user.phone,
+        user.password
+      );
     });
 
-    /**
-     * ✅ Positive Test
-     * Registers a new user successfully with valid details.
-     * Expects: Registration success message/page is displayed.
-     */
-    test("Register a new account successfully", async ({ registerAccountPage }) => {
-        const firstName = faker.person.firstName();
-        const lastName = faker.person.lastName();
-        const email = faker.internet.email({ firstName, lastName });
-        const phone = faker.phone.number({ style: "national" });
-        const password = faker.internet.password({ length: 12 }) + "@2025"; // Enforces strong password
-
-        console.log(`Generated phone: ${phone}, email: ${email}`);
-
-        await registerAccountPage.fillRegistrationForm(firstName, lastName, email, phone, password);
-        await registerAccountPage.submitRegistration();
-
-        await registerAccountPage.verifyRegistrationSuccess();
+    await step("Submit the registration form", async () => {
+      await registerAccountPage.submitRegistration();
     });
 
-    /**
-     * ❌ Negative Test
-     * User tries to register without agreeing to Privacy Policy.
-     * Expects: "Warning: You must agree to the Privacy Policy!" alert.
-     */
-    test("Attempt to register without agreeing to the privacy policy", async ({ registerAccountPage, actionHelper }) => {
-        const firstName = faker.person.firstName();
-        const lastName = faker.person.lastName();
-        const email = faker.internet.email({ firstName, lastName });
-        const phone = faker.phone.number({ style: "national" });
-        const password = faker.internet.password({ length: 12 }) + "@2025";
-
-        console.log(`Generated phone: ${phone}, email: ${email}`);
-
-        await registerAccountPage.fillRegistrationForm(firstName, lastName, email, phone, password);
-        await registerAccountPage.clickContinueButton();
-
-        await actionHelper.verifyText(
-            "div.alert.alert-danger.alert-dismissible",
-            "Warning: You must agree to the Privacy Policy!",
-            "Privacy Policy Warning"
-        );
+    await step("Verify registration success message", async () => {
+      await registerAccountPage.verifyRegistrationSuccess();
     });
 
-    /**
-     * ❌ Negative Test
-     * User tries to register using an already registered email.
-     * Expects: "E-Mail Address is already registered!" error message.
-     */
-    test("Attempt to register with an already registered email", async ({ registerAccountPage }) => {
-        const firstName = faker.person.firstName();
-        const lastName = faker.person.lastName();
-        const email = "khakaalwande@gmail.com"; // Pre-registered email
-        const phone = faker.phone.number({ style: "national" });
-        const password = faker.internet.password({ length: 12 }) + "@2025";
+    await step("Save registered user data", async () => {
+      saveRegisteredUser(user);
+    });
+  });
 
-        console.log(`Generated phone: ${phone}, email: ${email}`);
-
-        await registerAccountPage.fillRegistrationForm(firstName, lastName, email, phone, password);
-        await registerAccountPage.clickPrivacyPolicyCheckbox();
-        await registerAccountPage.clickContinueButton();
-
-        await registerAccountPage.verifyEmailAlreadyRegisteredError();
+  /**
+   * ❌ Negative Test - No privacy policy
+   */
+  test("Attempt to register without agreeing to the privacy policy", async ({ registerAccountPage, actionHelper }, testInfo) => {
+    await step("Fill registration form", async () => {
+      await registerAccountPage.fillRegistrationForm(user.firstName, user.lastName, user.email, user.phone, user.password);
     });
 
-    /**
-     * ❌ Negative Test
-     * User enters an invalid email format (missing "@").
-     * Expects: "Please include an '@' in the email address" error.
-     */
-    test("Attempt to register with invalid email format", async ({ registerAccountPage }) => {
-        const firstName = faker.person.firstName();
-        const lastName = faker.person.lastName();
-        const email = "invalid-email-format"; // Invalid format
-        const phone = faker.phone.number({ style: "national" });
-        const password = faker.internet.password({ length: 12 }) + "@2025";
-
-        console.log(`Generated phone: ${phone}, email: ${email}`);
-
-        await registerAccountPage.fillRegistrationForm(firstName, lastName, email, phone, password);
-        await registerAccountPage.clickPrivacyPolicyCheckbox();
-        await registerAccountPage.clickContinueButton();
-
-        await registerAccountPage.verifyInvalidEmailFormatError();
+    await step("Click continue without checking Privacy Policy", async () => {
+      await registerAccountPage.clickContinueButton();
     });
 
-    /**
-     * ❌ Negative Test
-     * User enters a weak password ("123").
-     * Expects: "Password must be between 4 and 20 characters!" error.
-     */
-    test("Attempt to register with weak password", async ({ registerAccountPage }) => {
-        const firstName = faker.person.firstName();
-        const lastName = faker.person.lastName();
-        const email = faker.internet.email({ firstName, lastName });
-        const phone = faker.phone.number({ style: "national" });
-        const password = "123"; // Too short
+    await step("Verify privacy policy warning message", async () => {
+      await actionHelper.verifyText(
+        "div.alert.alert-danger.alert-dismissible",
+        "Warning: You must agree to the Privacy Policy!",
+        "Privacy Policy Warning"
+      );
+    });
+  });
 
-        console.log(`Generated phone: ${phone}, email: ${email}`);
+  /**
+   * ❌ Negative Test - Duplicate email
+   */
+  test("Attempt to register with an already registered email", async ({ registerAccountPage }, testInfo) => {
+    const email = "khakaalwande@gmail.com"; // Pre-registered email
 
-        await registerAccountPage.fillRegistrationForm(firstName, lastName, email, phone, password);
-        await registerAccountPage.clickPrivacyPolicyCheckbox();
-        await registerAccountPage.clickContinueButton();
-
-        await registerAccountPage.verifyPasswordValidationMessage(
-            "Password must be between 4 and 20 characters!"
-        );
+    await step("Fill form with existing email", async () => {
+      await registerAccountPage.fillRegistrationForm(user.firstName, user.lastName, email, user.phone, user.password);
+      await registerAccountPage.clickPrivacyPolicyCheckbox();
+      await registerAccountPage.clickContinueButton();
     });
 
-    /**
-     * ❌ Negative Test
-     * User submits form without filling any mandatory fields.
-     * Expects: Validation errors for first name, last name, email, telephone, password.
-     */
-    test("Attempt to register with missing mandatory fields", async ({ registerAccountPage }) => {
-        await registerAccountPage.clickPrivacyPolicyCheckbox();
-        await registerAccountPage.clickContinueButton();
+    await step("Verify duplicate email warning", async () => {
+      await registerAccountPage.verifyEmailAlreadyRegisteredError();
+    });
+  });
 
-        await registerAccountPage.verifyFieldValidationMessages([
-            "First Name must be between 1 and 32 characters!",
-            "Last Name must be between 1 and 32 characters!",
-            "E-Mail Address does not appear to be valid!",
-            "Telephone must be between 3 and 32 characters!",
-            "Password must be between 4 and 20 characters!"
-        ]);
+  /**
+   * ❌ Negative Test - Invalid email format
+   */
+  test("Attempt to register with invalid email format", async ({ registerAccountPage }, testInfo) => {
+    const email = "invalid-email-format"; // Invalid format
+
+    await step("Fill form with invalid email format", async () => {
+      await registerAccountPage.fillRegistrationForm(user.firstName, user.lastName, email, user.phone, user.password);
+      await registerAccountPage.clickPrivacyPolicyCheckbox();
+      await registerAccountPage.clickContinueButton();
     });
 
-    /**
-     * ❌ Negative Test
-     * User enters mismatched password and confirm password.
-     * Expects: "Password confirmation does not match password!" error.
-     */
-    test("Attempt to register with mismatched password and confirm password", async ({ registerAccountPage, actionHelper }) => {
-        const firstName = faker.person.firstName();
-        const lastName = faker.person.lastName();
-        const email = faker.internet.email({ firstName, lastName });
-        const phone = faker.phone.number({ style: "national" });
-
-        const password = "Password@2025";
-        const confirmPassword = "DifferentPassword@2025"; // Does not match
-
-        console.log(`Generated phone: ${phone}, email: ${email}`);
-
-        // Page Object method updated to accept confirmPassword separately
-        await registerAccountPage.fillRegistrationWithDifferentPassword(
-            firstName,
-            lastName,
-            email,
-            phone,
-            password,
-            confirmPassword
-        );
-
-        await registerAccountPage.clickPrivacyPolicyCheckbox();
-        await registerAccountPage.clickContinueButton();
-
-        await actionHelper.verifyText(
-            "div.text-danger",
-            "Password confirmation does not match password!",
-            "Confirm Password Mismatch Warning"
-        );
+    await step("Verify invalid email format validation message", async () => {
+      await registerAccountPage.verifyInvalidEmailFormatError();
     });
+  });
+
+  /**
+   * ❌ Negative Test - Weak password
+   */
+  test("Attempt to register with weak password", async ({ registerAccountPage }, testInfo) => {
+    const password = "123"; // Too short
+
+    await step("Fill registration form with weak password", async () => {
+      await registerAccountPage.fillRegistrationForm(user.firstName, user.lastName, user.email, user.phone, password);
+      await registerAccountPage.clickPrivacyPolicyCheckbox();
+      await registerAccountPage.clickContinueButton();
+    });
+
+    await step("Verify password validation error message", async () => {
+      await registerAccountPage.verifyPasswordValidationMessage(
+        "Password must be between 4 and 20 characters!"
+      );
+    });
+  });
+
+  /**
+   * ❌ Negative Test - Missing mandatory fields
+   */
+  test("Attempt to register with missing mandatory fields", async ({ registerAccountPage }, testInfo) => {
+    await step("Submit form without filling any fields", async () => {
+      await registerAccountPage.clickPrivacyPolicyCheckbox();
+      await registerAccountPage.clickContinueButton();
+    });
+
+    await step("Verify all required field validation messages", async () => {
+      await registerAccountPage.verifyFieldValidationMessages([
+        "First Name must be between 1 and 32 characters!",
+        "Last Name must be between 1 and 32 characters!",
+        "E-Mail Address does not appear to be valid!",
+        "Telephone must be between 3 and 32 characters!",
+        "Password must be between 4 and 20 characters!"
+      ]);
+    });
+  });
+
+  /**
+   * ❌ Negative Test - Password mismatch
+   */
+  test("Attempt to register with mismatched password and confirm password", async ({ registerAccountPage, actionHelper }, testInfo) => {
+    const password = "Password@2025";
+    const confirmPassword = "DifferentPassword@2025"; // Does not match
+
+    await step("Fill registration form with mismatched passwords", async () => {
+      await registerAccountPage.fillRegistrationWithDifferentPassword(
+        user.firstName,
+        user.lastName,
+        user.email,
+        user.phone,
+        password,
+        confirmPassword
+      );
+      await registerAccountPage.clickPrivacyPolicyCheckbox();
+      await registerAccountPage.clickContinueButton();
+    });
+
+    await step("Verify password mismatch error message", async () => {
+      await actionHelper.verifyText(
+        "div.text-danger",
+        "Password confirmation does not match password!",
+        "Confirm Password Mismatch Warning"
+      );
+    });
+  });
 });

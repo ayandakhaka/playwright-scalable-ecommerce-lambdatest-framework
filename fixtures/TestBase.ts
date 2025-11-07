@@ -1,11 +1,12 @@
 import { test as base, Page } from '@playwright/test';
-import { HomePage } from '../pages/HomePage';
-import { ActionHelper } from '../utils/ActionHelper';
-import { Database } from '../utils/Database';
-import { registerAccountPage as RegisterAccountPage } from '../pages/RegisterAccountPage';
-import { LoginPage } from '../pages/LoginPage';
-import { LogoutPage } from '../pages/LogoutPage';
-import EditAccountPage from '../pages/EditAccountPage';
+import { HomePage } from '../pages/HomePage.js';
+import { ActionHelper } from '../utils/ActionHelper.js';
+import { Database } from '../utils/Database.js';
+import { registerAccountPage as RegisterAccountPage } from '../pages/RegisterAccountPage.js';
+import { LoginPage } from '../pages/LoginPage.js';
+import { LogoutPage } from '../pages/LogoutPage.js';
+import EditAccountPage from '../pages/EditAccountPage.js';
+import { generateFakeUser, saveRegisteredUser, getRegisteredUsers } from "../utils/FakeDataGenerator.js";
 
 /**
  * Define custom fixtures for Playwright tests.
@@ -36,7 +37,7 @@ export const test = base.extend<MyFixtures>({
 
   /**
    * Fixture for ActionHelper.
-   * Provides generic action methods to all tests.
+   * Provides generic action methods to all tests.  
    */
   actionHelper: async ({ page }, use) => {
     await use(new ActionHelper(page));

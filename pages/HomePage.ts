@@ -1,5 +1,5 @@
 import { Page } from '@playwright/test';
-import { ActionHelper } from '../utils/ActionHelper';
+import { ActionHelper } from '../utils/ActionHelper.js';
 
 /**
  * Page Object Model for the Home Page
@@ -39,11 +39,18 @@ export class HomePage {
         await this.actionHelper.click(this.registerLink, 'Register Link');
     }
 
+    async clickLoginLinkAfterRegister() {
+        const loginLocator = this.page.getByRole('link', { name: 'Login', exact: true }).first();
+        await loginLocator.waitFor({ state: 'visible' });
+        await loginLocator.click();
+    }
+
+
     /**
      * Click the "Login" link in the My Account dropdown
      * Uses clickForVisibility to ensure the element is visible before clicking
      */
     async clickLoginLink() {
         await this.actionHelper.clickForVisibility(this.loginLink, 'Login Link');
-    }   
+    }
 }

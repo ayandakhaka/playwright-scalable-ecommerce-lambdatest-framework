@@ -1,23 +1,22 @@
-import "./setupEnv";
-import { defineConfig } from '@playwright/test';
+// playwright.config.ts
+import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
+  testDir: "./tests",
+  reporter: [['html', { outputFolder: 'playwright-report', open: 'never' }]],
 
-  timeout: Number(process.env.TIMEOUT) || 30000,
-  use: {
-    baseURL: process.env.BASE_URL,
-    headless: process.env.HEADLESS?.toLowerCase() === 'false',
-    screenshot: "on",
-    video: "retain-on-failure",
-    browserName:
-      (process.env.BROWSER as "chromium" | "firefox" | "webkit") || "chromium",
-
-    //browserName: process.env.BROWSER || 'chromium',
-  },
   retries: 0,
-  reporter: [["dot"], ["json", {
-    outputFile: "jsonReports/jsonReport.json"
-  }], ["html", {
-    open: "never"
-  }]]
+  use: {
+    baseURL: process.env.BASE_URL, // Picked up automatically from ConfigManager
+    headless: true,
+    screenshot: "only-on-failure",
+    video: "retain-on-failure",
+    navigationTimeout: 60000
+
+  },
+  projects: [
+    { name: "chromium", use: { browserName: "chromium" } },
+    // { name: "firefox", use: { browserName: "firefox" } },
+    //{ name: "webkit", use: { browserName: "webkit" } },
+  ],
 });

@@ -1,5 +1,5 @@
 import { Page } from '@playwright/test';
-import { ActionHelper } from '../utils/ActionHelper';
+import { ActionHelper } from '../utils/ActionHelper.js';
 
 /**
  * Page Object Model for the "Logout" page
@@ -33,6 +33,8 @@ export class LogoutPage {
         //await this.actionHelper.waitForVisible(this.logoutLink, 'Logout Link');
         await this.actionHelper.click(this.logoutLink, 'Logout Link');
     }
+
+    
 
     /**
      * Click the "Continue" button after logout

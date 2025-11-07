@@ -2,33 +2,48 @@
 node_modules/
 package-lock.json
 yarn.lock
+pnpm-lock.yaml
 
-# TypeScript
-dist/
-*.tsbuildinfo
-
-# Playwright artifacts
-test-results/
+# Playwright test results & reports
 playwright-report/
-screenshots/
-videos/
-trace/
+test-results/
+blob-report/
+trace.zip
+*.zip
+*.mp4
+*.webm
+*.png
 
-# Environment variables
+# Environment files
 .env
 .env.local
-.env.*.local
+.env.test
+.env.production
 
 # Logs
+logs/
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# OS-specific files
+# IDEs & Editors
+.vscode/
+.idea/
 .DS_Store
 Thumbs.db
 
-# IDE-specific files (VS Code)
-.vscode/
-.idea/
-*.code-workspace
+# Coverage reports (if using code coverage)
+coverage/
+lcov-report/
+
+# TypeScript build outputs
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# Temporary files
+temp/
+tmp/
+.cache/

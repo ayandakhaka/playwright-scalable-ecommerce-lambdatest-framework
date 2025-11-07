@@ -1,69 +1,124 @@
-import { test, expect } from "../fixtures/TestBase";
-import { ConfigManager } from "utils/ConfigManager";
-import { faker } from '@faker-js/faker';
+import fs from "fs";
+import path from "path";
+import { test, expect } from "../fixtures/TestBase.js";
+import { ConfigManager } from "../utils/ConfigManager.js";
+import { generateFakeUser, saveRegisteredUser } from "../utils/FakeDataGenerator.js";
+import { resetLoginAttemptsDb } from "../utils/dbUtils.js";
+import { step } from "../utils/testStepHelper.js";
 
-test.describe("Login Tests", () => {
 
-  // Runs before each test
-  test.beforeEach(async ({ actionHelper }) => {
-    // Navigate to the homepage
-    console.log('BASE_URL:', process.env.BASE_URL);
-    await actionHelper.navigateTo("/index.php?route=common/home");
+const registeredUsersFile = path.resolve(process.cwd(), "test-data/registeredUsers.json");
+
+test.setTimeout(60000);
+
+test.describe("Login Tests with Reporting", () => {
+  let user: any;
+  let isInitialized = false;
+
+  test.beforeEach(async ({ page, homePage, registerAccountPage, logoutPage, actionHelper }, testInfo) => {
+    await step("Initialize test user", async () => {
+      if (!isInitialized) {
+        // Clear JSON file
+        fs.writeFileSync(registeredUsersFile, JSON.stringify([], null, 2), "utf-8");
+
+        // Generate a new user
+        user = generateFakeUser();
+
+        // Register user via UI
+        await actionHelper.navigateToFullUrl(`${ConfigManager.url()}/index.php?route=account/register`);
+        await registerAccountPage.fillRegistrationForm(user.firstName, user.lastName, user.email, user.phone, user.password);
+        await registerAccountPage.submitRegistration();
+
+        // Save user and reset DB login attempts
+        saveRegisteredUser(user);
+        try { await resetLoginAttemptsDb(user.email); } catch { /* ignore */ }
+
+        // Logout after registration
+        await homePage.hoverMyAccountMenu();
+        await logoutPage.clickLogoutLink();
+
+        isInitialized = true;
+      } else {
+        // Navigate to home page for subsequent tests
+        await actionHelper.navigateToFullUrl(`${ConfigManager.url()}/index.php?route=common/home`);
+      }
+    });
   });
 
-  // Test case: Login with valid credentials
-  test("Login with valid credentials", async ({ loginPage, homePage }) => {
-    console.log('USERNAME:', process.env.USERNAME);
-    console.log('PASSWORD:', process.env.PASSWORD);
-    await homePage.hoverMyAccountMenu(); // Hover to reveal menu
-    await homePage.clickLoginLink();     // Click Login link
-
-    await loginPage.login(ConfigManager.username(), ConfigManager.password()); // Perform login
-
-    await loginPage.verifyLoginSuccess();   // Verify successful login
-  });
-
-  // Test case: Login with invalid credentials
-  test("Login with invalid credentials", async ({ loginPage, homePage }) => {
-    await homePage.hoverMyAccountMenu();
-    await homePage.clickLoginLink();
-
-    // Use random credentials
-    await loginPage.login(faker.internet.email(), faker.internet.password());
-
-    // Verify error message
-    await loginPage.verifyLoginError(
-      "Warning: No match for E-Mail Address and/or Password."
-    );
-  });
-
-    // Test case: Logout after login
-    test("Logout after login", async ({ loginPage, homePage, logoutPage }) => {
+  test("Login with valid credentials", async ({ loginPage, homePage, page }, testInfo) => {
+    await step("Open login menu", async () => {
       await homePage.hoverMyAccountMenu();
-      await homePage.clickLoginLink();
-
-      await loginPage.login(ConfigManager.username(), ConfigManager.password()); // Login
-      await loginPage.verifyLoginSuccess();   // Verify login
-
-      await homePage.hoverMyAccountMenu();
-      await logoutPage.clickLogoutLink();     // Perform logout
-
-      // Verify logout success by checking logout page
-      await logoutPage.verifyLogoutSuccess();
+      await homePage.clickLoginLinkAfterRegister();
     });
 
-    // Test case: Login with empty credentials
-    test("Login with empty credentials", async ({ loginPage, homePage }) => {
+    await step(`Login with valid user: ${user.email}`, async () => {
+      await loginPage.login(user.email, user.password);
+      await loginPage.verifyLoginSuccess();
+
+      await testInfo.attach("Login success screenshot", {
+        body: await page.screenshot(),
+        contentType: "image/png"
+      });
+    });
+  });
+
+  test("Login with invalid credentials", async ({ loginPage, homePage, page }, testInfo) => {
+    const invalidUser = generateFakeUser();
+
+    await step("Open login menu", async () => {
       await homePage.hoverMyAccountMenu();
-      await homePage.clickLoginLink();
+      await homePage.clickLoginLinkAfterRegister();
+    });
 
-      // Login with empty email and password
-      await loginPage.login("", "");
-
-      // Verify error message
+    await step(`Login with invalid user: ${invalidUser.email}`, async () => {
+      await loginPage.login(invalidUser.email, invalidUser.password);
       await loginPage.verifyLoginError(
         "Warning: No match for E-Mail Address and/or Password."
       );
+
+      await testInfo.attach("Invalid login screenshot", {
+        body: await page.screenshot(),
+        contentType: "image/png"
+      });
+    });
+  });
+
+  test("Logout after login", async ({ loginPage, homePage, logoutPage, page }, testInfo) => {
+    await step("Login first", async () => {
+      await homePage.hoverMyAccountMenu();
+      await homePage.clickLoginLink();
+      await loginPage.login(user.email, user.password);
+      await loginPage.verifyLoginSuccess();
     });
 
+    await step("Logout user", async () => {
+      await homePage.hoverMyAccountMenu();
+      await logoutPage.clickLogoutLink();
+      await logoutPage.verifyLogoutSuccess();
+
+      await testInfo.attach("Logout screenshot", {
+        body: await page.screenshot(),
+        contentType: "image/png"
+      });
+    });
+  });
+
+  test("Login with empty credentials", async ({ loginPage, homePage, page }, testInfo) => {
+    await step("Open login menu", async () => {
+      await homePage.hoverMyAccountMenu();
+      await homePage.clickLoginLinkAfterRegister();
+    });
+
+    await step("Attempt login with empty fields", async () => {
+      await loginPage.login("", "");
+      await loginPage.verifyLoginError(
+        "Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour."
+      );
+
+      await testInfo.attach("Empty credentials login screenshot", {
+        body: await page.screenshot(),
+        contentType: "image/png"
+      });
+    });
+  });
 });

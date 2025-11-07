@@ -1,11 +1,7 @@
 import { Page, expect } from '@playwright/test';
-import { ActionHelper } from '../utils/ActionHelper';
+import { ActionHelper } from '../utils/ActionHelper.js';
 
-/**
- * Page Object Model for the Forgot Password page
- * Handles all interactions related to password recovery
- * Includes methods to fill the form, submit, and verify messages
- */
+
 export default class EditAccountPage {
     private page: Page;                 // Playwright page object for browser interactions
     private actionHelper: ActionHelper; // Helper for common actions like click, type, wait, verify 
@@ -27,30 +23,41 @@ export default class EditAccountPage {
     private warningMessage = '.alert.alert-danger.alert-dismissible';  // Warning message for errors  
     private editAccountLink = 'a:has-text("Edit your account information")'; // Edit Account Information link  
     private editMessageError = 'div.alert.alert-danger.alert-dismissible'; // Error message for edit account failures
+    private fieldValidationMessage = '.text-danger';
+
     // ------------------------------
     // Methods
     // ------------------------------   
     /**
-     * Fill the Forgot Password form with provided details
      * @param firstName - User's first name 
      * @param lastName - User's last name
      * @param email - User's email address
      * @param telephone - User's telephone number
      */
     async fillMyAccountDetails(firstName: string, lastName: string, email: string, telephone: string) {
-        await this.page.waitForSelector(this.firstNameInput, { state: 'visible' });
+        // ✅ Wait for the first field to ensure the form is ready
+        // await this.page.waitForURL('**/account/edit', { timeout: 15000 });
+        // await this.page.waitForSelector(this.firstNameInput, { state: 'visible', timeout: 10000 });
+        this.page.setDefaultTimeout(60000); // set default timeout for page actions
+
+        // ✅ Use your action helper to fill fields (it already waits internally)
         await this.actionHelper.type(this.firstNameInput, firstName, 'First Name Input');
         await this.actionHelper.type(this.lastNameInput, lastName, 'Last Name Input');
         await this.actionHelper.type(this.emailInput, email, 'Email Input');
         await this.actionHelper.type(this.telephoneInput, telephone, 'Telephone Input');
+
+        // ✅ Optionally verify that fields are correctly populated (optional validation step)
+        await this.page.waitForTimeout(500); // small stability pause
+        await this.actionHelper.verifyText(this.firstNameInput, firstName, 'First Name Verification');
     }
+
     /**
      * Click the Continue button to submit the form
      */
     async clickContinueButton() {
         await this.actionHelper.click(this.continueButton, 'Continue Button');
-    } 
-    
+    }
+
     async clickEditAccountLink() {
         await this.actionHelper.click(this.editAccountLink, 'Edit Account Link');
     }
@@ -59,20 +66,25 @@ export default class EditAccountPage {
      */
     async clickBackButton() {
         await this.actionHelper.click(this.backButton, 'Back Button');
-    }   
+    }
     /*
      Verify the success message after form submission
     */
     async verifyUpdateSuccessMessage(expectedMessage: string) {
-        await this.actionHelper.waitForVisible(this.successMessage, 'Success Message'); 
+        await this.actionHelper.waitForVisible(this.successMessage, 'Success Message');
         await this.actionHelper.verifyText(this.successMessage, expectedMessage, 'Success Message');
+    }
+
+    async verifyFirstNameFieldErrorMessage() {
+        await this.actionHelper.waitForVisible(this.fieldValidationMessage, "First Name field error message");
+        await this.actionHelper.verifyText(this.fieldValidationMessage, "First Name must be between 1 and 32 characters!");
     }
 
     /*
      Verify the warning message for errors
     */
     async verifyUpdateWarningMessage(expectedMessage: string) {
-        await this.actionHelper.waitForVisible(this.editMessageError, 'Account Update Warning'); 
+        await this.actionHelper.waitForVisible(this.editMessageError, 'Account Update Warning');
         await this.actionHelper.verifyText(this.editMessageError, expectedMessage, 'Account Update Warning');
     }
 }

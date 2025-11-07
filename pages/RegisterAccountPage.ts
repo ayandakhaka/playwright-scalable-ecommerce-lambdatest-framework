@@ -1,5 +1,5 @@
 import { Page, expect } from '@playwright/test';
-import { ActionHelper } from '../utils/ActionHelper';
+import { ActionHelper } from '../utils/ActionHelper.js';
 import { faker } from '@faker-js/faker';
 
 /**
@@ -105,7 +105,7 @@ export class registerAccountPage {
 
     async verifyInvalidEmailFormatError() {
         const validationMessage = await this.page.locator(this.emailInput).evaluate((el) => (el as HTMLInputElement).validationMessage);
-        expect(validationMessage).toContain("invalid-email-format");
+        expect(validationMessage).toContain("Please include an '@'");
     }
 
     async verifyPasswordValidationMessage(expectedMessage: string) {
