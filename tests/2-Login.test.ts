@@ -112,7 +112,7 @@ test.describe("Login Tests with Reporting", () => {
     await step("Attempt login with empty fields", async () => {
       await loginPage.login("", "");
       await loginPage.verifyLoginError(
-        "Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour."
+        " Warning: No match for E-Mail Address and/or Password."
       );
 
       await testInfo.attach("Empty credentials login screenshot", {
