@@ -8,7 +8,7 @@ export default defineConfig({
   retries: 0,
   use: {
     baseURL: process.env.BASE_URL, // Picked up automatically from ConfigManager
-    headless: true,
+    headless: false,
     screenshot: "only-on-failure",
     video: "retain-on-failure",
     navigationTimeout: 60000
