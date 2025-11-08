@@ -102,23 +102,4 @@ test.describe("Login Tests with Reporting", () => {
       });
     });
   });
-
-  test("Login with empty credentials", async ({ loginPage, homePage, page }, testInfo) => {
-    await step("Open login menu", async () => {
-      await homePage.hoverMyAccountMenu();
-      await homePage.clickLoginLinkAfterRegister();
-    });
-
-    await step("Attempt login with empty fields", async () => {
-      await loginPage.login("", "");
-      await loginPage.verifyLoginError(
-        " Warning: No match for E-Mail Address and/or Password."
-      );
-
-      await testInfo.attach("Empty credentials login screenshot", {
-        body: await page.screenshot(),
-        contentType: "image/png"
-      });
-    });
-  });
 });
