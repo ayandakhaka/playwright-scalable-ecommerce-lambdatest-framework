@@ -29,8 +29,9 @@ A **scalable end-to-end test automation framework** built with **Playwright** an
 
 Clone the repository:
 
-```bash
 git clone https://github.com/ayandakhaka/playwright-scalable-ecommerce-lambdatest-framework.git
+
+
 cd playwright-scalable-ecommerce-lambdatest-framework
 
 ## Install dependencies:
