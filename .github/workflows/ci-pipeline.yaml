@@ -39,6 +39,10 @@ jobs:
         run: |
           npx playwright test
 
+      - name: Show Playwright report
+        run: npx playwright show-report playwright-report
+
+
       # ✅ Step 6: Upload Playwright HTML report
       - name: Upload Playwright HTML Report
         if: always() # upload even if tests fail
