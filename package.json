@@ -4,6 +4,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "test": "npx playwright test",
     "test:qa": "cross-env NODE_ENV=qa npx playwright test",
     "test:staging": "cross-env NODE_ENV=staging npx playwright test",
