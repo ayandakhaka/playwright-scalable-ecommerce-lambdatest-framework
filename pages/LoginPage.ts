@@ -26,6 +26,7 @@ export class LoginPage {
   private logoutLink = 'a:has-text("Logout")';
   private loginErrorMessage = ".alert.alert-danger.alert-dismissible";
   private editAccountLink = 'a.list-group-item:has-text("Edit Account")';
+  private forgotPasswordLink = 'a:has-text("Change your password")';
   private loginData = loginJson;
 
   // ------------------------------
@@ -67,5 +68,10 @@ export class LoginPage {
   async clickEditAccountLink() {
     await this.actionHelper.waitForVisible(this.editAccountLink, "Edit Account Link");
     await this.actionHelper.click(this.editAccountLink, "Edit Account Link");
+  }
+
+  async clickForgotPasswordLink() {
+    await this.actionHelper.waitForVisible(this.forgotPasswordLink, "Forgot Password Link");
+    await this.actionHelper.click(this.forgotPasswordLink, "Forgot Password Link");
   }
 }

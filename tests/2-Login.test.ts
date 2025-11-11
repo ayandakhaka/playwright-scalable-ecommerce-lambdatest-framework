@@ -3,7 +3,6 @@ import path from "path";
 import { test, expect } from "../fixtures/TestBase.js";
 import { ConfigManager } from "../utils/ConfigManager.js";
 import { generateFakeUser, saveRegisteredUser } from "../utils/FakeDataGenerator.js";
-import { resetLoginAttemptsDb } from "../utils/dbUtils.js";
 import { step } from "../utils/testStepHelper.js";
 
 
@@ -31,8 +30,6 @@ test.describe("Login Tests with Reporting", () => {
 
         // Save user and reset DB login attempts
         saveRegisteredUser(user);
-        try { await resetLoginAttemptsDb(user.email); } catch { /* ignore */ }
-
         // Logout after registration
         await homePage.hoverMyAccountMenu();
         await logoutPage.clickLogoutLink();
@@ -40,7 +37,7 @@ test.describe("Login Tests with Reporting", () => {
         isInitialized = true;
       } else {
         // Navigate to home page for subsequent tests
-        await actionHelper.navigateToFullUrl(`${ConfigManager.url()}/index.php?route=common/home`);
+        await actionHelper.navigateToFullUrl("/index.php?route=common/home");
       }
     });
   });

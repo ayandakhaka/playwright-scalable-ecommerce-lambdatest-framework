@@ -3,8 +3,7 @@ import path from "path";
 import { test, expect } from "../fixtures/TestBase.js";
 import { ConfigManager } from "../utils/ConfigManager.js";
 import { generateFakeUser, saveRegisteredUser, getOrCreateTestUser } from "../utils/FakeDataGenerator.js";
-import { resetLoginAttemptsDb } from "../utils/dbUtils.js";
-import registeredUsers from "../test-data/registeredUsers.json" with { type: "json" };
+import registeredUsers from "../test-data/registeredUsers.json";
 import { faker } from "@faker-js/faker";
 import { step } from "../utils/testStepHelper.js";
 
@@ -20,7 +19,7 @@ test.describe("Edit Account Tests", () => {
 
   test.beforeEach(async ({ page, homePage, actionHelper }, testInfo) => {
     await step("Navigate to home page and open login", async () => {
-      await actionHelper.navigateToFullUrl(`${ConfigManager.url()}/index.php?route=common/home`);
+      await actionHelper.navigateToFullUrl("/index.php?route=common/home");
       await homePage.hoverMyAccountMenu();
       await homePage.clickLoginLink();
     });

@@ -1,11 +1,11 @@
 import { test as base, Page } from '@playwright/test';
 import { HomePage } from '../pages/HomePage.js';
 import { ActionHelper } from '../utils/ActionHelper.js';
-import { Database } from '../utils/Database.js';
 import { registerAccountPage as RegisterAccountPage } from '../pages/RegisterAccountPage.js';
 import { LoginPage } from '../pages/LoginPage.js';
 import { LogoutPage } from '../pages/LogoutPage.js';
 import EditAccountPage from '../pages/EditAccountPage.js';
+import ChangePassword from '../pages/ChangePasswordPage.js';
 import { generateFakeUser, saveRegisteredUser, getRegisteredUsers } from "../utils/FakeDataGenerator.js";
 
 /**
@@ -18,9 +18,9 @@ type MyFixtures = {
   registerAccountPage: RegisterAccountPage; // Page object for Register Account page
   loginPage: LoginPage;              // Page object for Login page
   logoutPage: LogoutPage;            // Page object for Logout page
-  data: typeof Database;             // Reference to database helper class for test data
   page: Page;                        // Playwright's Page object for browser interactions
   editAccountPage: EditAccountPage;  // Page object for Edit Account page
+  changePasswordPage: ChangePassword;
 };
 
 /**
@@ -68,20 +68,15 @@ export const test = base.extend<MyFixtures>({
   },
 
   /**
-   * Fixture for Database helper.
-   * Provides access to database-related methods and test data.
-   * No need to instantiate because Database is static.
-   */
-  data: async ({}, use) => {
-    await use(Database);
-  },
-
-  /**
    * Fixture for EditAccountPage object.
    * Provides methods to interact with the Edit Account page.
    */
   editAccountPage: async ({ page, actionHelper }, use) => {
     await use(new EditAccountPage(page, actionHelper));
+  },
+
+  changePasswordPage: async ({page, actionHelper }, use) => {
+    await use(new ChangePassword(page, actionHelper))
   },
 });
 

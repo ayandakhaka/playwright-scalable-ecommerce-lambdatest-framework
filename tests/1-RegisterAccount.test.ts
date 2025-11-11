@@ -10,9 +10,9 @@ const user = generateFakeUser();
 
 test.describe("Register Account Tests", () => {
 
-  test.beforeEach(async ({ actionHelper, registerAccountPage, homePage }, testInfo) => {
+  test.beforeEach(async ({ actionHelper, homePage }) => {
     await step("Navigate to homepage and open Register page", async () => {
-      await actionHelper.navigateTo("/index.php?route=common/home");
+      await actionHelper.navigateToFullUrl("/index.php?route=common/home");
       await homePage.hoverMyAccountMenu();
       await homePage.clickRegisterLink();
     });
@@ -21,7 +21,7 @@ test.describe("Register Account Tests", () => {
   /**
    * ✅ Positive Test - Register successfully
    */
-  test("Register a new account successfully", async ({ registerAccountPage }, testInfo) => {
+  test("Register a new account successfully", async ({ registerAccountPage }) => {
     console.log(`Generated user for test: ${JSON.stringify(user)}`);
 
     await step("Fill registration form with valid user details", async () => {
@@ -50,7 +50,7 @@ test.describe("Register Account Tests", () => {
   /**
    * ❌ Negative Test - No privacy policy
    */
-  test("Attempt to register without agreeing to the privacy policy", async ({ registerAccountPage, actionHelper }, testInfo) => {
+  test("Attempt to register without agreeing to the privacy policy", async ({ registerAccountPage, actionHelper }) => {
     await step("Fill registration form", async () => {
       await registerAccountPage.fillRegistrationForm(user.firstName, user.lastName, user.email, user.phone, user.password);
     });
@@ -71,7 +71,7 @@ test.describe("Register Account Tests", () => {
   /**
    * ❌ Negative Test - Duplicate email
    */
-  test("Attempt to register with an already registered email", async ({ registerAccountPage }, testInfo) => {
+  test("Attempt to register with an already registered email", async ({ registerAccountPage }) => {
     const email = "khakaalwande@gmail.com"; // Pre-registered email
 
     await step("Fill form with existing email", async () => {
@@ -88,7 +88,7 @@ test.describe("Register Account Tests", () => {
   /**
    * ❌ Negative Test - Invalid email format
    */
-  test("Attempt to register with invalid email format", async ({ registerAccountPage }, testInfo) => {
+  test("Attempt to register with invalid email format", async ({ registerAccountPage }) => {
     const email = "invalid-email-format"; // Invalid format
 
     await step("Fill form with invalid email format", async () => {
@@ -105,7 +105,7 @@ test.describe("Register Account Tests", () => {
   /**
    * ❌ Negative Test - Weak password
    */
-  test("Attempt to register with weak password", async ({ registerAccountPage }, testInfo) => {
+  test("Attempt to register with weak password", async ({ registerAccountPage }) => {
     const password = "123"; // Too short
 
     await step("Fill registration form with weak password", async () => {
@@ -144,7 +144,7 @@ test.describe("Register Account Tests", () => {
   /**
    * ❌ Negative Test - Password mismatch
    */
-  test("Attempt to register with mismatched password and confirm password", async ({ registerAccountPage, actionHelper }, testInfo) => {
+  test("Attempt to register with mismatched password and confirm password", async ({ registerAccountPage, actionHelper }) => {
     const password = "Password@2025";
     const confirmPassword = "DifferentPassword@2025"; // Does not match
 
