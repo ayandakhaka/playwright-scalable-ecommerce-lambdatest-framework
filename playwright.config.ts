@@ -5,8 +5,6 @@ dotenv.config(); // loads .env variables
 export default defineConfig({
   testDir: "./tests",
   reporter: [["html", { outputFolder: "playwright-report", open: "never" }]],
-  globalTeardown: "./global-teardown.ts", // calls email after test run
-
   retries: 2,
   use: {
     headless: true,
