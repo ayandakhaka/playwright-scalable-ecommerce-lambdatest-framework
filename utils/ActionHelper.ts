@@ -20,21 +20,9 @@ export class ActionHelper {
     }
 
     /**
-     * Navigate to a specific URL.
-     * @param url The target URL to navigate to.
-     */
-    async navigateTo(url: string) {
-        const baseURL = "https://ecommerce-playground.lambdatest.io";
-        const fullUrl = url.startsWith("http") ? url : `${baseURL}${url}`;
-        this.log(`Navigating to URL: ${fullUrl}`);
-        await this.page.goto(fullUrl, { timeout: 60000, waitUntil: "networkidle" });
-    }
-
-
-    /**
- * Navigate to a relative URL (baseURL is handled automatically)
- * Example: /index.php?route=common/home
- */
+    * Navigate to a relative URL (baseURL is handled automatically)
+    * Example: /index.php?route=common/home
+    */
     async navigateToFullUrl(url: string, waitForSelector?: string) {
         const baseURL = "https://ecommerce-playground.lambdatest.io";
         const fullUrl = url.startsWith("http") ? url : `${baseURL}${url}`;
@@ -56,6 +44,29 @@ export class ActionHelper {
 
         // Optional: add a short delay to allow animations or scripts to finish
         await this.page.waitForTimeout(500);
+    }
+
+    /**
+ * Scrolls an element into view and optionally clicks it
+ * @param {string|Locator} locator - CSS or XPath selector or Locator
+ * @param {boolean} click - whether to click the element after scrolling
+ * @param {string} description - optional description for logging
+ */
+    async scrollToElement(locator: string | Locator, click = false, description?: string) {
+        this.log(`Clicking on ${description || locator}`);
+
+        const element = typeof locator === 'string' ? this.page.locator(locator) : locator;
+
+        // Ensure the element exists
+        await expect(element).toHaveCount(1);
+
+        // Scroll element into view
+        await element.evaluate((el) => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+
+        // Optionally click after scrolling
+        if (click) {
+            await element.click();
+        }
     }
 
     async click(locator: string | Locator, description?: string) {

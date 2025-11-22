@@ -5,9 +5,9 @@ dotenv.config(); // loads .env variables
 export default defineConfig({
   testDir: "./tests",
   reporter: [["html", { outputFolder: "playwright-report", open: "never" }]],
-  retries: 2,
+  retries: 1,
   use: {
-    headless: true,
+    headless: false,
     screenshot: "only-on-failure",
     video: "retain-on-failure",
     navigationTimeout: 60000,

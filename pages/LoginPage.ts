@@ -2,7 +2,7 @@ import { Page, expect } from "@playwright/test";
 import { ActionHelper } from "../utils/ActionHelper.js";
 
 // ✅ Use 'assert { type: "json" }' instead of 'with { type: "json" }'
-import loginJson from "../test-data/login.test.data.json" with { type: "json" };
+import loginJson from "../test-data/login.test.data.json";
 
 /**
  * Page Object Model for the Login page
@@ -27,6 +27,7 @@ export class LoginPage {
   private loginErrorMessage = ".alert.alert-danger.alert-dismissible";
   private editAccountLink = 'a.list-group-item:has-text("Edit Account")';
   private forgotPasswordLink = 'a:has-text("Change your password")';
+  private headphonesLink = 'a.nav-link[title="Headphones"]';
   private loginData = loginJson;
 
   // ------------------------------
@@ -41,6 +42,10 @@ export class LoginPage {
 
   async clickContinueButton() {
     await this.actionHelper.click('input[value="Continue"]', "Continue Button");
+  }
+
+  async clickHeadphoneLink() {
+    await this.actionHelper.click(this.headphonesLink, "Clicking on headphone link");
   }
 
   async verifyLoginSuccess() {

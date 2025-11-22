@@ -4,6 +4,8 @@ import { test, expect } from "../fixtures/TestBase.js";
 import { ConfigManager } from "../utils/ConfigManager.js";
 import { generateFakeUser, saveRegisteredUser } from "../utils/FakeDataGenerator.js";
 import { step } from "../utils/testStepHelper.js";
+import loginJson from "../test-data/login.test.data.json";
+
 
 
 const registeredUsersFile = path.resolve(process.cwd(), "test-data/registeredUsers.json");
