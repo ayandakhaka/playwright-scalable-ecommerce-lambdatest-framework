@@ -7,6 +7,7 @@ import { LogoutPage } from '../pages/LogoutPage.js';
 import EditAccountPage from '../pages/EditAccountPage.js';
 import ChangePassword from '../pages/ChangePasswordPage.js';
 import ComponentsPage from '../pages/ComponentsPage.js'
+import BlogPage from '../pages/BlogPage.js';
 import { generateFakeUser, saveRegisteredUser, getRegisteredUsers } from "../utils/FakeDataGenerator.js";
 
 /**
@@ -23,6 +24,7 @@ type MyFixtures = {
   editAccountPage: EditAccountPage;  // Page object for Edit Account page
   changePasswordPage: ChangePassword; // Page object for Change password page
   componentsPage: ComponentsPage;     // Page object for ComponentsPage
+  blogPage: BlogPage;                // Page object for Blog page
 };
 
 /**
@@ -83,6 +85,10 @@ export const test = base.extend<MyFixtures>({
 
   componentsPage: async ({page, actionHelper}, use) => {
     await use(new ComponentsPage(page, actionHelper))
+  },
+
+  blogPage: async ({ page, actionHelper }, use) => {
+    await use(new BlogPage(page, actionHelper));
   },
 });
 

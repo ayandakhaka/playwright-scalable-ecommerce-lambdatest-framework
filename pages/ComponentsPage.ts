@@ -168,26 +168,6 @@ export default class ComponentsPage {
     }
 
     // ------------------------------------------------------
-    // async clickAddToCart() {
-    //     // Target the product card containing "Palm Treo Pro"
-    //     const productCard = this.page.locator('.product-thumb', { hasText: "Palm Treo Pro" });
-
-    //     await productCard.waitFor({ state: "visible", timeout: 10000 });
-
-    //     // Hover to reveal the add-to-cart button
-    //     await productCard.hover();
-    //     await this.page.waitForTimeout(10000);
-
-    //     const addToCartBtn = productCard.locator('button[title="Add to Cart"]');
-
-    //     await addToCartBtn.waitFor({ state: "visible", timeout: 5000 });
-
-    //     // Final stable click
-    //     await addToCartBtn.click({ force: true });
-    // }
-
-
-    // ------------------------------------------------------
     async verifyAlertPopUpSuccessText() {
         const alert = this.page.locator('.alert-success:has-text("Palm Treo Pro")');
         await expect(alert).toBeVisible({ timeout: 10000 });

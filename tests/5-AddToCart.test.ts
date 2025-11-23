@@ -1,4 +1,3 @@
-import path from "path";
 import { test, expect } from "../fixtures/TestBase.js";
 import registeredUsers from "../test-data/registeredUsers.json";
 import { step } from "../utils/testStepHelper.js";

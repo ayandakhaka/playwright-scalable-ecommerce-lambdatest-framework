@@ -1,4 +1,3 @@
-import fs from "fs";
 import path from "path";
 import { test, expect } from "../fixtures/TestBase.js";
 import { ConfigManager } from "../utils/ConfigManager.js";
