@@ -11,37 +11,50 @@ import loginJson from "../test-data/login.test.data.json";
 const registeredUsersFile = path.resolve(process.cwd(), "test-data/registeredUsers.json");
 
 test.setTimeout(60000);
+test.describe("Ecommerce Smoke Tests", () => {
 
-test.describe("Login Tests with Reporting", () => {
   let user: any;
   let isInitialized = false;
 
-  test.beforeEach(async ({ page, homePage, registerAccountPage, logoutPage, actionHelper }, testInfo) => {
-    await step("Initialize test user", async () => {
-      if (!isInitialized) {
-        // Clear JSON file
-        fs.writeFileSync(registeredUsersFile, JSON.stringify([], null, 2), "utf-8");
+  test.beforeEach(async ({
+    page,
+    homePage,
+    registerAccountPage,
+    logoutPage,
+    actionHelper
+  }) => {
 
-        // Generate a new user
-        user = generateFakeUser();
+    if (!isInitialized) {
+      // Reset JSON file
+      fs.writeFileSync(registeredUsersFile, JSON.stringify([], null, 2), "utf-8");
 
-        // Register user via UI
-        await actionHelper.navigateToFullUrl(`${ConfigManager.url()}/index.php?route=account/register`);
-        await registerAccountPage.fillRegistrationForm(user.firstName, user.lastName, user.email, user.phone, user.password);
-        await registerAccountPage.submitRegistration();
+      // Generate fake user
+      user = generateFakeUser();
 
-        // Save user and reset DB login attempts
-        saveRegisteredUser(user);
-        // Logout after registration
-        await homePage.hoverMyAccountMenu();
-        await logoutPage.clickLogoutLink();
+      // Register user
+      await actionHelper.navigateToFullUrl("/index.php?route=account/register");
+      await registerAccountPage.fillRegistrationForm(
+        user.firstName,
+        user.lastName,
+        user.email,
+        user.phone,
+        user.password
+      );
+      await registerAccountPage.submitRegistration();
 
-        isInitialized = true;
-      } else {
-        // Navigate to home page for subsequent tests
-        await actionHelper.navigateToFullUrl("/index.php?route=common/home");
-      }
-    });
+      // Save user locally
+      saveRegisteredUser(user);
+
+      // Logout to prepare for next tests
+      await homePage.hoverMyAccountMenu();
+      await logoutPage.clickLogoutLink();
+
+      isInitialized = true;
+    } else {
+      // For all other tests
+      await actionHelper.navigateToFullUrl("/index.php?route=common/home");
+    }
+
   });
 
   test("Login with valid credentials", async ({ loginPage, homePage, page }, testInfo) => {

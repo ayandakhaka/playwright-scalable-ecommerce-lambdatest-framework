@@ -50,9 +50,9 @@ test.describe("Add to cart test", () => {
     });
   });
 
-  // // -------------------------------
-  // //      TEST 2: ADD TWO ITEMS
-  // // -------------------------------
+  // -------------------------------
+  //      TEST 2: ADD TWO ITEMS
+  // -------------------------------
   test("Add two items to cart", async ({ componentsPage, homePage }) => {
 
     await step("Navigate to Palm Treo Pro", async () => {

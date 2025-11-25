@@ -1,9 +1,38 @@
 [
   {
-    "firstName": "Vidal",
-    "lastName": "Conroy",
-    "email": "Vidal_Conroy65@hotmail.com",
-    "phone": "(927) 307-2792",
-    "password": "7AcVBvTJU6NW@2025"
+    "firstName": "Rafael",
+    "lastName": "Wiza",
+    "email": "Rafael.Wiza84@gmail.com",
+    "phone": "(331) 852-7245",
+    "password": "ATvLrHvFVevu@2025",
+    "companyName": "Bogan - Langworth",
+    "taxId": "1640633608",
+    "accountName": "Rafael Wiza",
+    "accountNumber": "448267159822",
+    "swiftCode": "964KW5S2"
+  },
+  {
+    "firstName": "Bryon",
+    "lastName": "Huel",
+    "email": "Bryon.Huel@gmail.com",
+    "phone": "(362) 656-8989",
+    "password": "ElYQhaPwip1F@2025",
+    "companyName": "Gleason, Hilll and Osinski",
+    "taxId": "4127121102",
+    "accountName": "Bryon Huel",
+    "accountNumber": "520858511174",
+    "swiftCode": "XGM03T9O"
+  },
+  {
+    "firstName": "Amiya",
+    "lastName": "Johnston",
+    "email": "Amiya_Johnston@hotmail.com",
+    "phone": "(853) 351-3331",
+    "password": "TQvHrkFHklrx@2025",
+    "companyName": "Fay - Harber",
+    "taxId": "1951713689",
+    "accountName": "Amiya Johnston",
+    "accountNumber": "641057931869",
+    "swiftCode": "25P9VJEZ"
   }
 ]

@@ -50,10 +50,20 @@ export class LoginPage {
 
   async verifyLoginSuccess() {
     console.log("Current URL:", this.page.url());
-    await expect(this.page).toHaveURL(this.loginData.url);
+    await expect(this.page).toHaveURL(this.loginData.BASE_URL);
   }
 
-    // ✅ Add this helper
+  async clickContinueAfterAccountCreation() {
+    await this.page.locator("a.btn.btn-primary", { hasText: "Continue" }).click();
+  }
+
+
+  async clickContinueButtonForAffiliate() {
+    await this.page.locator('a[href="https://ecommerce-playground.lambdatest.io/index.php?route=account/account"]');
+  }
+
+
+  // ✅ Add this helper
   async waitForLoginPageToLoad() {
     await expect(this.page.locator(this.emailInput)).toBeVisible({ timeout: 15000 });
     await expect(this.page.locator(this.passwordInput)).toBeVisible();

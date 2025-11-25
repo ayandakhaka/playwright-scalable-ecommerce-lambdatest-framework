@@ -8,6 +8,11 @@ export interface UserData {
     email: string;
     phone: string;
     password: string;
+    companyName: string;
+    taxId: string;
+    swiftCode?: string;
+    accountName?: string;
+    accountNumber?: string;
 }
 
 const registeredUsersFile = path.resolve(process.cwd(), "test-data/registeredUsers.json");
@@ -30,8 +35,13 @@ export function generateFakeUser(): UserData {
     const email = faker.internet.email({ firstName, lastName });
     const phone = faker.phone.number({ style: "national" });
     const password = faker.internet.password({ length: 12 }) + "@2025";
+    const companyName = faker.company.name();
+    const taxId = faker.string.numeric(10);
+    const accountName = `${firstName} ${lastName}`;
+    const accountNumber = faker.finance.accountNumber(12);
+    const swiftCode = faker.string.alphanumeric({ length: 8, casing: "upper" });
 
-    return { firstName, lastName, email, phone, password };
+    return { firstName, lastName, email, phone, password, companyName, taxId, accountName, accountNumber, swiftCode };
 }
 
 /** Save a user explicitly to JSON file (optional) */
