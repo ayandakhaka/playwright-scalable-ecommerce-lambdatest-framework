@@ -31,6 +31,8 @@ export default class ChangePassword {
     private continueButton = 'input[value="Continue"]';
     private affiliateRegistration = 'text=Register for an affiliate account';
     private affiliateSuccessMessage = 'div.alert-success';
+    private fieldValidationError = '.text-danger';
+    private agreeTermsErrorMessage = 'div.alert.alert-danger.alert-dismissible';
 
     // ------------------------------
     // Methods
@@ -47,22 +49,18 @@ export default class ChangePassword {
             case "cheque":
                 await this.actionHelper.click(this.chequeRadioButton,
                     "Selecting Cheque Payment Method");
-                if (!checkPayeeName) throw new Error("Cheque payee name is required");
                 await this.actionHelper.type(this.checkPayeeNameInput, checkPayeeName,
                     "Cheque Payee Name Input Field");
                 break;
             case "paypal":
                 await this.actionHelper.click(this.paypalRadioButton,
                     "Selecting PayPal Payment Method");
-                if (!payPalEmailAccount) throw new Error("PayPal email is required");
                 await this.actionHelper.type(this.paypalPayeeNameInput, payPalEmailAccount,
                     "PayPal Payee Name Input Field");
                 break;
             case "bank":
                 await this.actionHelper.click(this.bankTransferRadioButton,
                     "Selecting Bank Transfer Payment Method");
-                if (!bankName || !bankBranchNumber)
-                    throw new Error("Bank name and branch number are required");
                 await this.actionHelper.type(this.bankNameInput, bankName,
                     "Bank Name Input Field");
                 await this.actionHelper.type(this.bankBranchNumberInput, bankBranchNumber,
@@ -78,7 +76,39 @@ export default class ChangePassword {
                 throw new Error(`Unsupported payment method: ${paymentMethod}`);
         }
     }
-    
+
+    async verifyAccountNameError(expectedMessage: string) {
+        await this.actionHelper.verifyText(
+            this.fieldValidationError,
+            expectedMessage,
+            "Account Name Error Message"
+        );
+    }
+
+    async verifyCheckPayeeNameError(expectedMessage: string) {
+        await this.actionHelper.verifyText(
+            this.fieldValidationError,
+            expectedMessage,
+            "Cheque Payee Name Error Message"
+        );
+    }
+
+    async verifyAccountNumberError(expectedMessage: string) {
+        await this.actionHelper.verifyText(
+            this.fieldValidationError,
+            expectedMessage,
+            "Account Number Error Message"
+        );
+    }
+
+    async verifyAgreeTermsErrorMessage(expectedMessage: string) {
+        await this.actionHelper.verifyText(
+            this.agreeTermsErrorMessage,
+            expectedMessage,
+            "Agree to Terms Error Message"
+        );
+    }
+
     async enterCompanyName(company: string) {
         await this.actionHelper.type(this.companyNameInput, company, "Company Name Input Field");
     }

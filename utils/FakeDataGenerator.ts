@@ -17,60 +17,62 @@ export interface UserData {
 
 const registeredUsersFile = path.resolve(process.cwd(), "test-data/registeredUsers.json");
 
-/** Read all registered users from file (no write) */
+/** Read all registered users */
 export function getRegisteredUsers(): UserData[] {
     if (!fs.existsSync(registeredUsersFile)) return [];
+
     try {
-        const content = fs.readFileSync(registeredUsersFile, "utf-8").trim();
+        const content = fs.readFileSync(registeredUsersFile, "utf8").trim();
         return content ? JSON.parse(content) : [];
     } catch {
         return [];
     }
 }
 
-/** Generate a new fake user in memory */
+/** Generate a new fake user */
 export function generateFakeUser(): UserData {
     const firstName = faker.person.firstName();
     const lastName = faker.person.lastName();
-    const email = faker.internet.email({ firstName, lastName });
-    const phone = faker.phone.number({ style: "national" });
-    const password = faker.internet.password({ length: 12 }) + "@2025";
-    const companyName = faker.company.name();
-    const taxId = faker.string.numeric(10);
-    const accountName = `${firstName} ${lastName}`;
-    const accountNumber = faker.finance.accountNumber(12);
-    const swiftCode = faker.string.alphanumeric({ length: 8, casing: "upper" });
 
-    return { firstName, lastName, email, phone, password, companyName, taxId, accountName, accountNumber, swiftCode };
+    return {
+        firstName,
+        lastName,
+        email: faker.internet.email({ firstName, lastName }).toLowerCase(),
+        phone: faker.phone.number({ style: "national" }),
+        password: faker.internet.password({ length: 12 }) + "@2025",
+        companyName: faker.company.name(),
+        taxId: faker.number.int({ min: 1000000000, max: 9999999999 }).toString(),
+        accountName: `${firstName} ${lastName}`,
+        accountNumber: faker.finance.accountNumber(10),
+        swiftCode: faker.string.alphanumeric({ length: 8, casing: "upper" }),
+    };
 }
 
-/** Save a user explicitly to JSON file (optional) */
+/** Save user in a concurrency-safe way */
 export function saveRegisteredUser(user: UserData): void {
-    let users: UserData[] = [];
-    if (fs.existsSync(registeredUsersFile)) {
-        try {
-            const content = fs.readFileSync(registeredUsersFile, "utf-8").trim();
-            users = content ? JSON.parse(content) : [];
-        } catch {
-            users = [];
-        }
-    } else {
-        fs.mkdirSync(path.dirname(registeredUsersFile), { recursive: true });
-    }
+    let users = getRegisteredUsers();
 
     users.push(user);
-    fs.writeFileSync(registeredUsersFile, JSON.stringify(users, null, 2), "utf-8");
+
+    fs.mkdirSync(path.dirname(registeredUsersFile), { recursive: true });
+
+    // atomic write
+    const tempFile = `${registeredUsersFile}.tmp`;
+    fs.writeFileSync(tempFile, JSON.stringify(users, null, 2));
+    fs.renameSync(tempFile, registeredUsersFile);
 }
 
-/** Get the first registered user if exists; else return a new in-memory user (does NOT write) */
+/** Return an existing user if present else generate new (not saved) */
 export function getOrCreateTestUser(): UserData {
     const users = getRegisteredUsers();
+
     if (users.length > 0) {
         console.log(`✅ Reusing existing user: ${users[0].email}`);
         return users[0];
     }
 
     const newUser = generateFakeUser();
-    console.log(`🆕 Generated new user (in-memory, not saved): ${newUser.email}`);
+    console.log(`🆕 Generated new user (in-memory): ${newUser.email}`);
+
     return newUser;
 }
