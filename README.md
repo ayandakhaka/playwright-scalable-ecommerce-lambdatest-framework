@@ -66,7 +66,7 @@ Supports GitHub Actions
 
 5. Publish HTML reports
 
-##🚀 How to Add Allure to Your Playwright Project
+🚀 How to Add Allure to Your Playwright Project
 1️⃣ Install Allure dependencies
 
 1. npm install --save-dev allure-playwright
