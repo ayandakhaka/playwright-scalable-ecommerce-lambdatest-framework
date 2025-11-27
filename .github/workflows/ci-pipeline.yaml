@@ -45,9 +45,12 @@ jobs:
       - name: Cleanup old Allure results
         run: rm -rf allure-results/* || true
 
-      # 6. Run Playwright tests with Allure reporter
+      # 6. Run Playwright tests with Allure reporter (capture failures)
       - name: Run Playwright Tests
-        run: npx playwright test --reporter=list,allure-playwright
+        id: run-tests
+        run: |
+          npx playwright test --reporter=list,allure-playwright
+        continue-on-error: true
 
       # 7. Create environment.properties for Allure
       - name: Create Allure Environment Properties
@@ -108,7 +111,6 @@ jobs:
       - name: Generate Test Summary
         id: summary
         run: |
-          mkdir -p summary
           npx ts-node utils/getTestSummary.ts > summary.env
           cat summary.env
           echo "TOTAL=$(grep TOTAL summary.env | cut -d= -f2)" >> $GITHUB_ENV
@@ -144,3 +146,8 @@ jobs:
 
             Regards,
             CI Bot
+
+      # 14. Fail job if tests failed
+      - name: Fail job if any tests failed
+        if: steps.run-tests.outcome != 'success'
+        run: exit 1
