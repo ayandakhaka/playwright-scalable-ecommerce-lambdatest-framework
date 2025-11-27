@@ -130,5 +130,29 @@
     "accountName": "Ines Gorczany",
     "accountNumber": "3795970485",
     "swiftCode": "O3UZX18G"
+  },
+  {
+    "firstName": "Ayla",
+    "lastName": "Schneider",
+    "email": "ayla.schneider@hotmail.com",
+    "phone": "(519) 350-3304",
+    "password": "uvvQxOa2SHMG@2025",
+    "companyName": "O'Hara Group",
+    "taxId": "9698610083",
+    "accountName": "Ayla Schneider",
+    "accountNumber": "5958645036",
+    "swiftCode": "L1NWEBIM"
+  },
+  {
+    "firstName": "Ervin",
+    "lastName": "Emard",
+    "email": "ervin.emard@yahoo.com",
+    "phone": "(999) 497-5101",
+    "password": "_w23onFgYGR6@2025",
+    "companyName": "Durgan Group",
+    "taxId": "7890607038",
+    "accountName": "Ervin Emard",
+    "accountNumber": "4590654186",
+    "swiftCode": "CYBWBAEL"
   }
 ]

@@ -1,0 +1,15 @@
+TEST STEP : Navigate to homepage and open Register page
+Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[ActionHelper] Hovering over My Account Menu
+[ActionHelper] Clicking on Register Link
+TEST STEP : Submit form without filling any fields
+[ActionHelper] Clicking on Privacy Policy Checkbox
+[ActionHelper] Clicking on Continue Button
+TEST STEP : Verify all required field validation messages
+Actual validation messages: [
+  'First Name must be between 1 and 32 characters!',
+  'Last Name must be between 1 and 32 characters!',
+  'E-Mail Address does not appear to be valid!',
+  'Telephone must be between 3 and 32 characters!',
+  'Password must be between 4 and 20 characters!'
+]

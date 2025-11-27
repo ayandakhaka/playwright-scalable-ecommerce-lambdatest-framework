@@ -1,0 +1,26 @@
+TEST STEP : Navigate to homepage and open Register page
+Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[ActionHelper] Hovering over My Account Menu
+[ActionHelper] Clicking on Register Link
+Generated user for test: {"firstName":"Ayla","lastName":"Schneider","email":"ayla.schneider@hotmail.com","phone":"(519) 350-3304","password":"uvvQxOa2SHMG@2025","companyName":"O'Hara Group","taxId":"9698610083","accountName":"Ayla Schneider","accountNumber":"5958645036","swiftCode":"L1NWEBIM"}
+TEST STEP : Fill registration form with valid user details
+[ActionHelper] Typing "Ayla" into First Name Input
+[ActionHelper] Successfully typed "Ayla" into First Name Input
+[ActionHelper] Typing "Schneider" into Last Name Input
+[ActionHelper] Successfully typed "Schneider" into Last Name Input
+[ActionHelper] Typing "ayla.schneider@hotmail.com" into Email Input
+[ActionHelper] Successfully typed "ayla.schneider@hotmail.com" into Email Input
+[ActionHelper] Typing "(519) 350-3304" into Telephone Input
+[ActionHelper] Successfully typed "(519) 350-3304" into Telephone Input
+[ActionHelper] Typing "uvvQxOa2SHMG@2025" into Password Input
+[ActionHelper] Successfully typed "uvvQxOa2SHMG@2025" into Password Input
+[ActionHelper] Typing "uvvQxOa2SHMG@2025" into Confirm Password Input
+[ActionHelper] Successfully typed "uvvQxOa2SHMG@2025" into Confirm Password Input
+TEST STEP : Submit the registration form
+[ActionHelper] Clicking on Privacy Policy Checkbox
+[ActionHelper] Clicking on Continue Button
+TEST STEP : Verify registration success message
+[ActionHelper] Waiting for visibility of Success Message
+[ActionHelper] Verifying text of Success Message is "Your Account Has Been Created!"
+[ActionHelper] ✅ Verified "Success Message" text/value successfully.
+TEST STEP : Save registered user data

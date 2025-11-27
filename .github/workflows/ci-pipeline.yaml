@@ -23,7 +23,7 @@ jobs:
       REPORT_URL: "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
 
     steps:
-      # 1. Checkout
+      # 1. Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -41,19 +41,30 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      # 5. Cleanup old allure-results
+      # 5. Cleanup allure-results but keep report history
       - name: Cleanup old Allure results
-        run: rm -rf allure-results allure-report || true
+        run: rm -rf allure-results/* || true
 
       # 6. Run Playwright tests with Allure reporter
       - name: Run Playwright Tests
         run: npx playwright test --reporter=list,allure-playwright
 
-      # 7. Generate Allure report
-      - name: Generate Allure Report
-        run: npx allure generate allure-results --clean -o allure-report
+      # 7. Create environment.properties for Allure
+      - name: Create Allure Environment Properties
+        run: |
+          echo "Browser=Chromium" > allure-results/environment.properties
+          echo "BaseURL=${{ secrets.BASE_URL }}" >> allure-results/environment.properties
+          echo "LT_USERNAME=${{ secrets.LT_USERNAME }}" >> allure-results/environment.properties
 
-      # 8. Upload artifact
+      # 8. Generate Allure report preserving history
+      - name: Generate Allure Report
+        run: |
+          if [ -d allure-report/history ]; then
+            cp -r allure-report/history allure-results/history
+          fi
+          npx allure generate allure-results -o allure-report --clean=false
+
+      # 9. Upload Allure report artifact
       - name: Upload Allure Report
         if: always()
         uses: actions/upload-artifact@v4
@@ -62,7 +73,7 @@ jobs:
           path: allure-report
           retention-days: 7
 
-      # 9. Deploy to gh-pages
+      # 10. Deploy Allure report to GitHub Pages
       - name: Setup Git
         run: |
           git config --global user.name "github-actions[bot]"
@@ -79,7 +90,7 @@ jobs:
           user_name: github-actions[bot]
           user_email: github-actions[bot]@users.noreply.github.com
 
-      # 10. Comment on PR
+      # 11. Comment on PR
       - name: Comment on Pull Request
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
@@ -93,10 +104,11 @@ jobs:
               body: `✅ Allure Report is available here: [View Report](${process.env.REPORT_URL})`
             })
 
-      # 11. Generate test summary from Playwright JSON results
+      # 12. Generate test summary from TypeScript script
       - name: Generate Test Summary
         id: summary
         run: |
+          mkdir -p summary
           npx ts-node utils/getTestSummary.ts > summary.env
           cat summary.env
           echo "TOTAL=$(grep TOTAL summary.env | cut -d= -f2)" >> $GITHUB_ENV
@@ -104,8 +116,7 @@ jobs:
           echo "FAILED=$(grep FAILED summary.env | cut -d= -f2)" >> $GITHUB_ENV
           echo "SKIPPED=$(grep SKIPPED summary.env | cut -d= -f2)" >> $GITHUB_ENV
 
-
-      # 12. Send email with summary
+      # 13. Send Allure report via email
       - name: Send Allure Report via Email
         if: always()
         uses: dawidd6/action-send-mail@v3
