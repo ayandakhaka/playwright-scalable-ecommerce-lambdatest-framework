@@ -46,8 +46,10 @@ test.describe("Affiliation Registration tests", () => {
         });
 
     });
-    test.describe("Positive Tests for Affiliate Registration", () => {
-        test("Register  as an affiliate", async ({ affiliatePage }) => {
+
+    //Positive test case for paypal payment method
+    test.describe("Negetive tests for Affiliate Registration", () => {
+        test("Validate affiliate registration success for paypal payment method", async ({ affiliatePage }) => {
 
             await step("Navigate to Affiliate Registration Page", async () => {
                 await affiliatePage.navigateToAffiliateRegistration();
@@ -73,7 +75,8 @@ test.describe("Affiliation Registration tests", () => {
             });
         });
 
-        test("Register as an affiliate with cheque payment method", async ({ affiliatePage }) => {
+        //Positive test case for cheque payment method
+        test("Validate affiliate registration success for cheque payment method", async ({ affiliatePage }) => {
 
             await step("Navigate to Affiliate Registration Page", async () => {
                 await affiliatePage.navigateToAffiliateRegistration();
@@ -97,7 +100,8 @@ test.describe("Affiliation Registration tests", () => {
             });
         });
 
-        test("Register as an affiliate with bank transfer payment method", async ({ affiliatePage }) => {
+        //Positive test case for bank transfer payment method
+        test("Validate affiliate registration for bank transfer payment method", async ({ affiliatePage }) => {
             await step("Navigate to Affiliate Registration Page", async () => {
                 await affiliatePage.navigateToAffiliateRegistration();
             });
@@ -127,8 +131,10 @@ test.describe("Affiliation Registration tests", () => {
             });
         });
     });
-    test.describe("Negative Tests for Check payment method Affiliate Registration", () => {
 
+    test.describe("Negative tests for Affiliate Registration", () => {
+
+        // Negetive test case for missing cheque payee name
         test("Attempt to register as an affiliate without cheque payee name", async ({ affiliatePage }) => {
 
             await step("Navigate to Affiliate Registration Page", async () => {
@@ -151,6 +157,7 @@ test.describe("Affiliation Registration tests", () => {
             });
         });
 
+        // Negetive test case for not agreeing to terms and conditions
         test("Attempt to register as an affiliate without agreeing to terms in check payment method", async ({ affiliatePage }) => {
             await step("Navigate to Affiliate Registration Page", async () => {
                 await affiliatePage.navigateToAffiliateRegistration();
@@ -168,10 +175,8 @@ test.describe("Affiliation Registration tests", () => {
                 await affiliatePage.verifyAgreeTermsErrorMessage("Warning: You must agree to the About Us!");
             });
         });
-    });
 
-    test.describe("Negative Tests for PayPal payment method Affiliate Registration", () => {
-
+        // Negetive test case for missing agree to terms in bank transfer
         test("Attempt to register as an affiliate without agreeing to terms in PayPal payment method", async ({ affiliatePage }) => {
             await step("Navigate to Affiliate Registration Page", async () => {
                 await affiliatePage.navigateToAffiliateRegistration();
@@ -190,6 +195,7 @@ test.describe("Affiliation Registration tests", () => {
             });
         });
 
+        //Negetive test case for missing paypal email account
         test("Attempt to register as an affiliate without paypal email account", async ({ affiliatePage }) => {
             await step("Navigate to Affiliate Registration Page", async () => {
                 await affiliatePage.navigateToAffiliateRegistration();
@@ -210,10 +216,8 @@ test.describe("Affiliation Registration tests", () => {
                 await affiliatePage.verifyCheckPayeeNameError("PayPal Email Address does not appear to be valid!");
             });
         });
-    });
 
-    test.describe("Negative Tests for Bank Transfer payment method Affiliate Registration", () => {
-
+        //Negetive test case for missing agree to terms in bank transfer
         test("Attempt to register as an affiliate without agreeing to terms in Bank Transfer payment method", async ({ affiliatePage }) => {
             await step("Navigate to Affiliate Registration Page", async () => {
                 await affiliatePage.navigateToAffiliateRegistration();
@@ -238,6 +242,7 @@ test.describe("Affiliation Registration tests", () => {
             });
         });
 
+        // Negetive test case for missing account name
         test("Attempt to register as an affiliate without account name", async ({ affiliatePage }) => {
             await step("Navigate to Affiliate Registration Page", async () => {
                 await affiliatePage.navigateToAffiliateRegistration();
@@ -265,6 +270,7 @@ test.describe("Affiliation Registration tests", () => {
             });
         });
 
+        // New test case for missing account number
         test("Attempt to register as an affiliate without account number", async ({ affiliatePage }) => {
             await step("Navigate to Affiliate Registration Page", async () => {
                 await affiliatePage.navigateToAffiliateRegistration();
@@ -290,8 +296,9 @@ test.describe("Affiliation Registration tests", () => {
             await step("Verify Account Number Error Message", async () => {
                 await affiliatePage.verifyAccountNumberError("Account Number required!");
             });
-        });      
+        });
     });
 });
+
 
 

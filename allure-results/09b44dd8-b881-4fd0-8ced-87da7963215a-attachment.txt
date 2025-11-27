@@ -1,0 +1,48 @@
+TEST STEP : Navigate to registration page
+Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[ActionHelper] Hovering over My Account Menu
+[ActionHelper] Clicking on Register Link
+TEST STEP : Fill the user registration form
+[ActionHelper] Typing "Dock" into First Name Input
+[ActionHelper] Successfully typed "Dock" into First Name Input
+[ActionHelper] Typing "Block" into Last Name Input
+[ActionHelper] Successfully typed "Block" into Last Name Input
+[ActionHelper] Typing "dock_block@hotmail.com" into Email Input
+[ActionHelper] Successfully typed "dock_block@hotmail.com" into Email Input
+[ActionHelper] Typing "(314) 655-3158" into Telephone Input
+[ActionHelper] Successfully typed "(314) 655-3158" into Telephone Input
+[ActionHelper] Typing "LXE8lbUuzY5D@2025" into Password Input
+[ActionHelper] Successfully typed "LXE8lbUuzY5D@2025" into Password Input
+[ActionHelper] Typing "LXE8lbUuzY5D@2025" into Confirm Password Input
+[ActionHelper] Successfully typed "LXE8lbUuzY5D@2025" into Confirm Password Input
+TEST STEP : Submit the registration form
+[ActionHelper] Clicking on Privacy Policy Checkbox
+[ActionHelper] Clicking on Continue Button
+TEST STEP : Click Continue after account creation
+TEST STEP : Save newly registered user data
+TEST STEP : Navigate to Affiliate Registration Page
+[ActionHelper] Clicking on Navigate to Affiliate Registration Page
+TEST STEP : Fill Affiliate Registration Form with Bank Transfer Payment Method
+[ActionHelper] Typing "Baumbach Group" into Company Name Input Field
+[ActionHelper] Successfully typed "Baumbach Group" into Company Name Input Field
+[ActionHelper] Typing "www.baumbach groupaffiliates.com" into Website Input Field
+[ActionHelper] Successfully typed "www.baumbach groupaffiliates.com" into Website Input Field
+[ActionHelper] Typing "4793359791" into Tax ID Input Field
+[ActionHelper] Successfully typed "4793359791" into Tax ID Input Field
+[ActionHelper] Clicking on Selecting Bank Transfer Payment Method
+[ActionHelper] Typing "Bank of Testing" into Bank Name Input Field
+[ActionHelper] Successfully typed "Bank of Testing" into Bank Name Input Field
+[ActionHelper] Typing "4793359791" into Bank Branch Number Input Field
+[ActionHelper] Successfully typed "4793359791" into Bank Branch Number Input Field
+[ActionHelper] Typing "SWIFT-CDPPBE3D" into Bank SWIFT Code Input Field
+[ActionHelper] Successfully typed "SWIFT-CDPPBE3D" into Bank SWIFT Code Input Field
+[ActionHelper] Typing "Dock Block" into Bank Account Name Input Field
+[ActionHelper] Successfully typed "Dock Block" into Bank Account Name Input Field
+[ActionHelper] Typing "1050502522" into Bank Account Number Input Field
+[ActionHelper] Successfully typed "1050502522" into Bank Account Number Input Field
+TEST STEP : Agree to terms and conditions
+[ActionHelper] Clicking on Agree to Terms Checkbox
+TEST STEP : Submit Affiliate Registration
+TEST STEP : Verify Affiliate Registration Success Message
+[ActionHelper] Verifying text of Affiliate Success Message is "Success: Your account has been successfully updated."
+[ActionHelper] ✅ Verified "Affiliate Success Message" text/value successfully.

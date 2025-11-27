@@ -1,12 +1,17 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
+    "module": "commonjs",
     "moduleResolution": "Node",
-    "target": "ESNext",
+    "target": "ES2020",
     "esModuleInterop": true,
-    "resolveJsonModule": true,  // ✅ enable importing JSON
+    "resolveJsonModule": true, // ✅ enable importing JSON
+    "outDir": "dist",
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
   },
-  "include": ["tests/**/*.ts", "utils/**/*.ts", "global-teardown.ts"]
+  "include": [
+    "tests/**/*.ts",
+    "utils/**/*.ts",
+    "global-teardown.ts"
+  ]
 }

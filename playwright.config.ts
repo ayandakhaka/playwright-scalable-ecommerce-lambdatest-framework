@@ -1,11 +1,18 @@
 import { defineConfig } from "@playwright/test";
 import * as dotenv from "dotenv";
-dotenv.config(); // loads .env variables
+dotenv.config();
 
 export default defineConfig({
   testDir: "./tests",
-  reporter: [["html", { outputFolder: "playwright-report", open: "never" }]],
+
+  reporter: [
+    ['html', { outputFolder: "playwright-report", open: "never" }],
+    ['list'],
+    ['allure-playwright']
+  ],
+
   retries: 0,
+
   use: {
     headless: false,
     screenshot: "only-on-failure",

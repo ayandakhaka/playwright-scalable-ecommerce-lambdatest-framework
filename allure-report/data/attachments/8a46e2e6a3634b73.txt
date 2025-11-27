@@ -1,0 +1,17 @@
+TEST STEP : Navigate to home page and login
+Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[ActionHelper] Hovering over My Account Menu
+[ActionHelper] Clicking on Login Link
+[ActionHelper] Typing "elinor_stracke46@hotmail.com" into Email Input
+[ActionHelper] Successfully typed "elinor_stracke46@hotmail.com" into Email Input
+[ActionHelper] Typing "uTBN3VwT0sm1@2025" into Password Input
+[ActionHelper] Successfully typed "uTBN3VwT0sm1@2025" into Password Input
+[ActionHelper] Clicking on Login Button
+TEST STEP : Ensure cart is empty before test
+Current cart count: 0
+TEST STEP : Navigate to Palm Treo Pro
+[ActionHelper] Hovering over Hovering over Palm Treo Pro Image
+TEST STEP : Add item to cart
+TEST STEP : Verify success popup
+[ActionHelper] Getting text from Getting price of item
+Palm Treo Pro Price: 337.99

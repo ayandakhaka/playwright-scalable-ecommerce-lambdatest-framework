@@ -1,0 +1,1188 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - heading "Top categories close" [level=5] [ref=e4]:
+        - text: Top categories
+        - link "close" [ref=e5] [cursor=pointer]:
+          - /url: "#mz-component-1626147655"
+          - text: 
+      - navigation [ref=e8]:
+        - list [ref=e10]:
+          - listitem [ref=e11]:
+            - link "Components" [ref=e12] [cursor=pointer]:
+              - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=25
+              - img [ref=e14]
+              - generic [ref=e17]: Components
+          - listitem [ref=e18]:
+            - link "Cameras" [ref=e19] [cursor=pointer]:
+              - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=33
+              - img [ref=e21]
+              - generic [ref=e24]: Cameras
+          - listitem [ref=e25]:
+            - link "Phone, Tablets & Ipod" [ref=e26] [cursor=pointer]:
+              - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=57
+              - img [ref=e28]
+              - generic [ref=e31]: Phone, Tablets & Ipod
+          - listitem [ref=e32]:
+            - link "Software" [ref=e33] [cursor=pointer]:
+              - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=17
+              - img [ref=e35]
+              - generic [ref=e38]: Software
+          - listitem [ref=e39]:
+            - link "MP3 Players" [ref=e40] [cursor=pointer]:
+              - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=34
+              - img [ref=e42]
+              - generic [ref=e45]: MP3 Players
+          - listitem [ref=e46]:
+            - link "Laptops & Notebooks" [ref=e47] [cursor=pointer]:
+              - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=18
+              - img [ref=e49]
+              - generic [ref=e52]: Laptops & Notebooks
+          - listitem [ref=e53]:
+            - link "Desktops and Monitors" [ref=e54] [cursor=pointer]:
+              - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=28
+              - img [ref=e56]
+              - generic [ref=e59]: Desktops and Monitors
+          - listitem [ref=e60]:
+            - link "Printers & Scanners" [ref=e61] [cursor=pointer]:
+              - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=30
+              - img [ref=e63]
+              - generic [ref=e66]: Printers & Scanners
+          - listitem [ref=e67]:
+            - link "Mice and Trackballs" [ref=e68] [cursor=pointer]:
+              - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=29
+              - img [ref=e70]
+              - generic [ref=e73]: Mice and Trackballs
+          - listitem [ref=e74]:
+            - link "Fashion and Accessories" [ref=e75] [cursor=pointer]:
+              - /url: ""
+              - img [ref=e77]
+              - generic [ref=e80]: Fashion and Accessories
+          - listitem [ref=e81]:
+            - link "Beauty and Saloon" [ref=e82] [cursor=pointer]:
+              - /url: ""
+              - img [ref=e84]
+              - generic [ref=e87]: Beauty and Saloon
+          - listitem [ref=e88]:
+            - link "Autoparts and Accessories" [ref=e89] [cursor=pointer]:
+              - /url: ""
+              - img [ref=e91]
+              - generic [ref=e94]: Autoparts and Accessories
+          - listitem [ref=e95]:
+            - link "Washing machine" [ref=e96] [cursor=pointer]:
+              - /url: ""
+              - img [ref=e98]
+              - generic [ref=e101]: Washing machine
+          - listitem [ref=e102]:
+            - link "Gaming consoles" [ref=e103] [cursor=pointer]:
+              - /url: ""
+              - img [ref=e105]
+              - generic [ref=e108]: Gaming consoles
+          - listitem [ref=e109]:
+            - link "Air conditioner" [ref=e110] [cursor=pointer]:
+              - /url: ""
+              - img [ref=e112]
+              - generic [ref=e115]: Air conditioner
+          - listitem [ref=e116]:
+            - link "Web Cameras" [ref=e117] [cursor=pointer]:
+              - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=32
+              - img [ref=e119]
+              - generic [ref=e122]: Web Cameras
+    - generic [ref=e123]:
+      - heading "Quick Links close" [level=5] [ref=e124]:
+        - text: Quick Links
+        - link "close" [ref=e125] [cursor=pointer]:
+          - /url: "#mz-component-162614767"
+          - text: 
+      - generic [ref=e126]:
+        - navigation [ref=e128]:
+          - list [ref=e130]:
+            - listitem [ref=e131]:
+              - link " Special Hot" [ref=e132] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/special
+                - generic [ref=e133]: 
+                - generic [ref=e135]: Special
+                - generic [ref=e136]: Hot
+            - listitem [ref=e137]:
+              - link " Wishlist" [ref=e138] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=account/wishlist
+                - generic [ref=e139]: 
+                - generic [ref=e141]: Wishlist
+            - listitem [ref=e142]:
+              - link " Compare" [ref=e143] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/compare
+                - generic [ref=e144]: 
+                - generic [ref=e146]: Compare
+            - listitem [ref=e147]:
+              - link " My account" [ref=e148] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=account/account
+                - generic [ref=e149]: 
+                - generic [ref=e151]: My account
+            - listitem [ref=e152]:
+              - link " Blog" [ref=e153] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=extension/maza/blog/home
+                - generic [ref=e154]: 
+                - generic [ref=e156]: Blog
+            - listitem [ref=e157]:
+              - link " Tracking" [ref=e158] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=information/tracking
+                - generic [ref=e159]: 
+                - generic [ref=e161]: Tracking
+            - listitem [ref=e162]:
+              - link " Contact us" [ref=e163] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=information/contact
+                - generic [ref=e164]: 
+                - generic [ref=e166]: Contact us
+        - separator [ref=e168]
+        - paragraph [ref=e171]: Place here any module, widget, design or HTML. for example menu, categories
+    - generic [ref=e172]:
+      - heading "Cart close" [level=5] [ref=e173]:
+        - text: Cart
+        - link "close" [ref=e174] [cursor=pointer]:
+          - /url: "#cart-total-drawer"
+          - text: 
+      - generic [ref=e175]:
+        - generic [ref=e176]:
+          - paragraph [ref=e177]: Your shopping cart is empty!
+          - table [ref=e178]:
+            - rowgroup [ref=e179]:
+              - 'row "Sub-Total: $0.00" [ref=e180]':
+                - cell "Sub-Total:" [ref=e181]
+                - cell "$0.00" [ref=e182]:
+                  - strong [ref=e183]: $0.00
+              - 'row "Total: $0.00" [ref=e184]':
+                - cell "Total:" [ref=e185]
+                - cell "$0.00" [ref=e186]:
+                  - strong [ref=e187]: $0.00
+        - generic [ref=e189]:
+          - button " Edit cart" [ref=e191] [cursor=pointer]:
+            - generic [ref=e192]: 
+            - text: Edit cart
+          - button " Checkout" [ref=e194] [cursor=pointer]:
+            - generic [ref=e195]: 
+            - text: Checkout
+    - generic [ref=e197]:
+      - generic [ref=e199]:
+        - heading "Filter" [level=4] [ref=e201]
+        - button [ref=e203] [cursor=pointer]:
+          - img [ref=e205]
+      - generic [ref=e209]:
+        - generic [ref=e210]:
+          - generic [ref=e211] [cursor=pointer]:
+            - text: Price 
+            - generic [ref=e212]: 
+          - generic [ref=e219]:
+            - spinbutton "Minimum Price" [ref=e220]: "98"
+            - generic [ref=e221]: to
+            - spinbutton "Maximum Price" [ref=e222]: "2000"
+        - generic [ref=e223]:
+          - generic [ref=e224] [cursor=pointer]:
+            - text: Manufacturer 
+            - generic [ref=e225]: 
+          - generic [ref=e227]:
+            - generic [ref=e228]:
+              - generic [ref=e229]:
+                - checkbox "Apple" [ref=e230]
+                - generic [ref=e231] [cursor=pointer]: Apple
+              - generic [ref=e232]: "42"
+            - generic [ref=e233]:
+              - generic [ref=e234]:
+                - checkbox "Canon" [ref=e235]
+                - generic [ref=e236] [cursor=pointer]: Canon
+              - generic [ref=e237]: "10"
+            - generic [ref=e238]:
+              - generic [ref=e239]:
+                - checkbox "Hewlett-Packard" [ref=e240]
+                - generic [ref=e241] [cursor=pointer]: Hewlett-Packard
+              - generic [ref=e242]: "10"
+            - generic [ref=e243]:
+              - generic [ref=e244]:
+                - checkbox "HTC" [ref=e245]
+                - generic [ref=e246] [cursor=pointer]: HTC
+              - generic [ref=e247]: "8"
+            - generic [ref=e248]:
+              - generic [ref=e249]:
+                - checkbox "Nikon" [ref=e250]
+                - generic [ref=e251] [cursor=pointer]: Nikon
+              - generic [ref=e252]: "2"
+            - generic [ref=e253]:
+              - generic [ref=e254]:
+                - checkbox "Palm" [ref=e255]
+                - generic [ref=e256] [cursor=pointer]: Palm
+              - generic [ref=e257]: "2"
+            - generic [ref=e258]:
+              - generic [ref=e259]:
+                - checkbox "Sony" [ref=e260]
+                - generic [ref=e261] [cursor=pointer]: Sony
+              - generic [ref=e262]: "1"
+            - link "See more" [ref=e263] [cursor=pointer]:
+              - /url: "#"
+        - generic [ref=e264]:
+          - generic [ref=e265] [cursor=pointer]:
+            - text: Search 
+            - generic [ref=e266]: 
+          - textbox "Search" [ref=e269]
+        - generic [ref=e270]:
+          - generic [ref=e271] [cursor=pointer]:
+            - text: Color 
+            - generic [ref=e272]: 
+          - generic [ref=e274]:
+            - generic "Blue" [ref=e277] [cursor=pointer]:
+              - img "Blue" [ref=e278]
+            - generic "Pink" [ref=e281] [cursor=pointer]:
+              - img "Pink" [ref=e282]
+            - generic "Black" [ref=e285] [cursor=pointer]:
+              - img "Black" [ref=e286]
+            - generic "Orange" [ref=e289] [cursor=pointer]:
+              - img "Orange" [ref=e290]
+            - generic "Red" [ref=e293] [cursor=pointer]:
+              - img "Red" [ref=e294]
+            - generic "Brown" [ref=e297] [cursor=pointer]:
+              - img "Brown" [ref=e298]
+            - generic "Green" [ref=e301] [cursor=pointer]:
+              - img "Green" [ref=e302]
+            - generic "Yellow" [ref=e305] [cursor=pointer]:
+              - img "Yellow" [ref=e306]
+        - generic [ref=e307]:
+          - generic [ref=e308] [cursor=pointer]:
+            - text: Availability 
+            - generic [ref=e309]: 
+          - generic [ref=e311]:
+            - generic [ref=e312]:
+              - generic [ref=e313]:
+                - checkbox "In stock" [ref=e314]
+                - generic [ref=e315] [cursor=pointer]: In stock
+              - generic [ref=e316]: "51"
+            - generic [ref=e317]:
+              - generic [ref=e318]:
+                - checkbox "Out Of Stock" [ref=e319]
+                - generic [ref=e320] [cursor=pointer]: Out Of Stock
+              - generic [ref=e321]: "15"
+            - generic [ref=e322]:
+              - generic [ref=e323]:
+                - checkbox "2-3 Days" [ref=e324]
+                - generic [ref=e325] [cursor=pointer]: 2-3 Days
+              - generic [ref=e326]: "5"
+            - generic [ref=e327]:
+              - generic [ref=e328]:
+                - checkbox "In Stock" [ref=e329]
+                - generic [ref=e330] [cursor=pointer]: In Stock
+              - generic [ref=e331]: "2"
+            - generic [ref=e332]:
+              - generic [ref=e333]:
+                - checkbox "Pre-Order" [ref=e334]
+                - generic [ref=e335] [cursor=pointer]: Pre-Order
+              - generic [ref=e336]: "2"
+        - generic [ref=e337]:
+          - generic [ref=e338] [cursor=pointer]:
+            - text: Size 
+            - generic [ref=e339]: 
+          - generic [ref=e341]:
+            - generic [ref=e344] [cursor=pointer]: L
+            - generic [ref=e347] [cursor=pointer]: M
+            - generic [ref=e350] [cursor=pointer]: S
+            - generic [ref=e353] [cursor=pointer]: XL
+            - generic [ref=e356] [cursor=pointer]: XXL
+        - generic [ref=e357]:
+          - generic [ref=e358] [cursor=pointer]:
+            - text: Discount 
+            - generic [ref=e359]: 
+          - generic [ref=e361]:
+            - generic [ref=e362]:
+              - generic [ref=e363]:
+                - radio "10% off or more" [disabled] [ref=e364]
+                - generic [ref=e365] [cursor=pointer]: 10% off or more
+              - generic [ref=e366]: "0"
+            - generic [ref=e367]:
+              - generic [ref=e368]:
+                - radio "20% off or more" [disabled] [ref=e369]
+                - generic [ref=e370] [cursor=pointer]: 20% off or more
+              - generic [ref=e371]: "0"
+            - generic [ref=e372]:
+              - generic [ref=e373]:
+                - radio "30% off or more" [disabled] [ref=e374]
+                - generic [ref=e375] [cursor=pointer]: 30% off or more
+              - generic [ref=e376]: "0"
+            - generic [ref=e377]:
+              - generic [ref=e378]:
+                - radio "40% off or more" [disabled] [ref=e379]
+                - generic [ref=e380] [cursor=pointer]: 40% off or more
+              - generic [ref=e381]: "0"
+            - generic [ref=e382]:
+              - generic [ref=e383]:
+                - radio "50% off or more" [disabled] [ref=e384]
+                - generic [ref=e385] [cursor=pointer]: 50% off or more
+              - generic [ref=e386]: "0"
+        - generic [ref=e387]:
+          - generic [ref=e388] [cursor=pointer]:
+            - text: Rating 
+            - generic [ref=e389]: 
+          - generic [ref=e391]:
+            - generic [ref=e392]:
+              - generic [ref=e393]:
+                - radio "     & up" [disabled] [ref=e394]
+                - generic [ref=e395] [cursor=pointer]:
+                  - generic [ref=e396]:
+                    - generic [ref=e397]: 
+                    - generic [ref=e398]: 
+                    - generic [ref=e399]: 
+                    - generic [ref=e400]: 
+                    - generic [ref=e401]: 
+                  - text: "& up"
+              - generic [ref=e402]: "0"
+            - generic [ref=e403]:
+              - generic [ref=e404]:
+                - radio "     & up" [disabled] [ref=e405]
+                - generic [ref=e406] [cursor=pointer]:
+                  - generic [ref=e407]:
+                    - generic [ref=e408]: 
+                    - generic [ref=e409]: 
+                    - generic [ref=e410]: 
+                    - generic [ref=e411]: 
+                    - generic [ref=e412]: 
+                  - text: "& up"
+              - generic [ref=e413]: "0"
+            - generic [ref=e414]:
+              - generic [ref=e415]:
+                - radio "     & up" [disabled] [ref=e416]
+                - generic [ref=e417] [cursor=pointer]:
+                  - generic [ref=e418]:
+                    - generic [ref=e419]: 
+                    - generic [ref=e420]: 
+                    - generic [ref=e421]: 
+                    - generic [ref=e422]: 
+                    - generic [ref=e423]: 
+                  - text: "& up"
+              - generic [ref=e424]: "0"
+            - generic [ref=e425]:
+              - generic [ref=e426]:
+                - radio "     & up" [disabled] [ref=e427]
+                - generic [ref=e428] [cursor=pointer]:
+                  - generic [ref=e429]:
+                    - generic [ref=e430]: 
+                    - generic [ref=e431]: 
+                    - generic [ref=e432]: 
+                    - generic [ref=e433]: 
+                    - generic [ref=e434]: 
+                  - text: "& up"
+              - generic [ref=e435]: "0"
+    - generic [ref=e436]:
+      - banner [ref=e437]:
+        - button "" [ref=e439] [cursor=pointer]:
+          - generic [ref=e440]: 
+        - generic [ref=e441]:
+          - generic [ref=e442]:
+            - figure [ref=e444]:
+              - link "Poco Electro" [ref=e445] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+                - img "Poco Electro" [ref=e446]
+            - generic [ref=e450]:
+              - generic [ref=e452]:
+                - button "All Categories" [ref=e454] [cursor=pointer]
+                - textbox "Search For Products" [ref=e456]
+              - button "Search" [ref=e458] [cursor=pointer]
+            - link "Compare" [ref=e460] [cursor=pointer]:
+              - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/compare
+              - generic "Compare" [ref=e461]:
+                - img [ref=e462]
+            - link "Wishlist" [ref=e465] [cursor=pointer]:
+              - /url: https://ecommerce-playground.lambdatest.io/index.php?route=account/wishlist
+              - generic "Wishlist" [ref=e466]:
+                - img [ref=e467]
+            - button "0" [ref=e470] [cursor=pointer]:
+              - generic [ref=e471]:
+                - img [ref=e473]
+                - generic [ref=e475]: "0"
+          - text: 
+        - generic [ref=e476]:
+          - generic [ref=e478] [cursor=pointer]:
+            - button "Shop by Category" [ref=e480]:
+              - img [ref=e482]
+              - text: Shop by Category
+            - navigation [ref=e485]:
+              - list [ref=e487]:
+                - listitem [ref=e488]:
+                  - link "Home" [ref=e489]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+                    - generic [ref=e491]: Home
+                - listitem [ref=e492]:
+                  - link "Special Hot" [ref=e493]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/special
+                    - generic [ref=e495]: Special
+                    - generic [ref=e496]: Hot
+                - listitem [ref=e497]:
+                  - link "Blog" [ref=e498]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=extension/maza/blog/home
+                    - generic [ref=e500]: Blog
+                - listitem [ref=e501]:
+                  - button "Mega Menu" [ref=e502]:
+                    - generic [ref=e504]: Mega Menu
+                - listitem [ref=e505]:
+                  - button "AddOns Featured" [ref=e506]:
+                    - generic [ref=e508]: AddOns
+                    - generic [ref=e509]: Featured
+                - listitem [ref=e510]:
+                  - button " My account" [ref=e511]:
+                    - generic [ref=e512]: 
+                    - generic [ref=e514]: My account
+          - text:  
+          - paragraph [ref=e517]:
+            - strong [ref=e518]: This is a dummy website for Web Automation Testing
+      - generic [ref=e519]:
+        - figure [ref=e523]:
+          - link "Apple Cinema 30\"" [ref=e524] [cursor=pointer]:
+            - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&product_id=42
+            - img "Apple Cinema 30\"" [ref=e525]
+        - navigation "breadcrumb" [ref=e528]:
+          - list [ref=e529]:
+            - listitem [ref=e530]:
+              - link "Home" [ref=e531] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+                - generic [ref=e532]: 
+            - listitem [ref=e533]: / Components
+        - generic [ref=e535]:
+          - generic [ref=e536]:
+            - heading "Components" [level=1] [ref=e538]
+            - generic [ref=e542]:
+              - img "Components" [ref=e543]
+              - paragraph [ref=e544]: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Semper auctor neque vitae tempus quam pellentesque. Facilisis leo vel fringilla est ullamcorper. Tellus id interdum velit laoreet id donec ultrices tincidunt. Vitae nunc sed velit dignissim sodales. Mi proin sed libero enim sed. Mi quis hendrerit dolor magna eget est lorem ipsum.
+            - generic [ref=e546]:
+              - link "Mice and Trackballs (75)" [ref=e547] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=25_29
+                - figure "Mice and Trackballs (75)" [ref=e548]:
+                  - img "Mice and Trackballs (75)" [ref=e549]
+                  - generic [ref=e550]: Mice and Trackballs (75)
+              - link "Monitors (75)" [ref=e551] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=25_28
+                - figure "Monitors (75)" [ref=e552]:
+                  - img "Monitors (75)" [ref=e553]
+                  - generic [ref=e554]: Monitors (75)
+              - link "Printers (75)" [ref=e555] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=25_30
+                - figure "Printers (75)" [ref=e556]:
+                  - img "Printers (75)" [ref=e557]
+                  - generic [ref=e558]: Printers (75)
+              - link "Scanners (75)" [ref=e559] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=25_31
+                - figure "Scanners (75)" [ref=e560]:
+                  - img "Scanners (75)" [ref=e561]
+                  - generic [ref=e562]: Scanners (75)
+              - link "Web Cameras (75)" [ref=e563] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=25_32
+                - figure "Web Cameras (75)" [ref=e564]:
+                  - img "Web Cameras (75)" [ref=e565]
+                  - generic [ref=e566]: Web Cameras (75)
+            - generic [ref=e568]:
+              - generic [ref=e570]:
+                - button "" [ref=e571] [cursor=pointer]:
+                  - generic [ref=e572]: 
+                - button "" [ref=e573] [cursor=pointer]:
+                  - generic [ref=e574]: 
+              - link "Product Compare (0)" [ref=e576] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/compare
+              - text: 
+              - generic [ref=e578]:
+                - generic [ref=e580]: "Show:"
+                - combobox "Show:" [ref=e581]:
+                  - option "15" [selected]
+                  - option "25"
+                  - option "50"
+                  - option "75"
+                  - option "100"
+              - generic [ref=e583]:
+                - generic [ref=e585]: "Sort By:"
+                - combobox "Sort By:" [ref=e586]:
+                  - option "Default" [selected]
+                  - option "Best sellers"
+                  - option "Popular"
+                  - option "Newest"
+                  - option "Name (A - Z)"
+                  - option "Name (Z - A)"
+                  - option "Price (Low > High)"
+                  - option "Price (High > Low)"
+                  - option "Rating (Highest)"
+                  - option "Rating (Lowest)"
+                  - option "Model (A - Z)"
+                  - option "Model (Z - A)"
+            - generic [ref=e588]:
+              - generic [ref=e590]:
+                - generic [ref=e591]:
+                  - link "HTC Touch HD HTC Touch HD HTC Touch HD HTC Touch HD" [ref=e593] [cursor=pointer]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=28
+                    - img "HTC Touch HD" [ref=e596]
+                    - list [ref=e597]:
+                      - listitem [ref=e598]:
+                        - img "HTC Touch HD" [ref=e599]
+                      - listitem [ref=e600]:
+                        - img "HTC Touch HD" [ref=e601]
+                      - listitem [ref=e602]:
+                        - img "HTC Touch HD" [ref=e603]
+                  - generic [ref=e604]:
+                    - button "" [ref=e605] [cursor=pointer]:
+                      - generic [ref=e606]: 
+                    - button "" [ref=e607] [cursor=pointer]:
+                      - generic [ref=e608]: 
+                    - button "" [ref=e609] [cursor=pointer]:
+                      - generic [ref=e610]: 
+                    - button "" [ref=e611] [cursor=pointer]:
+                      - generic [ref=e612]: 
+                - generic [ref=e613]:
+                  - heading "HTC Touch HD" [level=4] [ref=e614]:
+                    - link "HTC Touch HD" [ref=e615] [cursor=pointer]:
+                      - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=28
+                  - generic [ref=e616]: $146.00
+              - generic [ref=e618]:
+                - generic [ref=e619]:
+                  - link "Palm Treo Pro Palm Treo Pro Palm Treo Pro Palm Treo Pro" [ref=e621] [cursor=pointer]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=29
+                    - img "Palm Treo Pro" [ref=e624]
+                    - list [ref=e625]:
+                      - listitem [ref=e626]:
+                        - img "Palm Treo Pro" [ref=e627]
+                      - listitem [ref=e628]:
+                        - img "Palm Treo Pro" [ref=e629]
+                      - listitem [ref=e630]:
+                        - img "Palm Treo Pro" [ref=e631]
+                  - generic [ref=e632]:
+                    - button "" [ref=e633] [cursor=pointer]:
+                      - generic [ref=e634]: 
+                    - button "" [ref=e635] [cursor=pointer]:
+                      - generic [ref=e636]: 
+                    - button "" [ref=e637] [cursor=pointer]:
+                      - generic [ref=e638]: 
+                    - button "" [ref=e639] [cursor=pointer]:
+                      - generic [ref=e640]: 
+                - generic [ref=e641]:
+                  - heading "Palm Treo Pro" [level=4] [ref=e642]:
+                    - link "Palm Treo Pro" [ref=e643] [cursor=pointer]:
+                      - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=29
+                  - generic [ref=e644]: $337.99
+                  - text: 
+              - generic [ref=e646]:
+                - generic [ref=e647]:
+                  - link "Canon EOS 5D Canon EOS 5D Canon EOS 5D Canon EOS 5D" [ref=e649] [cursor=pointer]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=30
+                    - img "Canon EOS 5D" [ref=e652]
+                    - list [ref=e653]:
+                      - listitem [ref=e654]:
+                        - img "Canon EOS 5D" [ref=e655]
+                      - listitem [ref=e656]:
+                        - img "Canon EOS 5D" [ref=e657]
+                      - listitem [ref=e658]:
+                        - img "Canon EOS 5D" [ref=e659]
+                  - generic [ref=e660]:
+                    - button "" [ref=e661] [cursor=pointer]:
+                      - generic [ref=e662]: 
+                    - button "" [ref=e663] [cursor=pointer]:
+                      - generic [ref=e664]: 
+                    - button "" [ref=e665] [cursor=pointer]:
+                      - generic [ref=e666]: 
+                    - button "" [ref=e667] [cursor=pointer]:
+                      - generic [ref=e668]: 
+                - generic [ref=e669]:
+                  - heading "Canon EOS 5D" [level=4] [ref=e670]:
+                    - link "Canon EOS 5D" [ref=e671] [cursor=pointer]:
+                      - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=30
+                  - generic [ref=e672]: $134.00
+              - generic [ref=e674]:
+                - generic [ref=e675]:
+                  - link "Nikon D300 Nikon D300 Nikon D300 Nikon D300" [ref=e677] [cursor=pointer]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=31
+                    - img "Nikon D300" [ref=e680]
+                    - list [ref=e681]:
+                      - listitem [ref=e682]:
+                        - img "Nikon D300" [ref=e683]
+                      - listitem [ref=e684]:
+                        - img "Nikon D300" [ref=e685]
+                      - listitem [ref=e686]:
+                        - img "Nikon D300" [ref=e687]
+                  - generic [ref=e688]:
+                    - button "" [ref=e689] [cursor=pointer]:
+                      - generic [ref=e690]: 
+                    - button "" [ref=e691] [cursor=pointer]:
+                      - generic [ref=e692]: 
+                    - button "" [ref=e693] [cursor=pointer]:
+                      - generic [ref=e694]: 
+                    - button "" [ref=e695] [cursor=pointer]:
+                      - generic [ref=e696]: 
+                - generic [ref=e697]:
+                  - heading "Nikon D300" [level=4] [ref=e698]:
+                    - link "Nikon D300" [ref=e699] [cursor=pointer]:
+                      - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=31
+                  - generic [ref=e700]: $98.00
+              - generic [ref=e702]:
+                - generic [ref=e703]:
+                  - link "iPod Touch iPod Touch iPod Touch iPod Touch" [ref=e705] [cursor=pointer]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=32
+                    - img "iPod Touch" [ref=e708]
+                    - list [ref=e709]:
+                      - listitem [ref=e710]:
+                        - img "iPod Touch" [ref=e711]
+                      - listitem [ref=e712]:
+                        - img "iPod Touch" [ref=e713]
+                      - listitem [ref=e714]:
+                        - img "iPod Touch" [ref=e715]
+                  - generic [ref=e716]:
+                    - button "" [ref=e717] [cursor=pointer]:
+                      - generic [ref=e718]: 
+                    - button "" [ref=e719] [cursor=pointer]:
+                      - generic [ref=e720]: 
+                    - button "" [ref=e721] [cursor=pointer]:
+                      - generic [ref=e722]: 
+                    - button "" [ref=e723] [cursor=pointer]:
+                      - generic [ref=e724]: 
+                - generic [ref=e725]:
+                  - heading "iPod Touch" [level=4] [ref=e726]:
+                    - link "iPod Touch" [ref=e727] [cursor=pointer]:
+                      - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=32
+                  - generic [ref=e728]: $194.00
+              - generic [ref=e730]:
+                - generic [ref=e731]:
+                  - link "Samsung SyncMaster 941BW Samsung SyncMaster 941BW Samsung SyncMaster 941BW Samsung SyncMaster 941BW" [ref=e733] [cursor=pointer]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=33
+                    - img "Samsung SyncMaster 941BW" [ref=e736]
+                    - list [ref=e737]:
+                      - listitem [ref=e738]:
+                        - img "Samsung SyncMaster 941BW" [ref=e739]
+                      - listitem [ref=e740]:
+                        - img "Samsung SyncMaster 941BW" [ref=e741]
+                      - listitem [ref=e742]:
+                        - img "Samsung SyncMaster 941BW" [ref=e743]
+                  - generic [ref=e744]:
+                    - button "" [ref=e745] [cursor=pointer]:
+                      - generic [ref=e746]: 
+                    - button "" [ref=e747] [cursor=pointer]:
+                      - generic [ref=e748]: 
+                    - button "" [ref=e749] [cursor=pointer]:
+                      - generic [ref=e750]: 
+                    - button "" [ref=e751] [cursor=pointer]:
+                      - generic [ref=e752]: 
+                - generic [ref=e753]:
+                  - heading "Samsung SyncMaster 941BW" [level=4] [ref=e754]:
+                    - link "Samsung SyncMaster 941BW" [ref=e755] [cursor=pointer]:
+                      - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=33
+                  - generic [ref=e756]: $242.00
+              - generic [ref=e758]:
+                - generic [ref=e759]:
+                  - link "iPod Shuffle iPod Shuffle iPod Shuffle iPod Shuffle" [ref=e761] [cursor=pointer]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=34
+                    - img "iPod Shuffle" [ref=e764]
+                    - list [ref=e765]:
+                      - listitem [ref=e766]:
+                        - img "iPod Shuffle" [ref=e767]
+                      - listitem [ref=e768]:
+                        - img "iPod Shuffle" [ref=e769]
+                      - listitem [ref=e770]:
+                        - img "iPod Shuffle" [ref=e771]
+                  - generic [ref=e772]:
+                    - button "" [ref=e773] [cursor=pointer]:
+                      - generic [ref=e774]: 
+                    - button "" [ref=e775] [cursor=pointer]:
+                      - generic [ref=e776]: 
+                    - button "" [ref=e777] [cursor=pointer]:
+                      - generic [ref=e778]: 
+                    - button "" [ref=e779] [cursor=pointer]:
+                      - generic [ref=e780]: 
+                - generic [ref=e781]:
+                  - heading "iPod Shuffle" [level=4] [ref=e782]:
+                    - link "iPod Shuffle" [ref=e783] [cursor=pointer]:
+                      - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=34
+                  - generic [ref=e784]: $182.00
+              - generic [ref=e786]:
+                - generic [ref=e787]:
+                  - link "iPod Nano iPod Nano iPod Nano iPod Nano" [ref=e789] [cursor=pointer]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=36
+                    - img "iPod Nano" [ref=e792]
+                    - list [ref=e793]:
+                      - listitem [ref=e794]:
+                        - img "iPod Nano" [ref=e795]
+                      - listitem [ref=e796]:
+                        - img "iPod Nano" [ref=e797]
+                      - listitem [ref=e798]:
+                        - img "iPod Nano" [ref=e799]
+                  - generic [ref=e800]:
+                    - button "" [ref=e801] [cursor=pointer]:
+                      - generic [ref=e802]: 
+                    - button "" [ref=e803] [cursor=pointer]:
+                      - generic [ref=e804]: 
+                    - button "" [ref=e805] [cursor=pointer]:
+                      - generic [ref=e806]: 
+                    - button "" [ref=e807] [cursor=pointer]:
+                      - generic [ref=e808]: 
+                - generic [ref=e809]:
+                  - heading "iPod Nano" [level=4] [ref=e810]:
+                    - link "iPod Nano" [ref=e811] [cursor=pointer]:
+                      - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=36
+                  - generic [ref=e812]: $122.00
+              - generic [ref=e814]:
+                - generic [ref=e815]:
+                  - link "iPhone iPhone iPhone iPhone" [ref=e817] [cursor=pointer]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=40
+                    - img "iPhone" [ref=e820]
+                    - list [ref=e821]:
+                      - listitem [ref=e822]:
+                        - img "iPhone" [ref=e823]
+                      - listitem [ref=e824]:
+                        - img "iPhone" [ref=e825]
+                      - listitem [ref=e826]:
+                        - img "iPhone" [ref=e827]
+                  - generic [ref=e828]:
+                    - button "" [ref=e829] [cursor=pointer]:
+                      - generic [ref=e830]: 
+                    - button "" [ref=e831] [cursor=pointer]:
+                      - generic [ref=e832]: 
+                    - button "" [ref=e833] [cursor=pointer]:
+                      - generic [ref=e834]: 
+                    - button "" [ref=e835] [cursor=pointer]:
+                      - generic [ref=e836]: 
+                - generic [ref=e837]:
+                  - heading "iPhone" [level=4] [ref=e838]:
+                    - link "iPhone" [ref=e839] [cursor=pointer]:
+                      - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=40
+                  - generic [ref=e840]: $123.20
+              - generic [ref=e842]:
+                - generic [ref=e843]:
+                  - link "iMac iMac iMac iMac" [ref=e845] [cursor=pointer]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=41
+                    - img "iMac" [ref=e848]
+                    - list [ref=e849]:
+                      - listitem [ref=e850]:
+                        - img "iMac" [ref=e851]
+                      - listitem [ref=e852]:
+                        - img "iMac" [ref=e853]
+                      - listitem [ref=e854]:
+                        - img "iMac" [ref=e855]
+                  - generic [ref=e856]:
+                    - button "" [ref=e857] [cursor=pointer]:
+                      - generic [ref=e858]: 
+                    - button "" [ref=e859] [cursor=pointer]:
+                      - generic [ref=e860]: 
+                    - button "" [ref=e861] [cursor=pointer]:
+                      - generic [ref=e862]: 
+                    - button "" [ref=e863] [cursor=pointer]:
+                      - generic [ref=e864]: 
+                - generic [ref=e865]:
+                  - heading "iMac" [level=4] [ref=e866]:
+                    - link "iMac" [ref=e867] [cursor=pointer]:
+                      - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=41
+                  - generic [ref=e868]: $170.00
+              - generic [ref=e870]:
+                - generic [ref=e871]:
+                  - link "Apple Cinema 30&quot; Apple Cinema 30&quot; Apple Cinema 30&quot;" [ref=e873] [cursor=pointer]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=42
+                    - img "Apple Cinema 30&quot;" [ref=e876]
+                    - list [ref=e877]:
+                      - listitem [ref=e878]:
+                        - img "Apple Cinema 30&quot;" [ref=e879]
+                      - listitem [ref=e880]:
+                        - img "Apple Cinema 30&quot;" [ref=e881]
+                  - generic [ref=e882]:
+                    - button "" [ref=e883] [cursor=pointer]:
+                      - generic [ref=e884]: 
+                    - button "" [ref=e885] [cursor=pointer]:
+                      - generic [ref=e886]: 
+                    - button "" [ref=e887] [cursor=pointer]:
+                      - generic [ref=e888]: 
+                    - button "" [ref=e889] [cursor=pointer]:
+                      - generic [ref=e890]: 
+                - generic [ref=e891]:
+                  - heading "Apple Cinema 30\"" [level=4] [ref=e892]:
+                    - link "Apple Cinema 30\"" [ref=e893] [cursor=pointer]:
+                      - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=42
+                  - generic [ref=e894]: $122.00
+              - generic [ref=e896]:
+                - generic [ref=e897]:
+                  - link "MacBook MacBook MacBook MacBook" [ref=e899] [cursor=pointer]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=43
+                    - img "MacBook" [ref=e902]
+                    - list [ref=e903]:
+                      - listitem [ref=e904]:
+                        - img "MacBook" [ref=e905]
+                      - listitem [ref=e906]:
+                        - img "MacBook" [ref=e907]
+                      - listitem [ref=e908]:
+                        - img "MacBook" [ref=e909]
+                  - generic [ref=e910]:
+                    - button "" [ref=e911] [cursor=pointer]:
+                      - generic [ref=e912]: 
+                    - button "" [ref=e913] [cursor=pointer]:
+                      - generic [ref=e914]: 
+                    - button "" [ref=e915] [cursor=pointer]:
+                      - generic [ref=e916]: 
+                    - button "" [ref=e917] [cursor=pointer]:
+                      - generic [ref=e918]: 
+                - generic [ref=e919]:
+                  - heading "MacBook" [level=4] [ref=e920]:
+                    - link "MacBook" [ref=e921] [cursor=pointer]:
+                      - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=43
+                  - generic [ref=e922]: $602.00
+              - generic [ref=e924]:
+                - generic [ref=e925]:
+                  - link "MacBook Air MacBook Air MacBook Air MacBook Air" [ref=e927] [cursor=pointer]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=44
+                    - img "MacBook Air" [ref=e930]
+                    - list [ref=e931]:
+                      - listitem [ref=e932]:
+                        - img "MacBook Air" [ref=e933]
+                      - listitem [ref=e934]:
+                        - img "MacBook Air" [ref=e935]
+                      - listitem [ref=e936]:
+                        - img "MacBook Air" [ref=e937]
+                  - generic [ref=e938]:
+                    - button "" [ref=e939] [cursor=pointer]:
+                      - generic [ref=e940]: 
+                    - button "" [ref=e941] [cursor=pointer]:
+                      - generic [ref=e942]: 
+                    - button "" [ref=e943] [cursor=pointer]:
+                      - generic [ref=e944]: 
+                    - button "" [ref=e945] [cursor=pointer]:
+                      - generic [ref=e946]: 
+                - generic [ref=e947]:
+                  - heading "MacBook Air" [level=4] [ref=e948]:
+                    - link "MacBook Air" [ref=e949] [cursor=pointer]:
+                      - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=44
+                  - generic [ref=e950]: $1,202.00
+              - generic [ref=e952]:
+                - generic [ref=e953]:
+                  - link "MacBook Pro MacBook Pro MacBook Pro MacBook Pro" [ref=e955] [cursor=pointer]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=45
+                    - img "MacBook Pro" [ref=e958]
+                    - list [ref=e959]:
+                      - listitem [ref=e960]:
+                        - img "MacBook Pro" [ref=e961]
+                      - listitem [ref=e962]:
+                        - img "MacBook Pro" [ref=e963]
+                      - listitem [ref=e964]:
+                        - img "MacBook Pro" [ref=e965]
+                  - generic [ref=e966]:
+                    - button "" [ref=e967] [cursor=pointer]:
+                      - generic [ref=e968]: 
+                    - button "" [ref=e969] [cursor=pointer]:
+                      - generic [ref=e970]: 
+                    - button "" [ref=e971] [cursor=pointer]:
+                      - generic [ref=e972]: 
+                    - button "" [ref=e973] [cursor=pointer]:
+                      - generic [ref=e974]: 
+                - generic [ref=e975]:
+                  - heading "MacBook Pro" [level=4] [ref=e976]:
+                    - link "MacBook Pro" [ref=e977] [cursor=pointer]:
+                      - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=45
+                  - generic [ref=e978]: $2,000.00
+              - generic [ref=e980]:
+                - generic [ref=e981]:
+                  - link "Sony VAIO Sony VAIO Sony VAIO Sony VAIO" [ref=e983] [cursor=pointer]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=46
+                    - img "Sony VAIO" [ref=e986]
+                    - list [ref=e987]:
+                      - listitem [ref=e988]:
+                        - img "Sony VAIO" [ref=e989]
+                      - listitem [ref=e990]:
+                        - img "Sony VAIO" [ref=e991]
+                      - listitem [ref=e992]:
+                        - img "Sony VAIO" [ref=e993]
+                  - generic [ref=e994]:
+                    - button "" [ref=e995] [cursor=pointer]:
+                      - generic [ref=e996]: 
+                    - button "" [ref=e997] [cursor=pointer]:
+                      - generic [ref=e998]: 
+                    - button "" [ref=e999] [cursor=pointer]:
+                      - generic [ref=e1000]: 
+                    - button "" [ref=e1001] [cursor=pointer]:
+                      - generic [ref=e1002]: 
+                - generic [ref=e1003]:
+                  - heading "Sony VAIO" [level=4] [ref=e1004]:
+                    - link "Sony VAIO" [ref=e1005] [cursor=pointer]:
+                      - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25&product_id=46
+                  - generic [ref=e1006]: $1,202.00
+            - generic [ref=e1008]:
+              - list [ref=e1010]:
+                - listitem [ref=e1011]:
+                  - generic [ref=e1012]: "1"
+                - listitem [ref=e1013]:
+                  - link "2" [ref=e1014] [cursor=pointer]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=25&page=2
+                - listitem [ref=e1015]:
+                  - link "3" [ref=e1016] [cursor=pointer]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=25&page=3
+                - listitem [ref=e1017]:
+                  - link "4" [ref=e1018] [cursor=pointer]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=25&page=4
+                - listitem [ref=e1019]:
+                  - link "5" [ref=e1020] [cursor=pointer]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=25&page=5
+                - listitem [ref=e1021]:
+                  - link ">" [ref=e1022] [cursor=pointer]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=25&page=2
+                - listitem [ref=e1023]:
+                  - link ">|" [ref=e1024] [cursor=pointer]:
+                    - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=25&page=5
+              - generic [ref=e1025]: Showing 1 to 15 of 75 (5 Pages)
+          - generic [ref=e1026]:
+            - generic [ref=e1028]:
+              - generic [ref=e1029] [cursor=pointer]:
+                - heading "Filter" [level=3] [ref=e1030]
+                - text: 
+                - generic [ref=e1031]: 
+              - generic [ref=e1032]:
+                - generic [ref=e1033]:
+                  - generic [ref=e1034] [cursor=pointer]:
+                    - text: Price 
+                    - generic [ref=e1035]: 
+                  - generic [ref=e1042]:
+                    - spinbutton "Minimum Price" [ref=e1043]: "98"
+                    - generic [ref=e1044]: to
+                    - spinbutton "Maximum Price" [ref=e1045]: "2000"
+                - generic [ref=e1046]:
+                  - generic [ref=e1047] [cursor=pointer]:
+                    - text: Manufacturer 
+                    - generic [ref=e1048]: 
+                  - generic [ref=e1050]:
+                    - generic [ref=e1051]:
+                      - generic [ref=e1053] [cursor=pointer]:
+                        - img "Apple" [ref=e1054]
+                        - text: Apple
+                      - generic [ref=e1055]: "42"
+                    - generic [ref=e1056]:
+                      - generic [ref=e1058] [cursor=pointer]:
+                        - img "Canon" [ref=e1059]
+                        - text: Canon
+                      - generic [ref=e1060]: "10"
+                    - generic [ref=e1061]:
+                      - generic [ref=e1063] [cursor=pointer]:
+                        - img "Hewlett-Packard" [ref=e1064]
+                        - text: Hewlett-Packard
+                      - generic [ref=e1065]: "10"
+                    - generic [ref=e1066]:
+                      - generic [ref=e1068] [cursor=pointer]:
+                        - img "HTC" [ref=e1069]
+                        - text: HTC
+                      - generic [ref=e1070]: "8"
+                    - generic [ref=e1071]:
+                      - generic [ref=e1073] [cursor=pointer]:
+                        - img "Nikon" [ref=e1074]
+                        - text: Nikon
+                      - generic [ref=e1075]: "2"
+                    - generic [ref=e1076]:
+                      - generic [ref=e1078] [cursor=pointer]:
+                        - img "Palm" [ref=e1079]
+                        - text: Palm
+                      - generic [ref=e1080]: "2"
+                    - generic [ref=e1081]:
+                      - generic [ref=e1083] [cursor=pointer]:
+                        - img "Sony" [ref=e1084]
+                        - text: Sony
+                      - generic [ref=e1085]: "1"
+                    - link "See more" [ref=e1086] [cursor=pointer]:
+                      - /url: "#"
+                - generic [ref=e1087]:
+                  - generic [ref=e1088] [cursor=pointer]:
+                    - text: Sub category 
+                    - generic [ref=e1089]: 
+                  - generic [ref=e1091]:
+                    - generic [ref=e1092]:
+                      - generic [ref=e1093]:
+                        - checkbox "Mice and Trackballs" [ref=e1094]
+                        - generic [ref=e1095] [cursor=pointer]: Mice and Trackballs
+                      - generic [ref=e1096]: "75"
+                    - generic [ref=e1097]:
+                      - generic [ref=e1098]:
+                        - checkbox "Monitors" [ref=e1099]
+                        - generic [ref=e1100] [cursor=pointer]: Monitors
+                      - generic [ref=e1101]: "75"
+                    - generic [ref=e1102]:
+                      - generic [ref=e1103]:
+                        - checkbox "Printers" [ref=e1104]
+                        - generic [ref=e1105] [cursor=pointer]: Printers
+                      - generic [ref=e1106]: "75"
+                    - generic [ref=e1107]:
+                      - generic [ref=e1108]:
+                        - checkbox "Scanners" [ref=e1109]
+                        - generic [ref=e1110] [cursor=pointer]: Scanners
+                      - generic [ref=e1111]: "75"
+                    - generic [ref=e1112]:
+                      - generic [ref=e1113]:
+                        - checkbox "Web Cameras" [ref=e1114]
+                        - generic [ref=e1115] [cursor=pointer]: Web Cameras
+                      - generic [ref=e1116]: "75"
+                - generic [ref=e1117]:
+                  - generic [ref=e1118] [cursor=pointer]:
+                    - text: Search 
+                    - generic [ref=e1119]: 
+                  - textbox "Search" [ref=e1122]
+                - generic [ref=e1123]:
+                  - generic [ref=e1124] [cursor=pointer]:
+                    - text: Color 
+                    - generic [ref=e1125]: 
+                  - generic [ref=e1127]:
+                    - generic "Blue" [ref=e1130] [cursor=pointer]:
+                      - img "Blue" [ref=e1131]
+                    - generic "Pink" [ref=e1134] [cursor=pointer]:
+                      - img "Pink" [ref=e1135]
+                    - generic "Black" [ref=e1138] [cursor=pointer]:
+                      - img "Black" [ref=e1139]
+                    - generic "Orange" [ref=e1142] [cursor=pointer]:
+                      - img "Orange" [ref=e1143]
+                    - generic "Red" [ref=e1146] [cursor=pointer]:
+                      - img "Red" [ref=e1147]
+                    - generic "Brown" [ref=e1150] [cursor=pointer]:
+                      - img "Brown" [ref=e1151]
+                    - generic "Green" [ref=e1154] [cursor=pointer]:
+                      - img "Green" [ref=e1155]
+                    - generic "Yellow" [ref=e1158] [cursor=pointer]:
+                      - img "Yellow" [ref=e1159]
+                - generic [ref=e1160]:
+                  - generic [ref=e1161] [cursor=pointer]:
+                    - text: Availability 
+                    - generic [ref=e1162]: 
+                  - generic [ref=e1164]:
+                    - generic [ref=e1165]:
+                      - generic [ref=e1166]:
+                        - checkbox "In stock" [ref=e1167]
+                        - generic [ref=e1168] [cursor=pointer]: In stock
+                      - generic [ref=e1169]: "51"
+                    - generic [ref=e1170]:
+                      - generic [ref=e1171]:
+                        - checkbox "Out Of Stock" [ref=e1172]
+                        - generic [ref=e1173] [cursor=pointer]: Out Of Stock
+                      - generic [ref=e1174]: "15"
+                    - generic [ref=e1175]:
+                      - generic [ref=e1176]:
+                        - checkbox "2-3 Days" [ref=e1177]
+                        - generic [ref=e1178] [cursor=pointer]: 2-3 Days
+                      - generic [ref=e1179]: "5"
+                    - generic [ref=e1180]:
+                      - generic [ref=e1181]:
+                        - checkbox "In Stock" [ref=e1182]
+                        - generic [ref=e1183] [cursor=pointer]: In Stock
+                      - generic [ref=e1184]: "2"
+                    - generic [ref=e1185]:
+                      - generic [ref=e1186]:
+                        - checkbox "Pre-Order" [ref=e1187]
+                        - generic [ref=e1188] [cursor=pointer]: Pre-Order
+                      - generic [ref=e1189]: "2"
+                - generic [ref=e1190]:
+                  - generic [ref=e1191] [cursor=pointer]:
+                    - text: Size 
+                    - generic [ref=e1192]: 
+                  - generic [ref=e1194]:
+                    - generic [ref=e1197] [cursor=pointer]: L
+                    - generic [ref=e1200] [cursor=pointer]: M
+                    - generic [ref=e1203] [cursor=pointer]: S
+                    - generic [ref=e1206] [cursor=pointer]: XL
+                    - generic [ref=e1209] [cursor=pointer]: XXL
+                - generic [ref=e1210]:
+                  - generic [ref=e1211] [cursor=pointer]:
+                    - text: Discount 
+                    - generic [ref=e1212]: 
+                  - generic [ref=e1214]:
+                    - generic [ref=e1215]:
+                      - generic [ref=e1216]:
+                        - radio "10% off or more" [disabled] [ref=e1217]
+                        - generic [ref=e1218] [cursor=pointer]: 10% off or more
+                      - generic [ref=e1219]: "0"
+                    - generic [ref=e1220]:
+                      - generic [ref=e1221]:
+                        - radio "20% off or more" [disabled] [ref=e1222]
+                        - generic [ref=e1223] [cursor=pointer]: 20% off or more
+                      - generic [ref=e1224]: "0"
+                    - generic [ref=e1225]:
+                      - generic [ref=e1226]:
+                        - radio "30% off or more" [disabled] [ref=e1227]
+                        - generic [ref=e1228] [cursor=pointer]: 30% off or more
+                      - generic [ref=e1229]: "0"
+                    - generic [ref=e1230]:
+                      - generic [ref=e1231]:
+                        - radio "40% off or more" [disabled] [ref=e1232]
+                        - generic [ref=e1233] [cursor=pointer]: 40% off or more
+                      - generic [ref=e1234]: "0"
+                    - generic [ref=e1235]:
+                      - generic [ref=e1236]:
+                        - radio "50% off or more" [disabled] [ref=e1237]
+                        - generic [ref=e1238] [cursor=pointer]: 50% off or more
+                      - generic [ref=e1239]: "0"
+                - generic [ref=e1240]:
+                  - generic [ref=e1241] [cursor=pointer]:
+                    - text: Rating 
+                    - generic [ref=e1242]: 
+                  - generic [ref=e1244]:
+                    - generic [ref=e1245]:
+                      - generic [ref=e1246]:
+                        - radio "     & up" [disabled] [ref=e1247]
+                        - generic [ref=e1248] [cursor=pointer]:
+                          - generic [ref=e1249]:
+                            - generic [ref=e1250]: 
+                            - generic [ref=e1251]: 
+                            - generic [ref=e1252]: 
+                            - generic [ref=e1253]: 
+                            - generic [ref=e1254]: 
+                          - text: "& up"
+                      - generic [ref=e1255]: "0"
+                    - generic [ref=e1256]:
+                      - generic [ref=e1257]:
+                        - radio "     & up" [disabled] [ref=e1258]
+                        - generic [ref=e1259] [cursor=pointer]:
+                          - generic [ref=e1260]:
+                            - generic [ref=e1261]: 
+                            - generic [ref=e1262]: 
+                            - generic [ref=e1263]: 
+                            - generic [ref=e1264]: 
+                            - generic [ref=e1265]: 
+                          - text: "& up"
+                      - generic [ref=e1266]: "0"
+                    - generic [ref=e1267]:
+                      - generic [ref=e1268]:
+                        - radio "     & up" [disabled] [ref=e1269]
+                        - generic [ref=e1270] [cursor=pointer]:
+                          - generic [ref=e1271]:
+                            - generic [ref=e1272]: 
+                            - generic [ref=e1273]: 
+                            - generic [ref=e1274]: 
+                            - generic [ref=e1275]: 
+                            - generic [ref=e1276]: 
+                          - text: "& up"
+                      - generic [ref=e1277]: "0"
+                    - generic [ref=e1278]:
+                      - generic [ref=e1279]:
+                        - radio "     & up" [disabled] [ref=e1280]
+                        - generic [ref=e1281] [cursor=pointer]:
+                          - generic [ref=e1282]:
+                            - generic [ref=e1283]: 
+                            - generic [ref=e1284]: 
+                            - generic [ref=e1285]: 
+                            - generic [ref=e1286]: 
+                            - generic [ref=e1287]: 
+                          - text: "& up"
+                      - generic [ref=e1288]: "0"
+            - generic [ref=e1290]:
+              - link "Desktops (75)" [ref=e1291] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=20
+              - link "Laptops (75)" [ref=e1292] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=18
+              - generic [ref=e1293]: Components (75)
+              - link "- Mice and Trackballs (75)" [ref=e1294] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=25_29
+              - link "- Monitors (75)" [ref=e1295] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=25_28
+              - link "- Printers (75)" [ref=e1296] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=25_30
+              - link "- Scanners (75)" [ref=e1297] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=25_31
+              - link "- Web Cameras (75)" [ref=e1298] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=25_32
+              - link "Tablets (75)" [ref=e1299] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=57
+              - link "Software (75)" [ref=e1300] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=17
+              - link "Phones & PDAs (75)" [ref=e1301] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=24
+              - link "Cameras (75)" [ref=e1302] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=33
+              - link "MP3 Players (75)" [ref=e1303] [cursor=pointer]:
+                - /url: https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=34
+      - contentinfo [ref=e1304]:
+        - paragraph [ref=e1310]: © LambdaTest - Powered by OpenCart
+  - text:  
+```

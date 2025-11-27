@@ -1,0 +1,40 @@
+TEST STEP : Navigate to registration page
+Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[ActionHelper] Hovering over My Account Menu
+[ActionHelper] Clicking on Register Link
+TEST STEP : Fill the user registration form
+[ActionHelper] Typing "Kamryn" into First Name Input
+[ActionHelper] Successfully typed "Kamryn" into First Name Input
+[ActionHelper] Typing "Dickens" into Last Name Input
+[ActionHelper] Successfully typed "Dickens" into Last Name Input
+[ActionHelper] Typing "kamryn.dickens9@yahoo.com" into Email Input
+[ActionHelper] Successfully typed "kamryn.dickens9@yahoo.com" into Email Input
+[ActionHelper] Typing "(412) 248-0988" into Telephone Input
+[ActionHelper] Successfully typed "(412) 248-0988" into Telephone Input
+[ActionHelper] Typing "8MH_IYfY_H3Z@2025" into Password Input
+[ActionHelper] Successfully typed "8MH_IYfY_H3Z@2025" into Password Input
+[ActionHelper] Typing "8MH_IYfY_H3Z@2025" into Confirm Password Input
+[ActionHelper] Successfully typed "8MH_IYfY_H3Z@2025" into Confirm Password Input
+TEST STEP : Submit the registration form
+[ActionHelper] Clicking on Privacy Policy Checkbox
+[ActionHelper] Clicking on Continue Button
+TEST STEP : Click Continue after account creation
+TEST STEP : Save newly registered user data
+TEST STEP : Navigate to Affiliate Registration Page
+[ActionHelper] Clicking on Navigate to Affiliate Registration Page
+TEST STEP : Fill Affiliate Registration Form
+[ActionHelper] Typing "Brown, Nolan and Weber" into Company Name Input Field
+[ActionHelper] Successfully typed "Brown, Nolan and Weber" into Company Name Input Field
+[ActionHelper] Typing "www.brown, nolan and weberaffiliates.com" into Website Input Field
+[ActionHelper] Successfully typed "www.brown, nolan and weberaffiliates.com" into Website Input Field
+[ActionHelper] Typing "3218175827" into Tax ID Input Field
+[ActionHelper] Successfully typed "3218175827" into Tax ID Input Field
+[ActionHelper] Clicking on Selecting PayPal Payment Method
+[ActionHelper] Typing "kamryn.dickens9@yahoo.com" into PayPal Payee Name Input Field
+[ActionHelper] Successfully typed "kamryn.dickens9@yahoo.com" into PayPal Payee Name Input Field
+TEST STEP : Agree to terms and conditions
+[ActionHelper] Clicking on Agree to Terms Checkbox
+TEST STEP : Submit Affiliate Registration
+TEST STEP : Verify Affiliate Registration Success Message
+[ActionHelper] Verifying text of Affiliate Success Message is "Success: Your account has been successfully updated."
+[ActionHelper] ✅ Verified "Affiliate Success Message" text/value successfully.

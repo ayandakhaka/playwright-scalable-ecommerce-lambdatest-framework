@@ -1,0 +1,12 @@
+Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+TEST STEP : Open login menu
+[ActionHelper] Hovering over My Account Menu
+TEST STEP : Login with invalid user: enid.ziemann19@gmail.com
+[ActionHelper] Typing "enid.ziemann19@gmail.com" into Email Input
+[ActionHelper] Successfully typed "enid.ziemann19@gmail.com" into Email Input
+[ActionHelper] Typing "7LVQkjyxAbCh@2025" into Password Input
+[ActionHelper] Successfully typed "7LVQkjyxAbCh@2025" into Password Input
+[ActionHelper] Clicking on Login Button
+[ActionHelper] Waiting for visibility of Login Error Message
+[ActionHelper] Verifying text of Login Error Message is "Warning: No match for E-Mail Address and/or Password."
+[ActionHelper] ✅ Verified "Login Error Message" text/value successfully.
