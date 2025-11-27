@@ -3,8 +3,6 @@ name: 🧪 LambdaTest Playwright Automation
 on:
   push:
     branches: main
-  workflow_dispatch: # allows manual trigger from GitHub UI
-
 jobs:
   playwright-tests:
     name: Run Playwright Tests on LambdaTest
@@ -13,7 +11,7 @@ jobs:
     env:
       LT_USERNAME: ${{ secrets.LT_USERNAME }}
       LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
-      BASE_URL: ${{secrets.BASE_URL}}
+      BASE_URL: ${{ secrets.BASE_URL }}
 
     steps:
       # ✅ Step 1: Checkout the repo
@@ -33,7 +31,6 @@ jobs:
           echo "LT_ACCESS_KEY=${{ secrets.LT_ACCESS_KEY }}" >> .env
           echo "BASE_URL=${{ secrets.BASE_URL }}" >> .env
 
-
       # ✅ Step 3: Install dependencies
       - name: Install dependencies
         run: npm ci
@@ -42,20 +39,29 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      # ✅ Step 5: Run tests on LambdaTest
-      - name: Run Playwright Tests on LambdaTest
+      # ✅ Step 5: Run Playwright Tests with Allure
+      - name: Run Playwright Tests
         run: |
-          npx playwright test
+          npx playwright test --reporter=list,allure-playwright
 
-      - name: Show Playwright report
-        run: npx playwright show-report playwright-report
+      # ✅ Step 6: Generate Allure Report
+      - name: Generate Allure Report
+        run: npx allure generate allure-results --clean -o allure-report
 
-
-      # ✅ Step 6: Upload Playwright HTML report
-      - name: Upload Playwright HTML Report
-        if: always() # upload even if tests fail
+      # ✅ Step 7: Upload Allure report as artifact
+      - name: Upload Allure Report
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
-          path: playwright-report/
+          name: allure-report
+          path: allure-report
           retention-days: 7
+
+      # ✅ Step 8: (Optional) Deploy Allure report to GitHub Pages
+      - name: Deploy Allure Report to GitHub Pages
+        if: github.ref == 'refs/heads/main' # deploy only from main branch
+        uses: peaceiris/actions-gh-pages@v6
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
+          publish_branch: gh-pages
