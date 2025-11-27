@@ -2,9 +2,9 @@ name: 🧪 LambdaTest Playwright Automation
 
 on:
   push:
-    branches: main
+    branches: [main]
   pull_request:
-    branches: main
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -33,22 +33,19 @@ jobs:
         with:
           node-version: 20
 
-      # 3. Create .env
-      - name: Create .env file
-        run: |
-          echo "LT_USERNAME=${{ secrets.LT_USERNAME }}" >> .env
-          echo "LT_ACCESS_KEY=${{ secrets.LT_ACCESS_KEY }}" >> .env
-          echo "BASE_URL=${{ secrets.BASE_URL }}" >> .env
-
-      # 4. Install dependencies
+      # 3. Install dependencies
       - name: Install dependencies
         run: npm ci
 
-      # 5. Install Playwright browsers
+      # 4. Install Playwright browsers
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      # 6. Run tests
+      # 5. Cleanup old allure-results
+      - name: Cleanup old Allure results
+        run: rm -rf allure-results allure-report || true
+
+      # 6. Run Playwright tests with Allure reporter
       - name: Run Playwright Tests
         run: npx playwright test --reporter=list,allure-playwright
 
@@ -82,7 +79,7 @@ jobs:
           user_name: github-actions[bot]
           user_email: github-actions[bot]@users.noreply.github.com
 
-      # 10. PR comment
+      # 10. Comment on PR
       - name: Comment on Pull Request
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
@@ -96,14 +93,16 @@ jobs:
               body: `✅ Allure Report is available here: [View Report](${process.env.REPORT_URL})`
             })
 
-      # 11. Generate test summary
+      # 11. Generate test summary from Playwright JSON results
       - name: Generate Test Summary
         id: summary
         run: |
-          TOTAL=$(npx allure summary --results allure-results | grep "Total:" | awk '{print $2}')
-          PASSED=$(npx allure summary --results allure-results | grep "Passed:" | awk '{print $2}')
-          FAILED=$(npx allure summary --results allure-results | grep "Failed:" | awk '{print $2}')
-          SKIPPED=$(npx allure summary --results allure-results | grep "Skipped:" | awk '{print $2}')
+          mkdir -p summary
+          npx playwright show-report --output=json > summary/test-results.json || true
+          TOTAL=$(jq '[.suites[].specs[].tests[].results[]] | length' summary/test-results.json)
+          PASSED=$(jq '[.suites[].specs[].tests[].results[] | select(.status=="passed")] | length' summary/test-results.json)
+          FAILED=$(jq '[.suites[].specs[].tests[].results[] | select(.status=="failed")] | length' summary/test-results.json)
+          SKIPPED=$(jq '[.suites[].specs[].tests[].results[] | select(.status=="skipped")] | length' summary/test-results.json)
           echo "TOTAL=$TOTAL" >> $GITHUB_ENV
           echo "PASSED=$PASSED" >> $GITHUB_ENV
           echo "FAILED=$FAILED" >> $GITHUB_ENV
