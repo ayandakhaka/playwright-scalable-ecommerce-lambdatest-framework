@@ -3,6 +3,7 @@ name: 🧪 LambdaTest Playwright Automation
 on:
   push:
     branches: main
+
 jobs:
   playwright-tests:
     name: Run Playwright Tests on LambdaTest
@@ -41,8 +42,7 @@ jobs:
 
       # ✅ Step 5: Run Playwright Tests with Allure
       - name: Run Playwright Tests
-        run: |
-          npx playwright test --reporter=list,allure-playwright
+        run: npx playwright test --reporter=list,allure-playwright
 
       # ✅ Step 6: Generate Allure Report
       - name: Generate Allure Report
@@ -57,11 +57,19 @@ jobs:
           path: allure-report
           retention-days: 7
 
-      # ✅ Step 8: (Optional) Deploy Allure report to GitHub Pages
+      # ✅ Step 8: Deploy Allure report to GitHub Pages
+      - name: Setup Git for Pages
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Deploy Allure Report to GitHub Pages
-        if: github.ref == 'refs/heads/main' # deploy only from main branch
+        if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./allure-report
           publish_branch: gh-pages
+          force_orphan: true
+          user_name: github-actions[bot]
+          user_email: github-actions[bot]@users.noreply.github.com
