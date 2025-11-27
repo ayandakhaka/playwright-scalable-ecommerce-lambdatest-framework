@@ -11,10 +11,10 @@ export default defineConfig({
     ['allure-playwright']
   ],
 
-  retries: 0,
+  retries: 2,
 
   use: {
-    headless: false,
+    headless: true,
     screenshot: "only-on-failure",
     video: "retain-on-failure",
     navigationTimeout: 60000,
