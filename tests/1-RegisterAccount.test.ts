@@ -63,7 +63,7 @@ test.describe("Register Account Tests", () => {
       await actionHelper.verifyText(
         "div.alert.alert-danger.alert-dismissible",
         "Warning: You must agree to the Privacy Policy!",
-        "Privacy Policy "
+        "Privacy Policy"
       );
     });
   });
