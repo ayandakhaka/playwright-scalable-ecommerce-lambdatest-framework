@@ -60,7 +60,7 @@ jobs:
       # ✅ Step 8: (Optional) Deploy Allure report to GitHub Pages
       - name: Deploy Allure Report to GitHub Pages
         if: github.ref == 'refs/heads/main' # deploy only from main branch
-        uses: peaceiris/actions-gh-pages@v6
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./allure-report
