@@ -56,8 +56,9 @@ jobs:
       - name: Generate Allure Report
         run: npx allure generate allure-results --clean -o allure-report
 
-      # Step 8 (optional): Open Allure report locally
-      - name: Open Allure Report
+      # Step 8: Open Allure report locally (skipped in CI)
+      - name: Open Allure Report Locally
+        if: github.run_id == null  # only runs if not on GitHub Actions
         run: npx allure open allure-report
 
       # Step 9: Upload Allure report as artifact
