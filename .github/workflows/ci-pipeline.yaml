@@ -57,6 +57,12 @@ jobs:
         env:
           CI: true
 
+      - name: DEBUG — Show allure-results content
+        run: |
+          echo "===== ALLURE RESULTS CONTENT ====="
+          ls -R allure-results || echo "⚠ No allure-results folder found"
+
+
       - name: Debug test execution
         run: |
           echo "Files in allure-results after running tests:"
