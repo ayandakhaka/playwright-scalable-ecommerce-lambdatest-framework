@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const previousReportHistory = path.join(process.cwd(), "temp-history");
+const previousReportHistory = path.join(process.cwd(), "allure-report/history"); // directly point to last report
 const results = path.join(process.cwd(), "allure-results");
 
 function copyRecursive(src: string, dest: string) {
@@ -19,10 +19,7 @@ function copyRecursive(src: string, dest: string) {
 }
 
 function copyHistory() {
-    if (!fs.existsSync(previousReportHistory)) {
-        console.info("ℹ First run: no previous history found. Trends will start next run.");
-        return;
-    }
+    if (!fs.existsSync(previousReportHistory)) return; // silently skip first run
 
     const historyTarget = path.join(results, "history");
     if (!fs.existsSync(results)) fs.mkdirSync(results);
