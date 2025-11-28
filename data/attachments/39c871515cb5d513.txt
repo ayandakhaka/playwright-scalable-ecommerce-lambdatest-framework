@@ -1,0 +1,40 @@
+TEST STEP : Navigate to registration page
+Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[ActionHelper] Hovering over My Account Menu
+[ActionHelper] Clicking on Register Link
+TEST STEP : Fill the user registration form
+[ActionHelper] Typing "Ophelia" into First Name Input
+[ActionHelper] Successfully typed "Ophelia" into First Name Input
+[ActionHelper] Typing "Heller" into Last Name Input
+[ActionHelper] Successfully typed "Heller" into Last Name Input
+[ActionHelper] Typing "ophelia_heller72@gmail.com" into Email Input
+[ActionHelper] Successfully typed "ophelia_heller72@gmail.com" into Email Input
+[ActionHelper] Typing "(892) 977-3948" into Telephone Input
+[ActionHelper] Successfully typed "(892) 977-3948" into Telephone Input
+[ActionHelper] Typing "e1gLqv8Yb_OX@2025" into Password Input
+[ActionHelper] Successfully typed "e1gLqv8Yb_OX@2025" into Password Input
+[ActionHelper] Typing "e1gLqv8Yb_OX@2025" into Confirm Password Input
+[ActionHelper] Successfully typed "e1gLqv8Yb_OX@2025" into Confirm Password Input
+TEST STEP : Submit the registration form
+[ActionHelper] Clicking on Privacy Policy Checkbox
+[ActionHelper] Clicking on Continue Button
+TEST STEP : Click Continue after account creation
+TEST STEP : Save newly registered user data
+TEST STEP : Navigate to Affiliate Registration Page
+[ActionHelper] Clicking on Navigate to Affiliate Registration Page
+TEST STEP : Fill Affiliate Registration Form without PayPal Email Account
+[ActionHelper] Typing "McClure - Orn" into Company Name Input Field
+[ActionHelper] Successfully typed "McClure - Orn" into Company Name Input Field
+[ActionHelper] Typing "www.mcclure - ornaffiliates.com" into Website Input Field
+[ActionHelper] Successfully typed "www.mcclure - ornaffiliates.com" into Website Input Field
+[ActionHelper] Typing "4757210329" into Tax ID Input Field
+[ActionHelper] Successfully typed "4757210329" into Tax ID Input Field
+[ActionHelper] Clicking on Selecting PayPal Payment Method
+[ActionHelper] Typing "" into PayPal Payee Name Input Field
+[ActionHelper] Successfully typed "" into PayPal Payee Name Input Field
+TEST STEP : Agree to terms and conditions
+[ActionHelper] Clicking on Agree to Terms Checkbox
+TEST STEP : Submit Affiliate Registration
+TEST STEP : Verify Agree to Terms Error Message
+[ActionHelper] Verifying text of Cheque Payee Name Error Message is "PayPal Email Address does not appear to be valid!"
+[ActionHelper] ✅ Verified "Cheque Payee Name Error Message" text/value successfully.

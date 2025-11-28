@@ -1,0 +1,17 @@
+Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+TEST STEP : Login first
+[ActionHelper] Hovering over My Account Menu
+[ActionHelper] Clicking on Login Link
+[ActionHelper] Typing "sister_schmeler50@yahoo.com" into Email Input
+[ActionHelper] Successfully typed "sister_schmeler50@yahoo.com" into Email Input
+[ActionHelper] Typing "V8wFiV1ELlXf@2025" into Password Input
+[ActionHelper] Successfully typed "V8wFiV1ELlXf@2025" into Password Input
+[ActionHelper] Clicking on Login Button
+Current URL: https://ecommerce-playground.lambdatest.io/index.php?route=account/account
+TEST STEP : Logout user
+[ActionHelper] Hovering over My Account Menu
+[ActionHelper] Waiting for visibility of Logout button
+[ActionHelper] Clicking on Logout Link
+[ActionHelper] Waiting for visibility of Logout Message
+[ActionHelper] Verifying text of Logout Message is "Account Logout"
+[ActionHelper] ✅ Verified "Logout Message" text/value successfully.

@@ -1,0 +1,40 @@
+TEST STEP : Navigate to registration page
+Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[ActionHelper] Hovering over My Account Menu
+[ActionHelper] Clicking on Register Link
+TEST STEP : Fill the user registration form
+[ActionHelper] Typing "Letitia" into First Name Input
+[ActionHelper] Successfully typed "Letitia" into First Name Input
+[ActionHelper] Typing "Howell" into Last Name Input
+[ActionHelper] Successfully typed "Howell" into Last Name Input
+[ActionHelper] Typing "letitia.howell@gmail.com" into Email Input
+[ActionHelper] Successfully typed "letitia.howell@gmail.com" into Email Input
+[ActionHelper] Typing "(969) 212-9253" into Telephone Input
+[ActionHelper] Successfully typed "(969) 212-9253" into Telephone Input
+[ActionHelper] Typing "_cgdja0sOmgC@2025" into Password Input
+[ActionHelper] Successfully typed "_cgdja0sOmgC@2025" into Password Input
+[ActionHelper] Typing "_cgdja0sOmgC@2025" into Confirm Password Input
+[ActionHelper] Successfully typed "_cgdja0sOmgC@2025" into Confirm Password Input
+TEST STEP : Submit the registration form
+[ActionHelper] Clicking on Privacy Policy Checkbox
+[ActionHelper] Clicking on Continue Button
+TEST STEP : Click Continue after account creation
+TEST STEP : Save newly registered user data
+TEST STEP : Navigate to Affiliate Registration Page
+[ActionHelper] Clicking on Navigate to Affiliate Registration Page
+TEST STEP : Fill Affiliate Registration Form
+[ActionHelper] Typing "Hammes, Jenkins and Borer" into Company Name Input Field
+[ActionHelper] Successfully typed "Hammes, Jenkins and Borer" into Company Name Input Field
+[ActionHelper] Typing "www.hammes, jenkins and boreraffiliates.com" into Website Input Field
+[ActionHelper] Successfully typed "www.hammes, jenkins and boreraffiliates.com" into Website Input Field
+[ActionHelper] Typing "6032018224" into Tax ID Input Field
+[ActionHelper] Successfully typed "6032018224" into Tax ID Input Field
+[ActionHelper] Clicking on Selecting PayPal Payment Method
+[ActionHelper] Typing "letitia.howell@gmail.com" into PayPal Payee Name Input Field
+[ActionHelper] Successfully typed "letitia.howell@gmail.com" into PayPal Payee Name Input Field
+TEST STEP : Agree to terms and conditions
+[ActionHelper] Clicking on Agree to Terms Checkbox
+TEST STEP : Submit Affiliate Registration
+TEST STEP : Verify Affiliate Registration Success Message
+[ActionHelper] Verifying text of Affiliate Success Message is "Success: Your account has been successfully updated."
+[ActionHelper] ✅ Verified "Affiliate Success Message" text/value successfully.

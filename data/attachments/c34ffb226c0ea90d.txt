@@ -1,0 +1,21 @@
+TEST STEP : Navigate to home page and login
+Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+TEST STEP : Navigate to Blog page
+[ActionHelper] Clicking on Click Blog Link
+TEST STEP : Scroll to laptop image
+TEST STEP : Click laptop image
+TEST STEP : Fill Your Name
+[ActionHelper] Typing "Sister Schmeler" into Your Name Input Field
+[ActionHelper] Successfully typed "Sister Schmeler" into Your Name Input Field
+TEST STEP : Fill Your Email
+[ActionHelper] Typing "sister_schmeler50@yahoo.com" into Your Email Input Field
+[ActionHelper] Successfully typed "sister_schmeler50@yahoo.com" into Your Email Input Field
+TEST STEP : Fill Your Comment
+[ActionHelper] Typing "This is a test comment from Playwright automation." into Your Comment Input Field
+[ActionHelper] Successfully typed "This is a test comment from Playwright automation." into Your Comment Input Field
+TEST STEP : Click Post Comment button
+[ActionHelper] Clicking on Post Comment Button
+TEST STEP : Verify blog page loaded
+TEST STEP : Verify blog comment success message
+[ActionHelper] Verifying text of Blog Comment Success Message is "Thank you for your comment. It has been submitted to the webmaster for approval."
+[ActionHelper] ✅ Verified "Blog Comment Success Message" text/value successfully.

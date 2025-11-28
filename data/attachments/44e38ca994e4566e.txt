@@ -1,0 +1,38 @@
+TEST STEP : Navigate to registration page
+Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[ActionHelper] Hovering over My Account Menu
+[ActionHelper] Clicking on Register Link
+TEST STEP : Fill the user registration form
+[ActionHelper] Typing "Jenifer" into First Name Input
+[ActionHelper] Successfully typed "Jenifer" into First Name Input
+[ActionHelper] Typing "VonRueden" into Last Name Input
+[ActionHelper] Successfully typed "VonRueden" into Last Name Input
+[ActionHelper] Typing "jenifer.vonrueden28@gmail.com" into Email Input
+[ActionHelper] Successfully typed "jenifer.vonrueden28@gmail.com" into Email Input
+[ActionHelper] Typing "(472) 908-3130" into Telephone Input
+[ActionHelper] Successfully typed "(472) 908-3130" into Telephone Input
+[ActionHelper] Typing "pR7DLCj9mbp0@2025" into Password Input
+[ActionHelper] Successfully typed "pR7DLCj9mbp0@2025" into Password Input
+[ActionHelper] Typing "pR7DLCj9mbp0@2025" into Confirm Password Input
+[ActionHelper] Successfully typed "pR7DLCj9mbp0@2025" into Confirm Password Input
+TEST STEP : Submit the registration form
+[ActionHelper] Clicking on Privacy Policy Checkbox
+[ActionHelper] Clicking on Continue Button
+TEST STEP : Click Continue after account creation
+TEST STEP : Save newly registered user data
+TEST STEP : Navigate to Affiliate Registration Page
+[ActionHelper] Clicking on Navigate to Affiliate Registration Page
+TEST STEP : Fill Affiliate Registration Form with PayPal Payment Method
+[ActionHelper] Typing "Wiegand - Paucek" into Company Name Input Field
+[ActionHelper] Successfully typed "Wiegand - Paucek" into Company Name Input Field
+[ActionHelper] Typing "www.wiegand - paucekaffiliates.com" into Website Input Field
+[ActionHelper] Successfully typed "www.wiegand - paucekaffiliates.com" into Website Input Field
+[ActionHelper] Typing "1906457808" into Tax ID Input Field
+[ActionHelper] Successfully typed "1906457808" into Tax ID Input Field
+[ActionHelper] Clicking on Selecting PayPal Payment Method
+[ActionHelper] Typing "jenifer.vonrueden28@gmail.com" into PayPal Payee Name Input Field
+[ActionHelper] Successfully typed "jenifer.vonrueden28@gmail.com" into PayPal Payee Name Input Field
+TEST STEP : Submit Affiliate Registration without agreeing to terms
+TEST STEP : Verify Agree to Terms Error Message
+[ActionHelper] Verifying text of Agree to Terms Error Message is "Warning: You must agree to the About Us!"
+[ActionHelper] ✅ Verified "Agree to Terms Error Message" text/value successfully.

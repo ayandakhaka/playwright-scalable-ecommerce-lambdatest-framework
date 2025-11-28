@@ -1,0 +1,1 @@
+[{"values":["Playwright"],"name":"TestRunner"},{"values":["Chromium"],"name":"Browser"},{"values":["https://ecommerce-playground.lambdatest.io/"],"name":"BaseURL"},{"values":["56"],"name":"BuildNumber"},{"values":["main"],"name":"Branch"}]

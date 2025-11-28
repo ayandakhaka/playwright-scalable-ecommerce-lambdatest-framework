@@ -1,0 +1,48 @@
+TEST STEP : Navigate to registration page
+Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[ActionHelper] Hovering over My Account Menu
+[ActionHelper] Clicking on Register Link
+TEST STEP : Fill the user registration form
+[ActionHelper] Typing "Damaris" into First Name Input
+[ActionHelper] Successfully typed "Damaris" into First Name Input
+[ActionHelper] Typing "Stehr" into Last Name Input
+[ActionHelper] Successfully typed "Stehr" into Last Name Input
+[ActionHelper] Typing "damaris_stehr68@gmail.com" into Email Input
+[ActionHelper] Successfully typed "damaris_stehr68@gmail.com" into Email Input
+[ActionHelper] Typing "(745) 701-2415" into Telephone Input
+[ActionHelper] Successfully typed "(745) 701-2415" into Telephone Input
+[ActionHelper] Typing "LAw46Tmw3DUn@2025" into Password Input
+[ActionHelper] Successfully typed "LAw46Tmw3DUn@2025" into Password Input
+[ActionHelper] Typing "LAw46Tmw3DUn@2025" into Confirm Password Input
+[ActionHelper] Successfully typed "LAw46Tmw3DUn@2025" into Confirm Password Input
+TEST STEP : Submit the registration form
+[ActionHelper] Clicking on Privacy Policy Checkbox
+[ActionHelper] Clicking on Continue Button
+TEST STEP : Click Continue after account creation
+TEST STEP : Save newly registered user data
+TEST STEP : Navigate to Affiliate Registration Page
+[ActionHelper] Clicking on Navigate to Affiliate Registration Page
+TEST STEP : Fill Affiliate Registration Form without Account Number
+[ActionHelper] Typing "Strosin and Sons" into Company Name Input Field
+[ActionHelper] Successfully typed "Strosin and Sons" into Company Name Input Field
+[ActionHelper] Typing "www.strosin and sonsaffiliates.com" into Website Input Field
+[ActionHelper] Successfully typed "www.strosin and sonsaffiliates.com" into Website Input Field
+[ActionHelper] Typing "2055677240" into Tax ID Input Field
+[ActionHelper] Successfully typed "2055677240" into Tax ID Input Field
+[ActionHelper] Clicking on Selecting Bank Transfer Payment Method
+[ActionHelper] Typing "Bank of Testing" into Bank Name Input Field
+[ActionHelper] Successfully typed "Bank of Testing" into Bank Name Input Field
+[ActionHelper] Typing "2055677240" into Bank Branch Number Input Field
+[ActionHelper] Successfully typed "2055677240" into Bank Branch Number Input Field
+[ActionHelper] Typing "SWIFT-QRL12RDH" into Bank SWIFT Code Input Field
+[ActionHelper] Successfully typed "SWIFT-QRL12RDH" into Bank SWIFT Code Input Field
+[ActionHelper] Typing "Damaris Stehr" into Bank Account Name Input Field
+[ActionHelper] Successfully typed "Damaris Stehr" into Bank Account Name Input Field
+[ActionHelper] Typing "" into Bank Account Number Input Field
+[ActionHelper] Successfully typed "" into Bank Account Number Input Field
+TEST STEP : Agree to terms and conditions
+[ActionHelper] Clicking on Agree to Terms Checkbox
+TEST STEP : Submit Affiliate Registration
+TEST STEP : Verify Account Number Error Message
+[ActionHelper] Verifying text of Account Number Error Message is "Account Number required!"
+[ActionHelper] ✅ Verified "Account Number Error Message" text/value successfully.
