@@ -70,7 +70,7 @@ jobs:
 
       # 9. Generate Allure Report with history
       - name: Generate Allure Report
-        run: npx allure generate allure-results -o allure-report --clean=false
+        run: npx allure generate allure-results -o allure-report --clean
 
       # 10. Upload Allure Report artifact
       - name: Upload Allure Report
@@ -118,15 +118,19 @@ jobs:
               body: `✅ Allure Report is available here:\n${process.env.REPORT_URL}`
             })
 
-      # 14. Parse Test Summary
+      # 14. Parse Test Summary (FIXED VERSION)
       - name: Generate Test Summary
         id: summary
         run: |
-          npx ts-node utils/getTestSummary.ts > summary.env
-          echo "TOTAL=$(grep TOTAL summary.env | cut -d= -f2)" >> $GITHUB_ENV
-          echo "PASSED=$(grep PASSED summary.env | cut -d= -f2)" >> $GITHUB_ENV
-          echo "FAILED=$(grep FAILED summary.env | cut -d= -f2)" >> $GITHUB_ENV
-          echo "SKIPPED=$(grep SKIPPED summary.env | cut -d= -f2)" >> $GITHUB_ENV
+          TOTAL=$(ls allure-results/*-result.json | wc -l)
+          PASSED=$(grep -Ri "\"status\": \"passed\"" allure-results/*-result.json | wc -l)
+          FAILED=$(grep -Ri "\"status\": \"failed\"" allure-results/*-result.json | wc -l)
+          SKIPPED=$(grep -Ri "\"status\": \"skipped\"" allure-results/*-result.json | wc -l)
+
+          echo "TOTAL=$TOTAL" >> $GITHUB_ENV
+          echo "PASSED=$PASSED" >> $GITHUB_ENV
+          echo "FAILED=$FAILED" >> $GITHUB_ENV
+          echo "SKIPPED=$SKIPPED" >> $GITHUB_ENV
 
       # 15. Send Email
       - name: Send Allure Report via Email
