@@ -45,7 +45,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: allure-history
-          path: allure-report/history
+          path: temp-history
 
 
       # 5. Restore previous Allure history

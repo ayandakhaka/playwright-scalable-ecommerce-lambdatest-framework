@@ -9,7 +9,7 @@ import path from "path";
 const allureReportDir = path.join(process.cwd(), "allure-report");
 const allureResultsDir = path.join(process.cwd(), "allure-results");
 
-const previousHistory = path.join(allureReportDir, "history");
+const previousReportHistory = path.join(process.cwd(), "temp-history");
 const targetHistory = path.join(allureResultsDir, "history");
 
 if (fs.existsSync(previousHistory)) {
