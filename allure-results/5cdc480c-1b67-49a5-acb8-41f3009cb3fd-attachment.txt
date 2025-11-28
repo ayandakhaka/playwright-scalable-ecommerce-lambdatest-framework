@@ -1,0 +1,38 @@
+TEST STEP : Navigate to registration page
+Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[ActionHelper] Hovering over My Account Menu
+[ActionHelper] Clicking on Register Link
+TEST STEP : Fill the user registration form
+[ActionHelper] Typing "Kenna" into First Name Input
+[ActionHelper] Successfully typed "Kenna" into First Name Input
+[ActionHelper] Typing "Connelly" into Last Name Input
+[ActionHelper] Successfully typed "Connelly" into Last Name Input
+[ActionHelper] Typing "kenna_connelly@hotmail.com" into Email Input
+[ActionHelper] Successfully typed "kenna_connelly@hotmail.com" into Email Input
+[ActionHelper] Typing "(962) 850-2695" into Telephone Input
+[ActionHelper] Successfully typed "(962) 850-2695" into Telephone Input
+[ActionHelper] Typing "BHRmKPpKo_yU@2025" into Password Input
+[ActionHelper] Successfully typed "BHRmKPpKo_yU@2025" into Password Input
+[ActionHelper] Typing "BHRmKPpKo_yU@2025" into Confirm Password Input
+[ActionHelper] Successfully typed "BHRmKPpKo_yU@2025" into Confirm Password Input
+TEST STEP : Submit the registration form
+[ActionHelper] Clicking on Privacy Policy Checkbox
+[ActionHelper] Clicking on Continue Button
+TEST STEP : Click Continue after account creation
+TEST STEP : Save newly registered user data
+TEST STEP : Navigate to Affiliate Registration Page
+[ActionHelper] Clicking on Navigate to Affiliate Registration Page
+TEST STEP : Fill Affiliate Registration Form with PayPal Payment Method
+[ActionHelper] Typing "Smitham - Ruecker" into Company Name Input Field
+[ActionHelper] Successfully typed "Smitham - Ruecker" into Company Name Input Field
+[ActionHelper] Typing "www.smitham - rueckeraffiliates.com" into Website Input Field
+[ActionHelper] Successfully typed "www.smitham - rueckeraffiliates.com" into Website Input Field
+[ActionHelper] Typing "5109510187" into Tax ID Input Field
+[ActionHelper] Successfully typed "5109510187" into Tax ID Input Field
+[ActionHelper] Clicking on Selecting PayPal Payment Method
+[ActionHelper] Typing "kenna_connelly@hotmail.com" into PayPal Payee Name Input Field
+[ActionHelper] Successfully typed "kenna_connelly@hotmail.com" into PayPal Payee Name Input Field
+TEST STEP : Submit Affiliate Registration without agreeing to terms
+TEST STEP : Verify Agree to Terms Error Message
+[ActionHelper] Verifying text of Agree to Terms Error Message is "Warning: You must agree to the About Us!"
+[ActionHelper] ✅ Verified "Agree to Terms Error Message" text/value successfully.

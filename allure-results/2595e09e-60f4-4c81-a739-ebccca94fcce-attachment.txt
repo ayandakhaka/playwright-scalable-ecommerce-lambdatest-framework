@@ -1,0 +1,27 @@
+Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=account/register
+[ActionHelper] Typing "Carlee" into First Name Input
+[ActionHelper] Successfully typed "Carlee" into First Name Input
+[ActionHelper] Typing "Murray-Mann" into Last Name Input
+[ActionHelper] Successfully typed "Murray-Mann" into Last Name Input
+[ActionHelper] Typing "carlee_murray-mann41@yahoo.com" into Email Input
+[ActionHelper] Successfully typed "carlee_murray-mann41@yahoo.com" into Email Input
+[ActionHelper] Typing "(880) 348-0219" into Telephone Input
+[ActionHelper] Successfully typed "(880) 348-0219" into Telephone Input
+[ActionHelper] Typing "Znc_0KJlq9BY@2025" into Password Input
+[ActionHelper] Successfully typed "Znc_0KJlq9BY@2025" into Password Input
+[ActionHelper] Typing "Znc_0KJlq9BY@2025" into Confirm Password Input
+[ActionHelper] Successfully typed "Znc_0KJlq9BY@2025" into Confirm Password Input
+[ActionHelper] Clicking on Privacy Policy Checkbox
+[ActionHelper] Clicking on Continue Button
+[ActionHelper] Hovering over My Account Menu
+[ActionHelper] Waiting for visibility of Logout button
+[ActionHelper] Clicking on Logout Link
+TEST STEP : Open login menu
+[ActionHelper] Hovering over My Account Menu
+TEST STEP : Login with valid user: carlee_murray-mann41@yahoo.com
+[ActionHelper] Typing "carlee_murray-mann41@yahoo.com" into Email Input
+[ActionHelper] Successfully typed "carlee_murray-mann41@yahoo.com" into Email Input
+[ActionHelper] Typing "Znc_0KJlq9BY@2025" into Password Input
+[ActionHelper] Successfully typed "Znc_0KJlq9BY@2025" into Password Input
+[ActionHelper] Clicking on Login Button
+Current URL: https://ecommerce-playground.lambdatest.io/index.php?route=account/account

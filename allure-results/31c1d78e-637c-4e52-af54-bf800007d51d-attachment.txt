@@ -1,0 +1,46 @@
+TEST STEP : Navigate to registration page
+Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[ActionHelper] Hovering over My Account Menu
+[ActionHelper] Clicking on Register Link
+TEST STEP : Fill the user registration form
+[ActionHelper] Typing "Marilie" into First Name Input
+[ActionHelper] Successfully typed "Marilie" into First Name Input
+[ActionHelper] Typing "Prosacco" into Last Name Input
+[ActionHelper] Successfully typed "Prosacco" into Last Name Input
+[ActionHelper] Typing "marilie.prosacco3@yahoo.com" into Email Input
+[ActionHelper] Successfully typed "marilie.prosacco3@yahoo.com" into Email Input
+[ActionHelper] Typing "(487) 836-7743" into Telephone Input
+[ActionHelper] Successfully typed "(487) 836-7743" into Telephone Input
+[ActionHelper] Typing "2TruRXrV3MFt@2025" into Password Input
+[ActionHelper] Successfully typed "2TruRXrV3MFt@2025" into Password Input
+[ActionHelper] Typing "2TruRXrV3MFt@2025" into Confirm Password Input
+[ActionHelper] Successfully typed "2TruRXrV3MFt@2025" into Confirm Password Input
+TEST STEP : Submit the registration form
+[ActionHelper] Clicking on Privacy Policy Checkbox
+[ActionHelper] Clicking on Continue Button
+TEST STEP : Click Continue after account creation
+TEST STEP : Save newly registered user data
+TEST STEP : Navigate to Affiliate Registration Page
+[ActionHelper] Clicking on Navigate to Affiliate Registration Page
+TEST STEP : Fill Affiliate Registration Form with Bank Transfer Payment Method
+[ActionHelper] Typing "Wehner, Metz and Keeling" into Company Name Input Field
+[ActionHelper] Successfully typed "Wehner, Metz and Keeling" into Company Name Input Field
+[ActionHelper] Typing "www.wehner, metz and keelingaffiliates.com" into Website Input Field
+[ActionHelper] Successfully typed "www.wehner, metz and keelingaffiliates.com" into Website Input Field
+[ActionHelper] Typing "7652306899" into Tax ID Input Field
+[ActionHelper] Successfully typed "7652306899" into Tax ID Input Field
+[ActionHelper] Clicking on Selecting Bank Transfer Payment Method
+[ActionHelper] Typing "Bank of Testing" into Bank Name Input Field
+[ActionHelper] Successfully typed "Bank of Testing" into Bank Name Input Field
+[ActionHelper] Typing "7652306899" into Bank Branch Number Input Field
+[ActionHelper] Successfully typed "7652306899" into Bank Branch Number Input Field
+[ActionHelper] Typing "SWIFT-0QP28MV7" into Bank SWIFT Code Input Field
+[ActionHelper] Successfully typed "SWIFT-0QP28MV7" into Bank SWIFT Code Input Field
+[ActionHelper] Typing "Marilie Prosacco" into Bank Account Name Input Field
+[ActionHelper] Successfully typed "Marilie Prosacco" into Bank Account Name Input Field
+[ActionHelper] Typing "5742957530" into Bank Account Number Input Field
+[ActionHelper] Successfully typed "5742957530" into Bank Account Number Input Field
+TEST STEP : Submit Affiliate Registration without agreeing to terms
+TEST STEP : Verify Agree to Terms Error Message
+[ActionHelper] Verifying text of Agree to Terms Error Message is "Warning: You must agree to the About Us!"
+[ActionHelper] ✅ Verified "Agree to Terms Error Message" text/value successfully.

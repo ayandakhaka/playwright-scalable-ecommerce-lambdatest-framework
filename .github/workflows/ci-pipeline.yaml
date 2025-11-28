@@ -57,6 +57,17 @@ jobs:
         env:
           CI: true
 
+      - name: Debug test execution
+        run: |
+          echo "Files in allure-results after running tests:"
+          ls -R allure-results || echo "NO FILES FOUND!"
+
+      - name: Debug Allure Results
+        run: |
+          echo "== ALLURE RESULTS =="
+          ls -R allure-results || echo "allure-results not found"
+
+
       # 8️⃣ Create Allure Environment Properties
       - name: Create Allure Environment Properties
         run: |
@@ -117,7 +128,6 @@ jobs:
             })
 
       # 13. Generate test summary including retries
-      # Generate test summary
       - name: Generate Test Summary
         run: |
           npx ts-node utils/getTestSummary.ts

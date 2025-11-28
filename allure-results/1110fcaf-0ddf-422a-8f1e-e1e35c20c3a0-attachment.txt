@@ -1,0 +1,38 @@
+TEST STEP : Navigate to registration page
+Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[ActionHelper] Hovering over My Account Menu
+[ActionHelper] Clicking on Register Link
+TEST STEP : Fill the user registration form
+[ActionHelper] Typing "Alanna" into First Name Input
+[ActionHelper] Successfully typed "Alanna" into First Name Input
+[ActionHelper] Typing "Aufderhar" into Last Name Input
+[ActionHelper] Successfully typed "Aufderhar" into Last Name Input
+[ActionHelper] Typing "alanna.aufderhar14@yahoo.com" into Email Input
+[ActionHelper] Successfully typed "alanna.aufderhar14@yahoo.com" into Email Input
+[ActionHelper] Typing "(652) 459-7700" into Telephone Input
+[ActionHelper] Successfully typed "(652) 459-7700" into Telephone Input
+[ActionHelper] Typing "p0S7u7vtFdlT@2025" into Password Input
+[ActionHelper] Successfully typed "p0S7u7vtFdlT@2025" into Password Input
+[ActionHelper] Typing "p0S7u7vtFdlT@2025" into Confirm Password Input
+[ActionHelper] Successfully typed "p0S7u7vtFdlT@2025" into Confirm Password Input
+TEST STEP : Submit the registration form
+[ActionHelper] Clicking on Privacy Policy Checkbox
+[ActionHelper] Clicking on Continue Button
+TEST STEP : Click Continue after account creation
+TEST STEP : Save newly registered user data
+TEST STEP : Navigate to Affiliate Registration Page
+[ActionHelper] Clicking on Navigate to Affiliate Registration Page
+TEST STEP : Fill Affiliate Registration Form with Cheque Payment Method
+[ActionHelper] Typing "Streich, Corkery and Wiza" into Company Name Input Field
+[ActionHelper] Successfully typed "Streich, Corkery and Wiza" into Company Name Input Field
+[ActionHelper] Typing "www.streich, corkery and wizaaffiliates.com" into Website Input Field
+[ActionHelper] Successfully typed "www.streich, corkery and wizaaffiliates.com" into Website Input Field
+[ActionHelper] Typing "3798774357" into Tax ID Input Field
+[ActionHelper] Successfully typed "3798774357" into Tax ID Input Field
+[ActionHelper] Clicking on Selecting Cheque Payment Method
+[ActionHelper] Typing "Alanna Aufderhar" into Cheque Payee Name Input Field
+[ActionHelper] Successfully typed "Alanna Aufderhar" into Cheque Payee Name Input Field
+TEST STEP : Submit Affiliate Registration without agreeing to terms
+TEST STEP : Verify Agree to Terms Error Message
+[ActionHelper] Verifying text of Agree to Terms Error Message is "Warning: You must agree to the About Us!"
+[ActionHelper] ✅ Verified "Agree to Terms Error Message" text/value successfully.

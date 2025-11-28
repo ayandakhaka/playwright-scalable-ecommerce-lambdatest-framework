@@ -1,0 +1,48 @@
+TEST STEP : Navigate to registration page
+Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[ActionHelper] Hovering over My Account Menu
+[ActionHelper] Clicking on Register Link
+TEST STEP : Fill the user registration form
+[ActionHelper] Typing "Caesar" into First Name Input
+[ActionHelper] Successfully typed "Caesar" into First Name Input
+[ActionHelper] Typing "Keebler" into Last Name Input
+[ActionHelper] Successfully typed "Keebler" into Last Name Input
+[ActionHelper] Typing "caesar.keebler@hotmail.com" into Email Input
+[ActionHelper] Successfully typed "caesar.keebler@hotmail.com" into Email Input
+[ActionHelper] Typing "(869) 518-0603" into Telephone Input
+[ActionHelper] Successfully typed "(869) 518-0603" into Telephone Input
+[ActionHelper] Typing "Sjh6IIebVE_W@2025" into Password Input
+[ActionHelper] Successfully typed "Sjh6IIebVE_W@2025" into Password Input
+[ActionHelper] Typing "Sjh6IIebVE_W@2025" into Confirm Password Input
+[ActionHelper] Successfully typed "Sjh6IIebVE_W@2025" into Confirm Password Input
+TEST STEP : Submit the registration form
+[ActionHelper] Clicking on Privacy Policy Checkbox
+[ActionHelper] Clicking on Continue Button
+TEST STEP : Click Continue after account creation
+TEST STEP : Save newly registered user data
+TEST STEP : Navigate to Affiliate Registration Page
+[ActionHelper] Clicking on Navigate to Affiliate Registration Page
+TEST STEP : Fill Affiliate Registration Form without Account Name
+[ActionHelper] Typing "Muller, O'Hara and Wisozk" into Company Name Input Field
+[ActionHelper] Successfully typed "Muller, O'Hara and Wisozk" into Company Name Input Field
+[ActionHelper] Typing "www.muller, o'hara and wisozkaffiliates.com" into Website Input Field
+[ActionHelper] Successfully typed "www.muller, o'hara and wisozkaffiliates.com" into Website Input Field
+[ActionHelper] Typing "7397452270" into Tax ID Input Field
+[ActionHelper] Successfully typed "7397452270" into Tax ID Input Field
+[ActionHelper] Clicking on Selecting Bank Transfer Payment Method
+[ActionHelper] Typing "Bank of Testing" into Bank Name Input Field
+[ActionHelper] Successfully typed "Bank of Testing" into Bank Name Input Field
+[ActionHelper] Typing "7397452270" into Bank Branch Number Input Field
+[ActionHelper] Successfully typed "7397452270" into Bank Branch Number Input Field
+[ActionHelper] Typing "SWIFT-ER1Y3L4L" into Bank SWIFT Code Input Field
+[ActionHelper] Successfully typed "SWIFT-ER1Y3L4L" into Bank SWIFT Code Input Field
+[ActionHelper] Typing "" into Bank Account Name Input Field
+[ActionHelper] Successfully typed "" into Bank Account Name Input Field
+[ActionHelper] Typing "6479720816" into Bank Account Number Input Field
+[ActionHelper] Successfully typed "6479720816" into Bank Account Number Input Field
+TEST STEP : Agree to terms and conditions
+[ActionHelper] Clicking on Agree to Terms Checkbox
+TEST STEP : Submit Affiliate Registration
+TEST STEP : Verify Account Name Error Message
+[ActionHelper] Verifying text of Cheque Payee Name Error Message is "Account Name required!"
+[ActionHelper] ✅ Verified "Cheque Payee Name Error Message" text/value successfully.
