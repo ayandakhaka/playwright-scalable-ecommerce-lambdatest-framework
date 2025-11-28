@@ -42,10 +42,15 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Download Allure History
-        uses: actions/download-artifact@v4
-        with:
-          name: allure-history
-          path: temp-history
+        run: |
+          mkdir -p temp-history
+          if gh run artifact list --workflow="LambdaTest Playwright Automation" | grep allure-history; then
+            echo "Artifact exists. Downloading..."
+            gh run download --name allure-history --dir temp-history
+          else
+            echo "No previous history found. First run."
+          fi
+        shell: bash
 
 
       # 5. Restore previous Allure history
