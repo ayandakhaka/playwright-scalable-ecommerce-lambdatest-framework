@@ -1,52 +1,58 @@
 import fs from "fs";
 import path from "path";
+import { globSync } from "glob";
 
-// ALWAYS write summary.env to project root
-const summaryFile = path.join(process.cwd(), "summary.env");
-
-// Ensure file is created even if no results exist
-fs.writeFileSync(summaryFile, "TOTAL=0\nPASSED=0\nFAILED=0\nSKIPPED=0\nRETRIED=0");
-
-console.log("Created summary.env placeholder");
-
-try {
-    const resultsPath = path.join(process.cwd(), "allure-results");
-
-    let total = 0;
-    let passed = 0;
-    let failed = 0;
-    let skipped = 0;
-    let retried = 0;
-
-    const jsonFiles = fs.readdirSync(resultsPath).filter(f => f.endsWith(".json"));
-
-    jsonFiles.forEach(file => {
-        const data = JSON.parse(fs.readFileSync(path.join(resultsPath, file), "utf-8"));
-
-        if (Array.isArray(data.tests)) {
-            data.tests.forEach((t: any) => {
-                total++;
-                if (t.retries && t.retries > 0) retried += t.retries;
-
-                switch (t.status) {
-                    case "passed": passed++; break;
-                    case "failed": failed++; break;
-                    case "skipped": skipped++; break;
-                }
-            });
-        }
-    });
-
-    const summary = `
-TOTAL=${total}
-PASSED=${passed}
-FAILED=${failed}
-SKIPPED=${skipped}
-RETRIED=${retried}
-`;
-
-    fs.writeFileSync(summaryFile, summary.trim());
-    console.log("Generated summary.env:\n" + summary.trim());
-} catch (e) {
-    console.error("Failed to generate summary:", e);
+interface Summary {
+  total: number;
+  passed: number;
+  failed: number;
+  skipped: number;
 }
+
+const resultsDir = path.join(process.cwd(), "allure-results");
+const summary: Summary = { total: 0, passed: 0, failed: 0, skipped: 0 };
+
+// --- Collect all JSON files excluding history ---
+const files = globSync(`${resultsDir}/**/*-result.json`, {
+  ignore: [`${resultsDir}/history/**`],
+});
+
+if (files.length === 0) {
+  console.warn("⚠ No test result JSON files found in allure-results.");
+}
+
+// --- Summarize results ---
+files.forEach((filePath) => {
+  const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  if (data.status) {
+    summary.total++;
+    switch (data.status) {
+      case "passed":
+        summary.passed++;
+        break;
+      case "failed":
+        summary.failed++;
+        break;
+      case "skipped":
+        summary.skipped++;
+        break;
+    }
+  }
+});
+
+// --- Output for GitHub Actions ---
+console.log(`TOTAL=${summary.total}`);
+console.log(`PASSED=${summary.passed}`);
+console.log(`FAILED=${summary.failed}`);
+console.log(`SKIPPED=${summary.skipped}`);
+
+// Optional: also write to $GITHUB_ENV for later steps
+const githubEnv = process.env.GITHUB_ENV;
+if (githubEnv) {
+  fs.appendFileSync(githubEnv, `TOTAL=${summary.total}\n`);
+  fs.appendFileSync(githubEnv, `PASSED=${summary.passed}\n`);
+  fs.appendFileSync(githubEnv, `FAILED=${summary.failed}\n`);
+  fs.appendFileSync(githubEnv, `SKIPPED=${summary.skipped}\n`);
+}
+
+console.log("✔ Test summary generated successfully");
