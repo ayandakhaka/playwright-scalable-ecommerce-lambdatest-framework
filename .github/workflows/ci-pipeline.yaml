@@ -126,7 +126,7 @@ jobs:
 
       # 1️⃣5️⃣ Generate accurate Test Summary
       - name: Generate Test Summary
-        run: npx ts-node utils/summarizeResults.ts
+        run: npx ts-node utils/getTestSummary.ts
 
       # 1️⃣6️⃣ Send Email
       - name: Send Allure Report via Email
