@@ -20,7 +20,7 @@ jobs:
       LT_USERNAME: ${{ secrets.LT_USERNAME }}
       LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
       BASE_URL: ${{ secrets.BASE_URL }}
-      REPORT_URL: "https://${{ github.repository_owner }}.github.io/playwright-scalable-ecommerce-lambdatest-framework/"
+      REPORT_URL: "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
 
     steps:
       # 1️⃣ Checkout repository
@@ -37,57 +37,45 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # 4️⃣ Install Playwright Browsers
+      # 4️⃣ Install Playwright browsers
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      # 5️⃣ Cleanup old Allure results
-      - name: Cleanup Allure results
-        run: rm -rf allure-results/* || true
+      # 5️⃣ Download previous Allure history (for trends)
+      - name: Download previous Allure History
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-history
+          path: temp-history
+        continue-on-error: true # first run might not have history
 
-      # 6️⃣ Restore Allure history into allure-results/history
-      - name: Restore Allure history
-        run: npx ts-node utils/copyAllureHistory.ts
+      # 6️⃣ Restore Allure history
+      - name: Restore Allure History
+        run: node utils/copyAllureHistory.ts
 
-      # 7️⃣ Run Playwright Tests
-      - name: Run Playwright Tests
-        id: run-tests
-        run: npx playwright test --reporter=list,allure-playwright
-        continue-on-error: true
-        env:
-          CI: true
-
-      - name: DEBUG — Show allure-results content
-        run: |
-          echo "===== ALLURE RESULTS CONTENT ====="
-          ls -R allure-results || echo "⚠ No allure-results folder found"
-
-
-      - name: Debug test execution
-        run: |
-          echo "Files in allure-results after running tests:"
-          ls -R allure-results || echo "NO FILES FOUND!"
-
-      - name: Debug Allure Results
-        run: |
-          echo "== ALLURE RESULTS =="
-          ls -R allure-results || echo "allure-results not found"
-
-
-      # 8️⃣ Create Allure Environment Properties
+      # 7️⃣ Ensure environment.properties exists
       - name: Create Allure Environment Properties
         run: |
-          echo "TestRunner=Playwright" > allure-results/environment.properties
-          echo "Browser=Chromium" >> allure-results/environment.properties
+          mkdir -p allure-results
+          echo "Browser=Chromium" > allure-results/environment.properties
           echo "BaseURL=${{ secrets.BASE_URL }}" >> allure-results/environment.properties
-          echo "BuildNumber=${{ github.run_number }}" >> allure-results/environment.properties
-          echo "Branch=${{ github.ref_name }}" >> allure-results/environment.properties
+          echo "LT_USERNAME=${{ secrets.LT_USERNAME }}" >> allure-results/environment.properties
 
-      # 9️⃣ Generate Allure Report (clean build + retains history)
+      # 8️⃣ Run Playwright tests with Allure reporter
+      - name: Run Playwright Tests
+        run: npx playwright test --reporter=list,allure-playwright
+
+      # 9️⃣ Debug Allure results (optional, ensures JSON files exist)
+      - name: Debug Allure Results
+        run: |
+          echo "===== ALLURE RESULTS CONTENT ====="
+          ls -R allure-results || echo "allure-results not found"
+
+      # 🔟 Generate Allure report with history preserved
       - name: Generate Allure Report
-        run: npx allure generate allure-results --clean -o allure-report
+        run: npx allure generate allure-results -o allure-report --clean=false
 
-      # 🔟 Upload Allure Report
+      # 1️⃣1️⃣ Upload Allure report artifact
       - name: Upload Allure Report
         if: always()
         uses: actions/upload-artifact@v4
@@ -96,30 +84,30 @@ jobs:
           path: allure-report
           retention-days: 7
 
-      # 1️⃣1️⃣ Upload Allure History for next pipeline run
+      # 1️⃣2️⃣ Upload Allure history for next run
       - name: Upload Allure History
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: allure-history
           path: allure-report/history
+          retention-days: 30
 
-      # 1️⃣2️⃣ Deploy Allure Report to GitHub Pages
-      - name: Setup Git for Pages
+      # 1️⃣3️⃣ Generate test summary from TypeScript script
+      - name: Generate Test Summary
+        id: summary
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          mkdir -p summary
+          npx ts-node utils/getTestSummary.ts > summary.env
+          echo "--- SUMMARY.ENV CONTENT ---"
+          cat summary.env
+          echo "TOTAL=$(grep TOTAL summary.env | cut -d= -f2)" >> $GITHUB_ENV
+          echo "PASSED=$(grep PASSED summary.env | cut -d= -f2)" >> $GITHUB_ENV
+          echo "FAILED=$(grep FAILED summary.env | cut -d= -f2)" >> $GITHUB_ENV
+          echo "SKIPPED=$(grep SKIPPED summary.env | cut -d= -f2)" >> $GITHUB_ENV
+          echo "RETRIED=$(grep RETRIED summary.env | cut -d= -f2)" >> $GITHUB_ENV
 
-      - name: Deploy Allure Report to GitHub Pages
-        if: github.ref == 'refs/heads/main'
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./allure-report
-          publish_branch: gh-pages
-          force_orphan: true
-
-      # 1️⃣3️⃣ Comment on PR
+      # 1️⃣4️⃣ Comment on PR with report link
       - name: Comment on Pull Request
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
@@ -130,22 +118,10 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `✅ Allure Report is available here:\n${process.env.REPORT_URL}`
+              body: `✅ Allure Report is available here: [View Report](${process.env.REPORT_URL})`
             })
 
-      # 13. Generate test summary including retries
-      - name: Generate Test Summary
-        run: |
-          npx ts-node utils/getTestSummary.ts
-          echo "--- SUMMARY.ENV CONTENT ---"
-          cat summary.env
-          echo "TOTAL=$(grep TOTAL summary.env | cut -d= -f2)" >> $GITHUB_ENV
-          echo "PASSED=$(grep PASSED summary.env | cut -d= -f2)" >> $GITHUB_ENV
-          echo "FAILED=$(grep FAILED summary.env | cut -d= -f2)" >> $GITHUB_ENV
-          echo "SKIPPED=$(grep SKIPPED summary.env | cut -d= -f2)" >> $GITHUB_ENV
-          echo "RETRIED=$(grep RETRIED summary.env | cut -d= -f2)" >> $GITHUB_ENV
-
-      # 1️⃣5️⃣ Send Email
+      # 1️⃣5️⃣ Send Allure report via email
       - name: Send Allure Report via Email
         if: always()
         uses: dawidd6/action-send-mail@v3
@@ -156,7 +132,7 @@ jobs:
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: "Playwright Test Results - Allure Report"
           to: "khakhaalwande@gmail.com"
-          from: "GitHub Actions <github-actions@github.com>"
+          from: "GitHub Actions Bot <github-actions[bot]@users.noreply.github.com>"
           body: |
             Hi team,
 
@@ -174,8 +150,3 @@ jobs:
 
             Regards,
             CI Bot
-
-      # 1️⃣6️⃣ Fail job if tests failed
-      - name: Fail job if any tests failed
-        if: steps.run-tests.outcome != 'success'
-        run: exit 1
