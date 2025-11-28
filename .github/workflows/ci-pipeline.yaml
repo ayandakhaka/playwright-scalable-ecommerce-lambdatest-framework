@@ -41,13 +41,9 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      # 5. Restore Allure History (for trends)
-      - name: Download Previous Allure History
-        uses: actions/download-artifact@v4
-        continue-on-error: true
-        with:
-          name: allure-history
-          path: allure-results/history
+      # 5. Restore previous Allure history
+      - name: Restore allure history
+        run: npx ts-node utils/copyAllureHistory.ts
 
       # 6. Ensure results folder exists
       - name: Ensure Allure results folder
@@ -58,6 +54,8 @@ jobs:
         id: run-tests
         run: npx playwright test --reporter=list,allure-playwright
         continue-on-error: true
+        env:
+          CI: true
 
       # 8. Create Allure environment.properties
       - name: Create Allure Environment Properties
@@ -70,7 +68,7 @@ jobs:
 
       # 9. Generate Allure Report with history
       - name: Generate Allure Report
-        run: npx allure generate allure-results -o allure-report --clean
+        run: npx allure generate allure-results -o allure-report
 
       # 10. Upload Allure Report artifact
       - name: Upload Allure Report
@@ -122,10 +120,10 @@ jobs:
       - name: Generate Test Summary
         id: summary
         run: |
-          TOTAL=$(ls allure-results/*-result.json | wc -l)
-          PASSED=$(grep -Ri "\"status\": \"passed\"" allure-results/*-result.json | wc -l)
-          FAILED=$(grep -Ri "\"status\": \"failed\"" allure-results/*-result.json | wc -l)
-          SKIPPED=$(grep -Ri "\"status\": \"skipped\"" allure-results/*-result.json | wc -l)
+          TOTAL=$(find allure-results -maxdepth 1 -type f -name "*-result.json" | wc -l)
+          PASSED=$(grep -R "\"status\": \"passed\"" allure-results/*-result.json | wc -l)
+          FAILED=$(grep -R "\"status\": \"failed\"" allure-results/*-result.json | wc -l)
+          SKIPPED=$(grep -R "\"status\": \"skipped\"" allure-results/*-result.json | wc -l)
 
           echo "TOTAL=$TOTAL" >> $GITHUB_ENV
           echo "PASSED=$PASSED" >> $GITHUB_ENV
