@@ -10,6 +10,7 @@ export default defineConfig({
     ['list'],
     ['allure-playwright']
   ],
+  outputDir: 'allure-results',
 
   retries: 2,
 
