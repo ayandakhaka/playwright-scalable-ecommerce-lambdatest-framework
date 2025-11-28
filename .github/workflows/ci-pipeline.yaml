@@ -49,10 +49,6 @@ jobs:
       - name: Restore Allure history
         run: npx ts-node utils/copyAllureHistory.ts
 
-      # 7️⃣ Ensure results folder exists
-      - name: Ensure Allure results folder
-        run: mkdir -p allure-results
-
       # 8️⃣ Run Playwright Tests
       - name: Run Playwright Tests
         id: run-tests
