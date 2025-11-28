@@ -42,7 +42,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Download Allure History
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: allure-history
           path: allure-report/history
@@ -127,7 +127,7 @@ jobs:
       - name: Generate Test Summary
         id: summary
         run: |
-          TOTAL=$(find allure-results -maxdepth 1 -type f -name "*.json" | wc -l)
+          TOTAL=$(find allure-results -maxdepth 1 -type f -name "*.json" ! -path "*/history/*" | wc -l)
           PASSED=$(grep -R "\"status\": \"passed\"" allure-results/*.json | wc -l)
           FAILED=$(grep -R "\"status\": \"failed\"" allure-results/*.json | wc -l)
           SKIPPED=$(grep -R "\"status\": \"skipped\"" allure-results/*.json | wc -l)
