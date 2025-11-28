@@ -41,12 +41,13 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      # 5️⃣ Download previous Allure history (if exists)
+      # 5️⃣ Download previous Allure history (if exists, safe for first run)
       - name: Download Allure History
         uses: actions/download-artifact@v4
         with:
           name: allure-history
           path: temp-history
+        continue-on-error: true
 
       # 6️⃣ Restore previous Allure history
       - name: Restore allure history
@@ -64,7 +65,7 @@ jobs:
         env:
           CI: true
 
-      # 9️⃣ Create Allure environment.properties
+      # 9️⃣ Create Allure Environment Properties
       - name: Create Allure Environment Properties
         run: |
           echo "TestRunner=Playwright" > allure-results/environment.properties
@@ -73,7 +74,7 @@ jobs:
           echo "BuildNumber=${{ github.run_number }}" >> allure-results/environment.properties
           echo "Branch=${{ github.ref_name }}" >> allure-results/environment.properties
 
-      # 🔟 Generate Allure Report with history
+      # 🔟 Generate Allure Report (includes history)
       - name: Generate Allure Report
         run: npx allure generate allure-results -o allure-report
 
@@ -86,7 +87,7 @@ jobs:
           path: allure-report
           retention-days: 7
 
-      # 1️⃣2️⃣ Save history for next run
+      # 1️⃣2️⃣ Upload history for next run
       - name: Upload Allure History
         if: always()
         uses: actions/upload-artifact@v4
