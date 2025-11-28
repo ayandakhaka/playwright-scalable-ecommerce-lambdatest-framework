@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import glob from "glob";
 
 interface Summary {
   total: number;
@@ -9,8 +10,6 @@ interface Summary {
 }
 
 const resultsDir = path.join(process.cwd(), "allure-results");
-const reportDir = path.join(process.cwd(), "allure-report");
-const historyDir = path.join(reportDir, "history");
 
 const summary: Summary = {
   total: 0,
@@ -19,25 +18,6 @@ const summary: Summary = {
   skipped: 0,
 };
 
-// --- Restore previous history for trend charts ---
-function restoreHistory() {
-  if (!fs.existsSync(historyDir)) {
-    console.log("⚠ No previous history found (first run). Trends will start next run.");
-    return;
-  }
-
-  const target = path.join(resultsDir, "history");
-  if (!fs.existsSync(target)) fs.mkdirSync(target);
-
-  fs.readdirSync(historyDir).forEach((file) => {
-    const src = path.join(historyDir, file);
-    const dest = path.join(target, file);
-    fs.copyFileSync(src, dest);
-  });
-
-  console.log("✔ Allure history restored for trend charts");
-}
-
 // --- Summarize test results ---
 function summarizeResults() {
   if (!fs.existsSync(resultsDir)) {
@@ -45,14 +25,10 @@ function summarizeResults() {
     process.exit(1);
   }
 
-  const files = fs.readdirSync(resultsDir);
+  // Use glob to only pick test result JSON files (ignore history and metadata)
+  const files = glob.sync("allure-results/**/*-result.json");
 
-  files.forEach((file) => {
-    const filePath = path.join(resultsDir, file);
-
-    // Skip directories (like history) or non-json files
-    if (fs.lstatSync(filePath).isDirectory() || !file.endsWith(".json")) return;
-
+  files.forEach((filePath) => {
     const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
     if (data.status) {
       summary.total++;
@@ -79,9 +55,14 @@ function outputSummary() {
   console.log(`PASSED=${summary.passed}`);
   console.log(`FAILED=${summary.failed}`);
   console.log(`SKIPPED=${summary.skipped}`);
+
+  // Export to GitHub environment variables for later workflow steps
+  fs.appendFileSync(process.env.GITHUB_ENV!, `TOTAL=${summary.total}\n`);
+  fs.appendFileSync(process.env.GITHUB_ENV!, `PASSED=${summary.passed}\n`);
+  fs.appendFileSync(process.env.GITHUB_ENV!, `FAILED=${summary.failed}\n`);
+  fs.appendFileSync(process.env.GITHUB_ENV!, `SKIPPED=${summary.skipped}\n`);
 }
 
 // --- Run all ---
-restoreHistory();
 summarizeResults();
 outputSummary();

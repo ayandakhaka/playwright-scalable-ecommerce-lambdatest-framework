@@ -1,13 +1,15 @@
 import fs from "fs";
 import path from "path";
 
-// Updated path: use the temporary folder where the artifact will be downloaded
+// Path where previous history artifact is downloaded
 const previousReportHistory = path.join(process.cwd(), "temp-history");
+
+// Path to allure-results
 const results = path.join(process.cwd(), "allure-results");
 
 function copyHistory() {
     if (!fs.existsSync(previousReportHistory)) {
-        console.log("⚠ No previous history found (first run). Trends will start from next run.");
+        console.log("⚠ No previous history found (first run). Trends will start next run.");
         return;
     }
 
