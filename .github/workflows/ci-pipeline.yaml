@@ -41,16 +41,12 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      # 5️⃣ Download previous Allure history (if exists, safe for first run)
-      - name: Download Allure History
-        uses: actions/download-artifact@v4
-        with:
-          name: allure-history
-          path: temp-history
-        continue-on-error: true
+      # 5. Cleanup old Allure results
+      - name: Cleanup Allure results
+        run: rm -rf allure-results/* || true
 
-      # 6️⃣ Restore previous Allure history
-      - name: Restore allure history
+      # 6. Restore previous Allure history locally
+      - name: Restore Allure history
         run: npx ts-node utils/copyAllureHistory.ts
 
       # 7️⃣ Ensure results folder exists
