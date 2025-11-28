@@ -117,10 +117,11 @@ jobs:
             })
 
       # 13. Generate test summary including retries
+      # Generate test summary
       - name: Generate Test Summary
-        id: summary
         run: |
           npx ts-node utils/getTestSummary.ts
+          echo "--- SUMMARY.ENV CONTENT ---"
           cat summary.env
           echo "TOTAL=$(grep TOTAL summary.env | cut -d= -f2)" >> $GITHUB_ENV
           echo "PASSED=$(grep PASSED summary.env | cut -d= -f2)" >> $GITHUB_ENV
