@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import glob from "glob";
+import { globSync } from "glob";
 
 interface Summary {
   total: number;
