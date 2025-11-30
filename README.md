@@ -72,4 +72,63 @@ Supports GitHub Actions
 1. npm install --save-dev allure-playwright
 2. npm install --save-dev allure-commandline
 
+# 🎯 Scalable Playwright Automation Framework with Allure Reporting
+
+This repository contains a **Playwright automation framework** with TypeScript, fully integrated with **Allure reporting**, including:
+
+- **environment.properties**  
+- **executor.json**  
+- **History tracking for trends**  
+
+This setup ensures full metadata and trends in Allure reports, suitable for both **local runs** and **CI/CD pipelines**.
+
+---
+
+## **📂 Folder Structure**
+```markdown
+Here is a folder structure:
+
+```
+.
+├─ tests/
+├─ utils/
+│  └─ copyAllureHistory.ts
+├─ global-setup.ts
+├─ global-teardown.ts
+├─ playwright.config.ts
+├─ package.json
+└─ README.md
+```
+
+```
+
+---
+
+## **⚙️ Configuration**
+
+### **playwright.config.ts**
+
+- **Output directory**: `allure-results`  
+- **Reporter**: `allure-playwright`  
+- **Global hooks**:
+  - `globalSetup` → copies previous `history` for trends  
+  - `globalTeardown` → regenerates `environment.properties` & `executor.json`
+
+```ts
+globalSetup: "./global-setup.ts",
+globalTeardown: "./global-teardown.ts",
+```
+
+## 💻 Test Execution Steps (Local)
+
+1. Run test - npx playwright test
+2. Generate Allure report (keep trends) - allure generate allure-results -o allure-report
+3. Open report - allure open allure-report
+
+
+
+
+
+
+
 
