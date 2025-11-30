@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-   // "pretest": "ts-node utils/allure-reporting/allureHistory.ts && ts-node utils/allure-reporting/generateAllureMeta.ts && ts-node utils/allure-reporting/generateAllureEnvironment.ts && ts-node utils/allure-reporting/generateExecutor.ts",
+    "pretest": "ts-node utils/allure-reporting/allureHistory.ts",
     "allure:generate": "allure generate allure-results --clean",
     "allure:open": "allure open allure-report",
     "allure:history": "ts-node utils/allure-reporting/copyHistory.ts",
