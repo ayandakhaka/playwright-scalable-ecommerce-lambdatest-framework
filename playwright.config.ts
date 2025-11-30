@@ -1,18 +1,13 @@
 import { defineConfig } from "@playwright/test";
-import * as dotenv from "dotenv";
-dotenv.config();
 
 export default defineConfig({
   testDir: "./tests",
-  outputDir: "allure-results",
-
   reporter: [
     ['list'],
-    ['allure-playwright']  // enable Allure reporting
+    ['allure-playwright']
   ],
-
+  outputDir: 'allure-results',
   retries: 2,
-
   use: {
     headless: true,
     screenshot: "only-on-failure",
@@ -20,11 +15,9 @@ export default defineConfig({
     trace: "on-first-retry",
     navigationTimeout: 60000,
   },
-
-  globalSetup: "./global-setup.ts",
-  globalTeardown: "./global-teardown.ts",
-
   projects: [
     { name: "chromium", use: { browserName: "chromium" } },
   ],
+  globalSetup: require.resolve('./global-setup.ts'),
+  globalTeardown: require.resolve('./global-teardown.ts'),
 });
