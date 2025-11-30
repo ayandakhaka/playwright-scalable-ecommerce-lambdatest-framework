@@ -20,6 +20,10 @@ jobs:
       LT_USERNAME: ${{ secrets.LT_USERNAME }}
       LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
       BASE_URL: ${{ secrets.BASE_URL }}
+      ENVIRONMENT: QA
+      TESTER: Ayanda Khaka
+      EXECUTION_TYPE: CI
+      REPORT_NAME: "Regression Suite - QA"
       REPORT_URL: "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
 
     steps:

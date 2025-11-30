@@ -7,18 +7,30 @@ async function globalTeardown() {
   // Ensure allure-results folder exists
   if (!fs.existsSync(resultsDir)) fs.mkdirSync(resultsDir, { recursive: true });
 
+  // --- Read environment variables from CI or fallback to defaults ---
+  const ENVIRONMENT = process.env.ENVIRONMENT || "QA";
+  const BROWSER = process.env.BROWSER || "Chromium";
+  const TESTER = process.env.TESTER || "Ayanda Khaka";
+  const COMPANY = process.env.COMPANY || "World Sports Betting";
+  const EXECUTION_TYPE = process.env.EXECUTION_TYPE || "CI Execution";
+  const OS = process.env.OS || "Ubuntu 22.04";
+  const URL = process.env.BASE_URL || "https://lambdatest.github.io/sample-app-ecommerce/";
+  const FRAMEWORK = process.env.FRAMEWORK || "Playwright with TypeScript";
+  const PROJECT = process.env.PROJECT || "Scalable E-Commerce Playground";
+  const TIMESTAMP = new Date().toISOString();
+
   // --- environment.properties ---
   const environmentProperties = `
-Environment=QA
-Browser=Chromium
-Tester=Ayanda Khaka
-Company=World Sports Betting
-ExecutionType=Local Execution
-OS=Windows 10
-URL=https://lambdatest.github.io/sample-app-ecommerce/
-Framework=Playwright with TypeScript
-Project=Scalable E-Commerce Playground
-Timestamp=${new Date().toISOString()}
+Environment=${ENVIRONMENT}
+Browser=${BROWSER}
+Tester=${TESTER}
+Company=${COMPANY}
+ExecutionType=${EXECUTION_TYPE}
+OS=${OS}
+URL=${URL}
+Framework=${FRAMEWORK}
+Project=${PROJECT}
+Timestamp=${TIMESTAMP}
 `;
 
   const envFilePath = path.join(resultsDir, "environment.properties");
@@ -27,15 +39,16 @@ Timestamp=${new Date().toISOString()}
 
   // --- executor.json ---
   const executorData = {
-    name: "Playwright Automation",
-    type: "local",
-    url: "http://localhost",
-    reportName: "Regression Suite - QA",
-    buildOrder: 1,
-    buildName: "v1.0.0",
-    description: "Chrome 118 on Windows 11, Node 20, Playwright 1.56",
-    buildUrl: "",
-    executionType: "manual",
+    name: process.env.EXECUTOR_NAME || "Playwright Automation",
+    type: process.env.EXECUTOR_TYPE || "CI",
+    url: URL,
+    reportName: process.env.REPORT_NAME || "Regression Suite - QA",
+    buildOrder: Number(process.env.BUILD_NUMBER) || Number(process.env.GITHUB_RUN_NUMBER) || 1,
+    buildName: process.env.BUILD_NAME || "v1.0.0",
+    description: process.env.DESCRIPTION || "Chromium on CI, Node 20, Playwright",
+    branch: process.env.GITHUB_REF_NAME || "main",
+    buildUrl: process.env.BUILD_URL || "",
+    executionType: EXECUTION_TYPE,
   };
 
   const executorFilePath = path.join(resultsDir, "executor.json");
