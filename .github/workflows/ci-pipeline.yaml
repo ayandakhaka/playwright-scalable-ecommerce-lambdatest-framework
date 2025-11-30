@@ -51,7 +51,7 @@ jobs:
 
       # 6️⃣ Restore Allure history
       - name: Restore Allure History
-        run: ts-node utils/allure-reporting/copyAllureHistory.ts
+        run: npx ts-node utils/allure-reporting/copyAllureHistory.ts
 
       # 7️⃣ Ensure environment.properties exists
       - name: Generate Allure Metadata

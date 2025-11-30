@@ -1,31 +1,13 @@
 import fs from "fs";
 import path from "path";
 
-const previousReportHistory = path.join(process.cwd(), "allure-report/history"); // directly point to last report
-const results = path.join(process.cwd(), "allure-results");
+const source = path.join(process.cwd(), "temp-history");
+const dest = path.join(process.cwd(), "allure-results/history");
 
-function copyRecursive(src: string, dest: string) {
-    if (!fs.existsSync(src)) return;
-
-    const stats = fs.statSync(src);
-    if (stats.isDirectory()) {
-        if (!fs.existsSync(dest)) fs.mkdirSync(dest);
-        fs.readdirSync(src).forEach((file) =>
-            copyRecursive(path.join(src, file), path.join(dest, file))
-        );
-    } else {
-        fs.copyFileSync(src, dest);
-    }
+if (fs.existsSync(source)) {
+  fs.mkdirSync(dest, { recursive: true });
+  fs.cpSync(source, dest, { recursive: true });
+  console.log("✔ Restored Allure history for trends");
+} else {
+  console.log("ℹ No previous history found. Trends will start fresh.");
 }
-
-function copyHistory() {
-    if (!fs.existsSync(previousReportHistory)) return; // silently skip first run
-
-    const historyTarget = path.join(results, "history");
-    if (!fs.existsSync(results)) fs.mkdirSync(results);
-
-    copyRecursive(previousReportHistory, historyTarget);
-    console.log("✔ Allure history restored for trend charts");
-}
-
-copyHistory();
