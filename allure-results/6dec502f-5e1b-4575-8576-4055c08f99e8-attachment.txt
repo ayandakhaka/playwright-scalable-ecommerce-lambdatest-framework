@@ -1,0 +1,27 @@
+Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=account/register
+[ActionHelper] Typing "Izaiah" into First Name Input
+[ActionHelper] Successfully typed "Izaiah" into First Name Input
+[ActionHelper] Typing "Collier" into Last Name Input
+[ActionHelper] Successfully typed "Collier" into Last Name Input
+[ActionHelper] Typing "izaiah.collier81@yahoo.com" into Email Input
+[ActionHelper] Successfully typed "izaiah.collier81@yahoo.com" into Email Input
+[ActionHelper] Typing "(745) 727-5173" into Telephone Input
+[ActionHelper] Successfully typed "(745) 727-5173" into Telephone Input
+[ActionHelper] Typing "FVMbBmRwGLs7@2025" into Password Input
+[ActionHelper] Successfully typed "FVMbBmRwGLs7@2025" into Password Input
+[ActionHelper] Typing "FVMbBmRwGLs7@2025" into Confirm Password Input
+[ActionHelper] Successfully typed "FVMbBmRwGLs7@2025" into Confirm Password Input
+[ActionHelper] Clicking on Privacy Policy Checkbox
+[ActionHelper] Clicking on Continue Button
+[ActionHelper] Hovering over My Account Menu
+[ActionHelper] Waiting for visibility of Logout button
+[ActionHelper] Clicking on Logout Link
+TEST STEP : Open login menu
+[ActionHelper] Hovering over My Account Menu
+TEST STEP : Login with valid user: izaiah.collier81@yahoo.com
+[ActionHelper] Typing "izaiah.collier81@yahoo.com" into Email Input
+[ActionHelper] Successfully typed "izaiah.collier81@yahoo.com" into Email Input
+[ActionHelper] Typing "FVMbBmRwGLs7@2025" into Password Input
+[ActionHelper] Successfully typed "FVMbBmRwGLs7@2025" into Password Input
+[ActionHelper] Clicking on Login Button
+Current URL: https://ecommerce-playground.lambdatest.io/index.php?route=account/login

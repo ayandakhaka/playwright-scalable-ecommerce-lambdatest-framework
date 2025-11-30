@@ -1,2 +1,0 @@
-TEST STEP : Navigate to homepage and open Register page
-Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home

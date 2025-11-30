@@ -257,23 +257,23 @@
                   - generic [ref=e299]: First Name*
                   - textbox "First Name*" [ref=e301]:
                     - /placeholder: First Name
-                    - text: Jamison
+                    - text: Alycia
                 - generic [ref=e302]:
                   - generic [ref=e303]: Last Name*
                   - textbox "Last Name*" [ref=e305]:
                     - /placeholder: Last Name
-                    - text: Rath
+                    - text: Trantow
                 - generic [ref=e306]:
                   - generic [ref=e307]: E-Mail*
                   - textbox "E-Mail*" [ref=e309]:
                     - /placeholder: E-Mail
-                    - text: jamison.rath64@hotmail.com
+                    - text: alycia.trantow@hotmail.com
                 - generic [ref=e310]:
                   - generic [ref=e311]: Telephone*
                   - generic [ref=e312]:
                     - textbox "Telephone*" [ref=e313]:
                       - /placeholder: Telephone
-                      - text: (899) 943-1877
+                      - text: (219) 590-7404
                     - generic [ref=e314]: Enter valid phone number with country code!
               - group "Your Password" [ref=e315]:
                 - generic [ref=e316]: Your Password
@@ -281,12 +281,12 @@
                   - generic [ref=e318]: Password*
                   - textbox "Password*" [ref=e320]:
                     - /placeholder: Password
-                    - text: VvG7Ce_rNaCs@2025
+                    - text: N9syhI3XHQtQ@2025
                 - generic [ref=e321]:
                   - generic [ref=e322]: Password Confirm*
                   - textbox "Password Confirm*" [ref=e324]:
                     - /placeholder: Password Confirm
-                    - text: VvG7Ce_rNaCs@2025
+                    - text: N9syhI3XHQtQ@2025
               - group "Newsletter" [ref=e325]:
                 - generic [ref=e326]: Newsletter
                 - generic [ref=e327]:
