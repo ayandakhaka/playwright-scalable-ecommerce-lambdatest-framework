@@ -51,15 +51,11 @@ jobs:
 
       # 6️⃣ Restore Allure history
       - name: Restore Allure History
-        run: node utils/copyAllureHistory.ts
+        run: ts-node utils/allure-reporting/copyAllureHistory.ts
 
       # 7️⃣ Ensure environment.properties exists
-      - name: Create Allure Environment Properties
-        run: |
-          mkdir -p allure-results
-          echo "Browser=Chromium" > allure-results/environment.properties
-          echo "BaseURL=${{ secrets.BASE_URL }}" >> allure-results/environment.properties
-          echo "LT_USERNAME=${{ secrets.LT_USERNAME }}" >> allure-results/environment.properties
+      - name: Generate Allure Metadata
+        run: node global-teardown.ts
 
       # 8️⃣ Run Playwright tests with Allure reporter
       - name: Run Playwright Tests
