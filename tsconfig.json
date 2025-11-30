@@ -4,7 +4,7 @@
     "moduleResolution": "Node",
     "target": "ES2020",
     "esModuleInterop": true,
-    "resolveJsonModule": true, // ✅ enable importing JSON
+    "resolveJsonModule": true,
     "outDir": "dist",
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
@@ -12,6 +12,7 @@
   "include": [
     "tests/**/*.ts",
     "utils/**/*.ts",
+    "utils/allure-reporting/**/*.ts",
     "global-teardown.ts"
   ]
 }

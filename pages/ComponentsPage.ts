@@ -20,26 +20,33 @@ export default class ComponentsPage {
 
     private removeCartItemButton = "button[title='Remove']";   // FIXED
     private price = "//span[@class='price-new' and text()='$337.99']";
+    private summaryLocator = 'span.mr-auto';
+    private alertLocator = '.alert-success:has-text("Palm Treo Pro")';
+    private productCardLocator = '.product-thumb';
+    private addToCartLocator = 'button[title="Add to Cart"]';
+    private cartSummaryLocator = '#notification-box-top span.mr-auto';
+    private cartTotalLocator = '#cart-total';
+    private removeButtonLocator = 'button[onclick*="cart.remove"]';
+    private editCartLocator = 'a.btn-primary:has-text("Edit cart")';
+    private totalItemsLocator = '.cart-icon .cart-item-total';
+    private cartItemTotalLocator = '.cart-item-total';
 
     async emptyCartIfNeeded() {
-        const cartCountText = await this.page.locator('.cart-item-total').first().textContent();
+        const cartCountText = await this.page.locator(this.cartItemTotalLocator).first().textContent();
         const cartCount = parseInt(cartCountText || "0");
 
         console.log("Current cart count:", cartCount);
 
         if (cartCount > 0) {
             // Open cart dropdown
-            await this.page.locator('.cart-icon .cart-item-total').first().click();
+            await this.page.locator(this.totalItemsLocator).first().click();
 
-            const editCartLink = this.page.locator('a.btn-primary:has-text("Edit cart")');
+            const editCartLink = this.page.locator(this.editCartLocator);
             await editCartLink.waitFor({ state: 'visible', timeout: 8000 });
             await editCartLink.click();
 
             // LOOP: Remove all items
-            const removeButtons = this.page.locator('button[onclick*="cart.remove"]');
-            //const count = await removeButtons.count();
-
-            //await removeButtons.first().waitFor({ state: 'visible', timeout: 8000 });
+            const removeButtons = this.page.locator(this.removeButtonLocator);
             await removeButtons.click();
 
             await this.navigateToHomePage();
@@ -78,7 +85,7 @@ export default class ComponentsPage {
 
     // ------------------------------------------------------
     async verifyCartUpdated() {
-        const cartButton = this.page.locator('#cart-total');
+        const cartButton = this.page.locator(this.cartTotalLocator);
         await expect(cartButton).toBeVisible({ timeout: 10000 });
     }
 
@@ -91,8 +98,8 @@ export default class ComponentsPage {
 
     async clickAddToCart(productName: string) {
         const productCard = this.page.locator(`.product-thumb:has-text("${productName}")`);
-        const addToCartBtn = productCard.locator(`button[title="Add to Cart"]`);
-        const cartSummary = this.page.locator('#notification-box-top span.mr-auto');
+        const addToCartBtn = productCard.locator(this.addToCartLocator);
+        const cartSummary = this.page.locator(this.cartSummaryLocator);
 
         // Wait for product card fully stable
         await productCard.waitFor({ state: "visible" });
@@ -140,7 +147,7 @@ export default class ComponentsPage {
     }
 
     async verifyAlertPopUpSuccessTextForTwoItems(expectedItems: number, expectedTotal: number) {
-        const cartSummary = this.page.locator('#notification-box-top span.mr-auto').nth(1);
+        const cartSummary = this.page.locator(this.cartSummary).nth(1);
         await expect(cartSummary).toBeVisible({ timeout: 10000 });
 
         const formattedTotal = `$${expectedTotal.toFixed(2)}`;
@@ -150,7 +157,7 @@ export default class ComponentsPage {
     }
 
     async verifyCartSummary(expectedItems: number, expectedTotal: number) {
-        const cartSummary = this.page.locator('#notification-box-top span.mr-auto');
+        const cartSummary = this.page.locator(this.cartSummary);
         await expect(cartSummary).toBeVisible({ timeout: 10000 });
 
         const formattedTotal = `$${expectedTotal.toFixed(2)}`;
@@ -162,14 +169,14 @@ export default class ComponentsPage {
 
     // ------------------------------------------------------
     async verifyCartSummaryContains(productName: string) {
-        const summary = this.page.locator('span.mr-auto');
+        const summary = this.page.locator(this.summaryLocator);
         await expect(summary).toBeVisible({ timeout: 5000 });
         await expect(summary).toContainText("item(s)");
     }
 
     // ------------------------------------------------------
     async verifyAlertPopUpSuccessText() {
-        const alert = this.page.locator('.alert-success:has-text("Palm Treo Pro")');
+        const alert = this.page.locator(this.alertLocator);
         await expect(alert).toBeVisible({ timeout: 10000 });
         await expect(alert).toContainText(
             "Success: You have added Palm Treo Pro to your shopping cart!"
@@ -178,7 +185,7 @@ export default class ComponentsPage {
 
     // ------------------------------------------------------
     async scrollToViewPalmTreoPro() {
-        const productCard = this.page.locator('.product-thumb', { hasText: 'Palm Treo Pro' });
+        const productCard = this.page.locator(this.productCardLocator, { hasText: 'Palm Treo Pro' });
         await productCard.waitFor({ state: 'visible', timeout: 10000 });
         await productCard.scrollIntoViewIfNeeded();
     }

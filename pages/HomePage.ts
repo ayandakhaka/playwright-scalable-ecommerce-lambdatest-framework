@@ -21,6 +21,8 @@ export class HomePage {
     private registerLink = 'a:has-text("Register")';                                        // Register link under My Account menu
     private loginLink = 'a:has-text("Login")';                                              // Login link under My Account menu
     private megaMenuLink = 'span.title:has-text("Mega Menu")'
+    private headphonesLinkLocator = 'a[title="Headphones"]';
+    private megaMenuLocator = '.title';
     // ------------------------------
     // Methods
     // ------------------------------
@@ -33,16 +35,14 @@ export class HomePage {
     }
 
     async clickHeadphonesCategory() {
-        const headphonesLink = this.page.locator('a[title="Headphones"]');
+        const headphonesLink = this.page.locator(this.headphonesLinkLocator);
         await headphonesLink.waitFor({ state: 'visible', timeout: 5000 });
         await headphonesLink.click();
     }
 
 
     async hoverMegaMenu() {
-        // await this.actionHelper.hover(this.megaMenuLink, "Mega Menu");
-        // adjust selector as needed
-        const megaMenu = this.page.locator('.title', { hasText: 'Mega Menu' });
+        const megaMenu = this.page.locator(this.megaMenuLocator, { hasText: 'Mega Menu' });
         await megaMenu.hover();
 
     }

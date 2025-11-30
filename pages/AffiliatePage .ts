@@ -110,15 +110,18 @@ export default class ChangePassword {
     }
 
     async enterCompanyName(company: string) {
-        await this.actionHelper.type(this.companyNameInput, company, "Company Name Input Field");
+        await this.actionHelper.type(
+            this.companyNameInput, company, "Company Name Input Field");
     }
 
     async enterWebsite(website: string) {
-        await this.actionHelper.type(this.websiteInput, website, "Website Input Field");
+        await this.actionHelper.type(
+            this.websiteInput, website, "Website Input Field");
     }
 
     async enterTaxId(taxId: string) {
-        await this.actionHelper.type(this.taxIdInput, taxId, "Tax ID Input Field");
+        await this.actionHelper.type(
+            this.taxIdInput, taxId, "Tax ID Input Field");
     }
 
     async enterPaymentDetails(
@@ -148,21 +151,25 @@ export default class ChangePassword {
     }
 
     async clickContinueButton() {
-        await this.actionHelper.click(this.continueButton, "Continue Button");
+        await this.actionHelper.click(
+            this.continueButton, "Continue Button");
     }
 
     async agreeToTerms() {
-        await this.actionHelper.click(this.agreeTermsCheckbox, "Agree to Terms Checkbox");
+        await this.actionHelper.click(
+            this.agreeTermsCheckbox, "Agree to Terms Checkbox");
     }
 
     // Scroll the affiliate registration link into view before interacting with it
     async scrollToAffiliateRegistrationLink() {
-        await this.page.locator(this.affiliateRegistration).scrollIntoViewIfNeeded();
+        await this.page.locator(
+            this.affiliateRegistration).scrollIntoViewIfNeeded();
     }
 
     async navigateToAffiliateRegistration() {
         await this.scrollToAffiliateRegistrationLink();
-        await this.actionHelper.click(this.affiliateRegistration, "Navigate to Affiliate Registration Page");
+        await this.actionHelper.click(
+            this.affiliateRegistration, "Navigate to Affiliate Registration Page");
     }
 
     async clickContinueButtonForAffiliate() {
@@ -171,7 +178,8 @@ export default class ChangePassword {
 
     async verifyAffiliateSuccessMessage(expectedMessage: string) {
         const successMessageLocator = this.page.locator(this.affiliateSuccessMessage);
-        await this.actionHelper.verifyText(successMessageLocator, expectedMessage, "Affiliate Success Message");
+        await this.actionHelper.verifyText(
+            successMessageLocator, expectedMessage, "Affiliate Success Message");
     }
 
 

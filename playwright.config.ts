@@ -4,13 +4,12 @@ dotenv.config();
 
 export default defineConfig({
   testDir: "./tests",
+  outputDir: "allure-results",
 
   reporter: [
-    //['html', { outputFolder: "playwright-report", open: "never" }],
     ['list'],
-    ['allure-playwright']
+    ['allure-playwright']  // enable Allure reporting
   ],
-  outputDir: 'allure-results',
 
   retries: 2,
 
@@ -22,9 +21,10 @@ export default defineConfig({
     navigationTimeout: 60000,
   },
 
+  globalSetup: "./global-setup.ts",
+  globalTeardown: "./global-teardown.ts",
+
   projects: [
     { name: "chromium", use: { browserName: "chromium" } },
-    // { name: "firefox", use: { browserName: "firefox" } },
-    // { name: "webkit", use: { browserName: "webkit" } },
   ],
 });

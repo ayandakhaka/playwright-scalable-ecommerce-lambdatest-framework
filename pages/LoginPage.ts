@@ -28,6 +28,8 @@ export class LoginPage {
   private editAccountLink = 'a.list-group-item:has-text("Edit Account")';
   private forgotPasswordLink = 'a:has-text("Change your password")';
   private headphonesLink = 'a.nav-link[title="Headphones"]';
+  private continueButtonLocator = 'input[value="Continue"]';
+  private continueAfterAccountCreationLocator = "a.btn.btn-primary";
   private loginData = loginJson;
 
   // ------------------------------
@@ -41,7 +43,7 @@ export class LoginPage {
   }
 
   async clickContinueButton() {
-    await this.actionHelper.click('input[value="Continue"]', "Continue Button");
+    await this.actionHelper.click(this.continueButtonLocator, "Continue Button");
   }
 
   async clickHeadphoneLink() {
@@ -54,14 +56,8 @@ export class LoginPage {
   }
 
   async clickContinueAfterAccountCreation() {
-    await this.page.locator("a.btn.btn-primary", { hasText: "Continue" }).click();
+    await this.page.locator(this.continueAfterAccountCreationLocator, { hasText: "Continue" }).click();
   }
-
-
-  async clickContinueButtonForAffiliate() {
-    await this.page.locator('a[href="https://ecommerce-playground.lambdatest.io/index.php?route=account/account"]');
-  }
-
 
   // ✅ Add this helper
   async waitForLoginPageToLoad() {

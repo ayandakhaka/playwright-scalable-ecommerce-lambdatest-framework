@@ -1,0 +1,21 @@
+TEST STEP : Navigate to homepage and open Register page
+Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[ActionHelper] Hovering over My Account Menu
+[ActionHelper] Clicking on Register Link
+TEST STEP : Fill registration form
+[ActionHelper] Typing "Hipolito" into First Name Input
+[ActionHelper] Successfully typed "Hipolito" into First Name Input
+[ActionHelper] Typing "Wilderman" into Last Name Input
+[ActionHelper] Successfully typed "Wilderman" into Last Name Input
+[ActionHelper] Typing "hipolito_wilderman@hotmail.com" into Email Input
+[ActionHelper] Successfully typed "hipolito_wilderman@hotmail.com" into Email Input
+[ActionHelper] Typing "(468) 795-2623" into Telephone Input
+[ActionHelper] Successfully typed "(468) 795-2623" into Telephone Input
+[ActionHelper] Typing "PB5ZzOTzYaan@2025" into Password Input
+[ActionHelper] Successfully typed "PB5ZzOTzYaan@2025" into Password Input
+[ActionHelper] Typing "PB5ZzOTzYaan@2025" into Confirm Password Input
+[ActionHelper] Successfully typed "PB5ZzOTzYaan@2025" into Confirm Password Input
+TEST STEP : Click continue without checking Privacy Policy
+[ActionHelper] Clicking on Continue Button
+TEST STEP : Verify privacy policy warning message
+[ActionHelper] Verifying text of Privacy Policy Warning is "You must agree to the Privacy Policy!"

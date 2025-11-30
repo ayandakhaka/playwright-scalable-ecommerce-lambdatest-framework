@@ -128,7 +128,7 @@ export class registerAccountPage {
 
     async verifyFieldValidationMessages(expectedMessages: string[]) {
         // Wait until at least one validation message is visible
-        await this.page.locator('.text-danger').first().waitFor({ state: 'visible', timeout: 5000 });
+        await this.page.locator(this.fieldValidationMessage).first().waitFor({ state: 'visible', timeout: 5000 });
 
         const actualMessages = await this.page.locator(this.fieldValidationMessage).allTextContents();
         console.log('Actual validation messages:', actualMessages);

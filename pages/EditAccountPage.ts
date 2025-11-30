@@ -34,10 +34,8 @@ export default class EditAccountPage {
      * @param email - User's email address
      * @param telephone - User's telephone number
      */
-    async fillMyAccountDetails(firstName: string, lastName: string, email: string, telephone: string) {
-        // ✅ Wait for the first field to ensure the form is ready
-        // await this.page.waitForURL('**/account/edit', { timeout: 15000 });
-        // await this.page.waitForSelector(this.firstNameInput, { state: 'visible', timeout: 10000 });
+    async fillMyAccountDetails(
+        firstName: string, lastName: string, email: string, telephone: string) {
         this.page.setDefaultTimeout(60000); // set default timeout for page actions
 
         // ✅ Use your action helper to fill fields (it already waits internally)
@@ -48,7 +46,8 @@ export default class EditAccountPage {
 
         // ✅ Optionally verify that fields are correctly populated (optional validation step)
         await this.page.waitForTimeout(500); // small stability pause
-        await this.actionHelper.verifyText(this.firstNameInput, firstName, 'First Name Verification');
+        await this.actionHelper.verifyText(
+            this.firstNameInput, firstName, 'First Name Verification');
     }
 
     /**
@@ -71,20 +70,26 @@ export default class EditAccountPage {
      Verify the success message after form submission
     */
     async verifyUpdateSuccessMessage(expectedMessage: string) {
-        await this.actionHelper.waitForVisible(this.successMessage, 'Success Message');
-        await this.actionHelper.verifyText(this.successMessage, expectedMessage, 'Success Message');
+        await this.actionHelper.waitForVisible(
+            this.successMessage, 'Success Message');
+        await this.actionHelper.verifyText(
+            this.successMessage, expectedMessage, 'Success Message');
     }
 
     async verifyFirstNameFieldErrorMessage() {
-        await this.actionHelper.waitForVisible(this.fieldValidationMessage, "First Name field error message");
-        await this.actionHelper.verifyText(this.fieldValidationMessage, "First Name must be between 1 and 32 characters!");
+        await this.actionHelper.waitForVisible(
+            this.fieldValidationMessage, "First Name field error message");
+        await this.actionHelper.verifyText(
+            this.fieldValidationMessage, "First Name must be between 1 and 32 characters!");
     }
 
     /*
      Verify the warning message for errors
     */
     async verifyUpdateWarningMessage(expectedMessage: string) {
-        await this.actionHelper.waitForVisible(this.editMessageError, 'Account Update Warning');
-        await this.actionHelper.verifyText(this.editMessageError, expectedMessage, 'Account Update Warning');
+        await this.actionHelper.waitForVisible(
+            this.editMessageError, 'Account Update Warning');
+        await this.actionHelper.verifyText(
+            this.editMessageError, expectedMessage, 'Account Update Warning');
     }
 }
