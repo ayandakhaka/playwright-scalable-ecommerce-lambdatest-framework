@@ -40,7 +40,7 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      # 2️⃣ Download Previous Allure History
+      # 2️⃣ Download Previous Allure History (v4)
       - name: Download previous Allure History
         uses: actions/download-artifact@v4
         with:
