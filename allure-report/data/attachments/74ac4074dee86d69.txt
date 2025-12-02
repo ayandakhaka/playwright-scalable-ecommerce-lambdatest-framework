@@ -1,0 +1,20 @@
+TEST STEP : Navigate to home page and login
+Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+TEST STEP : Navigate to Blog page
+[ActionHelper] Clicking on Click Blog Link
+TEST STEP : Scroll to laptop image
+TEST STEP : Click laptop image
+TEST STEP : Fill Your Name
+[ActionHelper] Typing "Haleigh Dooley" into Your Name Input Field
+[ActionHelper] Successfully typed "Haleigh Dooley" into Your Name Input Field
+TEST STEP : Fill Your Email with invalid email
+[ActionHelper] Typing "invalid-email-format" into Your Email Input Field
+[ActionHelper] Successfully typed "invalid-email-format" into Your Email Input Field
+TEST STEP : Fill Your Comment
+[ActionHelper] Typing "This is a test comment from Playwright automation." into Your Comment Input Field
+[ActionHelper] Successfully typed "This is a test comment from Playwright automation." into Your Comment Input Field
+TEST STEP : Click Post Comment button
+[ActionHelper] Clicking on Post Comment Button
+TEST STEP : Verify email error message
+[ActionHelper] Verifying text of Email Error Message is "Warning: Invalid email id!"
+[ActionHelper] ✅ Verified "Email Error Message" text/value successfully.

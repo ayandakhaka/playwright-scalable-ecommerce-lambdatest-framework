@@ -1,0 +1,23 @@
+TEST STEP : Navigate to homepage and open Register page
+Navigating to URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[ActionHelper] Hovering over My Account Menu
+[ActionHelper] Clicking on Register Link
+TEST STEP : Fill form with existing email
+[ActionHelper] Typing "Reed" into First Name Input
+[ActionHelper] Successfully typed "Reed" into First Name Input
+[ActionHelper] Typing "Veum" into Last Name Input
+[ActionHelper] Successfully typed "Veum" into Last Name Input
+[ActionHelper] Typing "khakaalwande@gmail.com" into Email Input
+[ActionHelper] Successfully typed "khakaalwande@gmail.com" into Email Input
+[ActionHelper] Typing "(792) 329-5000" into Telephone Input
+[ActionHelper] Successfully typed "(792) 329-5000" into Telephone Input
+[ActionHelper] Typing "dKUqOOIee0xo@2025" into Password Input
+[ActionHelper] Successfully typed "dKUqOOIee0xo@2025" into Password Input
+[ActionHelper] Typing "dKUqOOIee0xo@2025" into Confirm Password Input
+[ActionHelper] Successfully typed "dKUqOOIee0xo@2025" into Confirm Password Input
+[ActionHelper] Clicking on Privacy Policy Checkbox
+[ActionHelper] Clicking on Continue Button
+TEST STEP : Verify duplicate email warning
+[ActionHelper] Waiting for visibility of Duplicate Email Warning
+[ActionHelper] Verifying text of Duplicate Email Warning is "Warning: E-Mail Address is already registered!"
+[ActionHelper] ✅ Verified "Duplicate Email Warning" text/value successfully.

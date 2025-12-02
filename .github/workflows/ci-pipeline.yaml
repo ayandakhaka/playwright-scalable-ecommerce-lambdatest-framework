@@ -125,12 +125,12 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Upload to Pages Artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: allure-report
 
       - name: Deploy Pages
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
 
       # 🔟 Send Email with Direct Link
       - name: Send Allure Report via Email
