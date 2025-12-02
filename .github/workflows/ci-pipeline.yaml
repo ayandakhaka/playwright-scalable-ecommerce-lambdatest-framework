@@ -59,7 +59,7 @@ jobs:
           mkdir -p allure-results/history
           if [ -d "temp-history" ]; then
             cp -r temp-history/* allure-results/history/ || true
-            echo "✔ History restored."
+            echo "✔ History restored BEFORE report generation."
           else
             echo "⚠ No previous history found."
           fi
@@ -67,7 +67,7 @@ jobs:
       # 5️⃣ Generate Allure Report
       - name: Generate Allure Report
         run: npx allure generate allure-results -o allure-report --clean=false
-
+        
       # 6️⃣ Upload Allure Artifacts
       - name: Upload Allure Report Artifact
         uses: actions/upload-artifact@v4
