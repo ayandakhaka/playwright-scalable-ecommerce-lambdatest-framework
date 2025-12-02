@@ -25,6 +25,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      # 0️⃣ Check for deprecated actions/upload-artifact v3
+      - name: Check for deprecated upload-artifact@v3
+        run: |
+          if grep -r "actions/upload-artifact@v3" .github/workflows/; then
+            echo "❌ Found deprecated upload-artifact@v3 in workflow files."
+            echo "Please update all references to @v4 to avoid automatic failures."
+            exit 1
+          else
+            echo "✔ No deprecated upload-artifact@v3 found."
+          fi
+
       # 1️⃣ Checkout & Setup Node.js
       - name: Checkout repository
         uses: actions/checkout@v4
