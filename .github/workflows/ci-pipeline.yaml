@@ -49,25 +49,35 @@ jobs:
           path: temp-history
         continue-on-error: true
 
-      # 3️⃣ Run Playwright Tests
+      # 3️⃣ Copy Previous History into allure-results BEFORE generating report
+      - name: Copy Allure History
+        run: npx ts-node utils/allure-reporting/copyAllureHistory.ts
+
+      # 4️⃣ Debug: Verify Allure History Files
+      - name: Debug Allure History
+        run: |
+          echo "🔍 Checking contents of allure-results/history"
+          if [ -d "allure-results/history" ]; then
+            ls -lR allure-results/history
+            file_count=$(find allure-results/history -type f | wc -l)
+            if [ "$file_count" -eq 0 ]; then
+              echo "⚠ No files found in history folder! Trends will be missing."
+            else
+              echo "✔ Found $file_count file(s) in history folder. Trends should work."
+            fi
+          else
+            echo "⚠ History folder does not exist! Trends will be missing."
+          fi
+
+
+      # 4️⃣ Run Playwright Tests
       - name: Run Playwright Tests
         run: npx playwright test
 
-      # 4️⃣ Restore History AFTER Tests
-      - name: Restore previous Allure History
-        run: |
-          mkdir -p allure-results/history
-          if [ -d "temp-history" ]; then
-            cp -r temp-history/* allure-results/history/ || true
-            echo "✔ History restored BEFORE report generation."
-          else
-            echo "⚠ No previous history found."
-          fi
-
-      # 5️⃣ Generate Allure Report
+      # 5️⃣ Generate Allure Report (history included)
       - name: Generate Allure Report
         run: npx allure generate allure-results -o allure-report --clean=false
-        
+
       # 6️⃣ Upload Allure Artifacts
       - name: Upload Allure Report Artifact
         uses: actions/upload-artifact@v4
