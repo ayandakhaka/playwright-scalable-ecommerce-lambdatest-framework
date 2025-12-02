@@ -26,7 +26,7 @@ jobs:
 
     steps:
       # -------------------------------
-      # 1️⃣ Checkout & Setup
+      # 1️⃣ Checkout & Setup Node.js
       # -------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -72,7 +72,7 @@ jobs:
           fi
 
       # -------------------------------
-      # 5️⃣ Generate Allure Report--
+      # 5️⃣ Generate Allure Report
       # -------------------------------
       - name: Generate Allure Report
         run: npx allure generate allure-results -o allure-report --clean=false
