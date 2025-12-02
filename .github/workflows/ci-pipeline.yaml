@@ -9,7 +9,8 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
+  pages: write
+  id-token: write
 
 env:
   BASE_URL: https://ecommerce-playground.lambdatest.io/
@@ -74,18 +75,16 @@ jobs:
         run: npx allure generate allure-results -o allure-report --clean=false
 
       # --------------------------------
-      # 5️⃣ UPLOAD REPORT + HISTORY
+      # 5️⃣ UPLOAD REPORT + HISTORY (optional backup)
       # --------------------------------
-      - name: Upload Allure Report
-        if: always()
+      - name: Upload Allure Report Artifact
         uses: actions/upload-artifact@v4
         with:
           name: allure-report
           path: allure-report
           retention-days: 7
 
-      - name: Upload Allure History
-        if: always()
+      - name: Upload Allure History Artifact
         uses: actions/upload-artifact@v4
         with:
           name: allure-history
@@ -123,7 +122,21 @@ jobs:
             })
 
       # --------------------------------
-      # 8️⃣ SEND EMAIL WITH WORKFLOW LINK
+      # 8️⃣ DEPLOY ALLURE REPORT TO GITHUB PAGES
+      # --------------------------------
+      - name: Deploy Allure Report to GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload to GitHub Pages
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: allure-report
+
+      - name: Publish GitHub Pages
+        uses: actions/deploy-pages@v1
+
+      # --------------------------------
+      # 9️⃣ SEND EMAIL WITH GITHUB PAGES LINK
       # --------------------------------
       - name: Send Allure Report via Email
         if: always()
@@ -148,10 +161,8 @@ jobs:
             - Skipped: ${{ env.SKIPPED }}
             - Retried: ${{ env.RETRIED }}
 
-            📊 Allure Report is available here:
-            https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-
-            You can click the link and download the `allure-report` artifact.
+            📊 Direct Allure Report:
+            https://${{ github.repository_owner }}.github.io/${{ github.repository }}/index.html
 
             Regards,
             CI Bot
