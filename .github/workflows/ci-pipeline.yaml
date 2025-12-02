@@ -72,7 +72,7 @@ jobs:
           fi
 
       # -------------------------------
-      # 5️⃣ Generate Allure Report
+      # 5️⃣ Generate Allure Report--
       # -------------------------------
       - name: Generate Allure Report
         run: npx allure generate allure-results -o allure-report --clean=false
