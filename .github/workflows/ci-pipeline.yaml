@@ -34,7 +34,7 @@ jobs:
             echo "Please update all references to @v4 to avoid automatic failures."
             exit 1
           else
-            echo "✔ No deprecated upload-artifact@v3 found."
+            echo "✔ No deprecated upload-artifact@v4 found."
           fi
 
       # 1️⃣ Checkout & Setup Node.js
@@ -125,7 +125,7 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Upload to Pages Artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: allure-report
 
@@ -135,7 +135,8 @@ jobs:
       # 🔟 Send Email with Direct Link
       - name: Send Allure Report via Email
         if: always()
-        uses: dawidd6/action-send-mail@v3
+        uses: dawidd6/action-send-mail@v4
+
         with:
           server_address: smtp.gmail.com
           server_port: 465
