@@ -23,3 +23,5 @@ export function copyAllureHistory() {
 
   console.log("✔ Allure history copied successfully.");
 }
+copyAllureHistory();
+                        
