@@ -130,5 +130,17 @@
     "accountName": "Lorna Wiegand",
     "accountNumber": "7987049139",
     "swiftCode": "B0X0X104"
+  },
+  {
+    "firstName": "Madie",
+    "lastName": "Russel",
+    "email": "madie.russel@yahoo.com",
+    "phone": "(464) 361-6972",
+    "password": "TivDw45fXBd7@2025",
+    "companyName": "Hayes Inc",
+    "taxId": "9959538971",
+    "accountName": "Madie Russel",
+    "accountNumber": "8957664601",
+    "swiftCode": "XUFHE9SK"
   }
 ]

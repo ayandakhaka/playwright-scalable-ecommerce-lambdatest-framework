@@ -3,18 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "pretest": "ts-node utils/allure-reporting/allureHistory.ts",
-    "allure:generate": "allure generate allure-results --clean",
-    "allure:open": "allure open allure-report",
-    "allure:history": "ts-node utils/allure-reporting/copyHistory.ts",
-    "test": "npx playwright test tests/1-RegisterAccount.test.ts",
-    "report": "scripts\\generate-allure-report.cmd",
-    "allure:report": "allure generate allure-results --clean -o allure-report",
-    "allure:serve": "allure serve allure-results",
-    "test:qa": "cross-env NODE_ENV=qa npx playwright test",
-    "test:staging": "cross-env NODE_ENV=staging npx playwright test",
-    "test:prod": "cross-env NODE_ENV=prod npx playwright test"
+    "test": "playwright test",
+    "allure:generate": "allure generate allure-results -o allure-report --clean=false",
+    "allure:serve": "allure serve allure-results"
   },
   "keywords": [],
   "author": "",

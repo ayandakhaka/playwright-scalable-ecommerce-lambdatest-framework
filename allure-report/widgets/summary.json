@@ -1,1 +1,1 @@
-{"reportName":"Regression Suite - QA","testRuns":[],"statistic":{"failed":3,"broken":0,"skipped":0,"passed":30,"unknown":0,"total":33},"time":{"start":1764673733750,"stop":1764674783752,"duration":1050002,"minDuration":11597,"maxDuration":41497,"sumDuration":762880}}
+{"reportName":"Regression Suite - QA","testRuns":[],"statistic":{"failed":1,"broken":0,"skipped":0,"passed":6,"unknown":0,"total":7},"time":{"start":1764689514191,"stop":1764689726057,"duration":211866,"minDuration":14657,"maxDuration":28290,"sumDuration":129227}}

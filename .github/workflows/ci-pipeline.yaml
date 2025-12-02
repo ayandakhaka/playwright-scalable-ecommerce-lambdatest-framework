@@ -49,7 +49,7 @@ jobs:
           path: temp-history
         continue-on-error: true
 
-      # 3️⃣ Copy Previous History into allure-results BEFORE generating report
+      # 3️⃣ Copy Previous History into allure-results
       - name: Copy Allure History
         run: npx ts-node utils/allure-reporting/copyAllureHistory.ts
 
@@ -69,16 +69,21 @@ jobs:
             echo "⚠ History folder does not exist! Trends will be missing."
           fi
 
-
-      # 4️⃣ Run Playwright Tests
+      # 5️⃣ Run Playwright Tests
       - name: Run Playwright Tests
         run: npx playwright test
 
-      # 5️⃣ Generate Allure Report (history included)
+      # 6️⃣ Generate Allure Report (history included)
       - name: Generate Allure Report
         run: npx allure generate allure-results -o allure-report --clean=false
 
-      # 6️⃣ Upload Allure Artifacts
+      # 7️⃣ Debug: Verify Allure Report & trends
+      - name: Debug Generated Report
+        run: |
+          echo "🔍 Checking contents of allure-report"
+          ls -lR allure-report
+
+      # 8️⃣ Upload Allure Artifacts
       - name: Upload Allure Report Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -93,7 +98,7 @@ jobs:
           path: allure-report/history
           retention-days: 30
 
-      # 7️⃣ Deploy Allure Report to GitHub Pages
+      # 9️⃣ Deploy Allure Report to GitHub Pages
       - name: Configure Pages
         uses: actions/configure-pages@v4
 
@@ -105,7 +110,7 @@ jobs:
       - name: Deploy Pages
         uses: actions/deploy-pages@v4
 
-      # 8️⃣ Send Email with Direct Link
+      # 🔟 Send Email with Direct Link
       - name: Send Allure Report via Email
         if: always()
         uses: dawidd6/action-send-mail@v4
