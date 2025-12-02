@@ -1,22 +1,14 @@
-import fs from "fs";
+// global-setup.ts
 import path from "path";
+import fs from "fs";
+import { copyAllureHistory } from "./utils/allure-reporting/copyAllureHistory";
 
-async function globalSetup() {
-  const resultsDir = path.join(process.cwd(), "allure-results");
-  const historySource = path.join(process.cwd(), "temp-history"); // downloaded artifact in GitHub Actions
-  const historyDest = path.join(resultsDir, "history");
+export default async function globalSetup() {
+  console.log("🔧 globalSetup: restoring Allure history if present...");
+  copyAllureHistory();
 
-  // Ensure allure-results/history folder exists
-  if (!fs.existsSync(resultsDir)) fs.mkdirSync(resultsDir, { recursive: true });
-  if (!fs.existsSync(historyDest)) fs.mkdirSync(historyDest, { recursive: true });
-
-  // Copy previous Allure history if exists
-  if (fs.existsSync(historySource)) {
-    fs.cpSync(historySource, historyDest, { recursive: true });
-    console.log("✔ Restored Allure history for trends");
-  } else {
-    console.log("ℹ No previous history found. Trends will start fresh.");
-  }
+  // (optional) ensure allure-results/history exists even if no previous history
+  const historyDir = path.join(process.cwd(), "allure-results", "history");
+  if (!fs.existsSync(historyDir)) fs.mkdirSync(historyDir, { recursive: true });
+  console.log("✔ globalSetup complete");
 }
-
-export default globalSetup;

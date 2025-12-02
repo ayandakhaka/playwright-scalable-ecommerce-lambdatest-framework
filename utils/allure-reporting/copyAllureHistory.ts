@@ -1,13 +1,25 @@
+// utils/copyAllureHistory.ts
 import fs from "fs";
 import path from "path";
 
-const source = path.join(process.cwd(), "temp-history");
-const dest = path.join(process.cwd(), "allure-results/history");
+export function copyAllureHistory() {
+  const src = path.join(process.cwd(), "allure-report", "history");   // Correct source
+  const dest = path.join(process.cwd(), "allure-results", "history"); // Correct destination
 
-if (fs.existsSync(source)) {
+  // Ensure allure-results exists
+  const resultsFolder = path.join(process.cwd(), "allure-results");
+  if (!fs.existsSync(resultsFolder)) {
+    fs.mkdirSync(resultsFolder);
+  }
+
+  if (!fs.existsSync(src)) {
+    console.log("⚠ No history folder in allure-report yet.");
+    return;
+  }
+
+  // Copy recursively
   fs.mkdirSync(dest, { recursive: true });
-  fs.cpSync(source, dest, { recursive: true });
-  console.log("✔ Restored Allure history for trends");
-} else {
-  console.log("ℹ No previous history found. Trends will start fresh.");
+  fs.cpSync(src, dest, { recursive: true });
+
+  console.log("✔ Allure history copied successfully.");
 }
