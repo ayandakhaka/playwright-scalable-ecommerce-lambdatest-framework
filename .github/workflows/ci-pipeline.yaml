@@ -123,28 +123,7 @@ jobs:
             })
 
       # --------------------------------
-      # 8️⃣ GET DIRECT DOWNLOAD LINK OF ALLURE REPORT
-      # --------------------------------
-      - name: Get Allure Report Artifact URL
-        id: get_artifact
-        run: |
-          echo "Fetching Allure Report artifact…"
-
-          artifacts=$(curl -s \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts)
-
-          url=$(echo "$artifacts" | jq -r '.artifacts[] | select(.name=="allure-report") | .archive_download_url')
-
-          if [ -z "$url" ] || [ "$url" = "null" ]; then
-            echo "No Allure Report artifact found."
-            echo "ALLURE_URL=" >> $GITHUB_ENV
-          else
-            echo "Found Allure Artifact URL: $url"
-            echo "ALLURE_URL=$url" >> $GITHUB_ENV
-
-      # --------------------------------
-      # 9️⃣ SEND EMAIL WITH DIRECT LINK
+      # 8️⃣ SEND EMAIL WITH WORKFLOW LINK
       # --------------------------------
       - name: Send Allure Report via Email
         if: always()
@@ -169,8 +148,10 @@ jobs:
             - Skipped: ${{ env.SKIPPED }}
             - Retried: ${{ env.RETRIED }}
 
-            📊 Direct Allure Report Download:
-            ${{ env.ALLURE_URL }}
+            📊 Allure Report is available here:
+            https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+            You can click the link and download the `allure-report` artifact.
 
             Regards,
             CI Bot
