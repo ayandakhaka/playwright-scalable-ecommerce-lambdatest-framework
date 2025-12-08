@@ -55,6 +55,7 @@ npx playwright test tests/1-register.test.ts
 1. Run the following command to install the Allure command line tool globally:
 
   npm install -g allure-commandline --save-dev
+  
 2. Run Your Tests
 
   npx playwright test  -- This will execute all the tests
