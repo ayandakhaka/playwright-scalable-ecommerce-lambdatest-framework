@@ -51,9 +51,25 @@ npx playwright test
 npx playwright test tests/1-register.test.ts
 
 ## Reporting
-Screenshots and videos are saved in playwright-report/.
-Generate HTML report:
-npx playwright show-report
+
+1. Run the following command to install the Allure command line tool globally:
+
+  npm install -g allure-commandline --save-dev
+2. Run Your Tests
+
+  npx playwright test  -- This will execute all the tests
+  npx playwright test tests/1-RegisterAccount.test.ts -- This will run register test cases
+
+3. Generate the Report
+
+   allure generate allure-results --clean -o allure-report
+   
+5. Open the generated report using:
+
+   allure open allure-report
+
+
+
 ## CI/CD Integration
 Supports GitHub Actions
 1. Checkout repo
