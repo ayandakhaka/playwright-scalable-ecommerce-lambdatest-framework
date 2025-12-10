@@ -60,7 +60,6 @@ jobs:
           if-no-files-found: ignore
         continue-on-error: true
 
-      # 8️⃣ Debug Allure history
       - name: Debug Allure History
         run: |
           echo "🔍 Checking contents of allure-results/history"
@@ -69,6 +68,7 @@ jobs:
             echo "⚠ No previous history found. First run, trends appear next run."
           else
             echo "✔ Found $file_count file(s) in history folder."
+          fi
 
       # 9️⃣ Run Playwright tests with Allure reporter
       - name: Run Playwright Tests
