@@ -46,6 +46,7 @@ jobs:
         with:
           name: allure-history
           path: allure-results/history
+          if-no-files-found: ignore
         continue-on-error: true
 
       # 3️⃣ Debug: Verify History Was Downloaded
