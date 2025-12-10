@@ -142,5 +142,17 @@
     "accountName": "Madie Russel",
     "accountNumber": "8957664601",
     "swiftCode": "XUFHE9SK"
+  },
+  {
+    "firstName": "Hayley",
+    "lastName": "Pfeffer",
+    "email": "hayley_pfeffer@yahoo.com",
+    "phone": "(415) 315-7160",
+    "password": "B4Ds6JuKJohq@2025",
+    "companyName": "Morar LLC",
+    "taxId": "8699648450",
+    "accountName": "Hayley Pfeffer",
+    "accountNumber": "9193886602",
+    "swiftCode": "LPKQFNU5"
   }
 ]
