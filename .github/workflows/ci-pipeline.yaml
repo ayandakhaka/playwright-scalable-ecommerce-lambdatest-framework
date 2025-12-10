@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout & Setup Node.js
+      # 1️⃣ Checkout repo & setup Node.js
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -40,8 +40,8 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      # 2️⃣ Download previous Allure History safely
-      - name: Download previous Allure History (safe)
+      # 2️⃣ Download previous Allure history safely
+      - name: Download previous Allure History
         uses: actions/download-artifact@v4
         with:
           name: allure-history
@@ -53,27 +53,21 @@ jobs:
       - name: Ensure history folder exists
         run: mkdir -p allure-results/history
 
-      # 4️⃣ Debug: verify history exists
-      - name: Debug downloaded history
-        run: |
-          echo "🔍 Checking contents of allure-results/history"
-          ls -lR allure-results/history || true
-
-      # 5️⃣ Run Playwright Tests
+      # 4️⃣ Run Playwright tests (all tests in tests/ folder)
       - name: Run Playwright Tests
         run: npx playwright test
 
+      # 5️⃣ Debug allure-results
+      - name: List allure-results
+        run: ls -lR allure-results || true
+
       # 6️⃣ Generate Allure Report
       - name: Generate Allure Report
-        run: |
-          # Using --clean ensures history is copied and merged correctly
-          npx allure generate allure-results -o allure-report --clean
+        run: npx allure generate allure-results -o allure-report --clean
 
-      # 7️⃣ Debug report generation
-      - name: Debug generated report
-        run: |
-          echo "🔍 Checking allure-report contents"
-          ls -lR allure-report
+      # 7️⃣ Debug allure-report
+      - name: List allure-report
+        run: ls -lR allure-report || true
 
       # 8️⃣ Upload Allure Artifacts
       - name: Upload Allure Report Artifact
@@ -90,7 +84,7 @@ jobs:
           path: allure-report/history
           retention-days: 30
 
-      # 9️⃣ Deploy to GitHub Pages
+      # 9️⃣ Deploy Allure Report to GitHub Pages
       - name: Configure Pages
         uses: actions/configure-pages@v4
 
