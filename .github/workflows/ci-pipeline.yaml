@@ -40,8 +40,8 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      # 2️⃣ Download Previous Allure History
-      - name: Download previous Allure History
+      # 2️⃣ Download previous Allure History safely
+      - name: Download previous Allure History (safe)
         uses: actions/download-artifact@v4
         with:
           name: allure-history
@@ -49,36 +49,33 @@ jobs:
           if-no-files-found: ignore
         continue-on-error: true
 
-      # 3️⃣ Debug: Verify History Was Downloaded
+      # 3️⃣ Ensure history folder exists
+      - name: Ensure history folder exists
+        run: mkdir -p allure-results/history
+
+      # 4️⃣ Debug: verify history exists
       - name: Debug downloaded history
         run: |
-          echo "🔍 Checking history downloaded into allure-results/history"
-          if [ -d "allure-results/history" ]; then
-            ls -lR allure-results/history || true
-          else
-            echo "⚠ No history found (first run or missing artifact)"
-          fi
+          echo "🔍 Checking contents of allure-results/history"
+          ls -lR allure-results/history || true
 
-      # 4️⃣ Run Playwright Tests
+      # 5️⃣ Run Playwright Tests
       - name: Run Playwright Tests
         run: npx playwright test
 
-      # 5️⃣ Generate Allure Report (KEEP OLD HISTORY)
+      # 6️⃣ Generate Allure Report
       - name: Generate Allure Report
         run: |
-          # DO NOT use --clean=false (it breaks history)
-          # CORRECT COMMAND:
+          # Using --clean ensures history is copied and merged correctly
           npx allure generate allure-results -o allure-report --clean
 
-      # 6️⃣ Debug Report
+      # 7️⃣ Debug report generation
       - name: Debug generated report
         run: |
-          echo "🔍 Checking contents of allure-report"
+          echo "🔍 Checking allure-report contents"
           ls -lR allure-report
-          echo "🔍 History files inside report:"
-          ls -lR allure-report/history
 
-      # 7️⃣ Upload Allure Artifacts
+      # 8️⃣ Upload Allure Artifacts
       - name: Upload Allure Report Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -93,7 +90,7 @@ jobs:
           path: allure-report/history
           retention-days: 30
 
-      # 8️⃣ Deploy Report to GitHub Pages
+      # 9️⃣ Deploy to GitHub Pages
       - name: Configure Pages
         uses: actions/configure-pages@v4
 
