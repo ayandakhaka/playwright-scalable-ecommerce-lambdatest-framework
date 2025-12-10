@@ -52,7 +52,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: allure-history
-          path: allure-results/history
+          path: allure-report/history
         continue-on-error: true
 
       # 7️⃣ Run Playwright tests with Allure reporter
