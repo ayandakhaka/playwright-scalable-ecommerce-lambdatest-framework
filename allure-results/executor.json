@@ -1,7 +1,0 @@
-{
-  "name": "Playwright Automation",
-  "type": "local",
-  "reportName": "Regression Suite - QA",
-  "buildName": "v1.0.0",
-  "executionType": "manual"
-}

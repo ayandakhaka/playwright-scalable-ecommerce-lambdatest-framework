@@ -1,8 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","32241","Attempt to register with weak password","chromium","Mon Dec 08 14:33:49 SAST 2025","passed","Mon Dec 08 14:34:21 SAST 2025","Register Account Tests","1-RegisterAccount.test.ts","",""
-"","23082","Attempt to register with missing mandatory fields","chromium","Mon Dec 08 14:34:21 SAST 2025","passed","Mon Dec 08 14:34:45 SAST 2025","Register Account Tests","1-RegisterAccount.test.ts","",""
-"","21796","Attempt to register with invalid email format","chromium","Mon Dec 08 14:33:27 SAST 2025","passed","Mon Dec 08 14:33:49 SAST 2025","Register Account Tests","1-RegisterAccount.test.ts","",""
-"","36154","Register a new account successfully","chromium","Mon Dec 08 14:30:08 SAST 2025","passed","Mon Dec 08 14:30:44 SAST 2025","Register Account Tests","1-RegisterAccount.test.ts","",""
-"","22607","Attempt to register with mismatched password and confirm password","chromium","Mon Dec 08 14:34:45 SAST 2025","passed","Mon Dec 08 14:35:07 SAST 2025","Register Account Tests","1-RegisterAccount.test.ts","",""
-"","29034","Attempt to register with an already registered email","chromium","Mon Dec 08 14:32:57 SAST 2025","passed","Mon Dec 08 14:33:26 SAST 2025","Register Account Tests","1-RegisterAccount.test.ts","",""
-"","31627","Attempt to register without agreeing to the privacy policy","chromium","Mon Dec 08 14:32:17 SAST 2025","failed","Mon Dec 08 14:32:49 SAST 2025","Register Account Tests","1-RegisterAccount.test.ts","",""
