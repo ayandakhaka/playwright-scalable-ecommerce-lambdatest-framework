@@ -35,47 +35,43 @@ jobs:
         with:
           node-version: 20
 
-      # 3️⃣ Install npm dependencies
-      - name: Install dependencies
+      # 3️⃣ Install dependencies
+      - name: Install npm dependencies
         run: npm ci
 
       # 4️⃣ Install Playwright browsers
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      # 5️⃣ Debug: List tests folder
-      - name: List tests folder
-        run: ls -lR tests
+      # 5️⃣ Ensure allure-results folder exists
+      - name: Prepare Allure results folder
+        run: mkdir -p allure-results/history
 
-      # 6️⃣ Download previous Allure history artifact (optional)
-      - name: Download Allure History
+      # 6️⃣ Download previous Allure history (optional for trends)
+      - name: Download previous Allure History
         uses: actions/download-artifact@v4
         with:
           name: allure-history
-          path: temp-history
-          if-no-files-found: ignore
+          path: allure-results/history
         continue-on-error: true
 
-      # 7️⃣ Run Playwright tests with global setup (handles Allure history)
+      # 7️⃣ Run all Playwright tests
       - name: Run Playwright Tests
-        run: npx playwright test --reporter=list,allure-playwright
-        env:
-          NODE_OPTIONS: "--loader ts-node/esm"
-          CI: true
+        run: npx playwright test --reporter=allure-playwright
 
-      # 8️⃣ Debug: Check allure-results
-      - name: Debug allure-results
-        run: ls -lR allure-results || echo "No results generated"
+      # 8️⃣ Debug: list test results
+      - name: Debug Allure Results
+        run: ls -lR allure-results || true
 
-      # 9️⃣ Generate Allure Report
+      # 9️⃣ Generate Allure report
       - name: Generate Allure Report
         run: npx allure generate allure-results -o allure-report --clean
 
-      # 🔟 Debug: Check allure-report
-      - name: Debug allure-report
-        run: ls -lR allure-report || echo "No report generated"
+      # 🔟 Debug: list report
+      - name: Debug Allure Report
+        run: ls -lR allure-report || true
 
-      # 1️⃣1️⃣ Upload Allure artifacts for next run
+      # 1️⃣1️⃣ Upload Allure report artifact
       - name: Upload Allure Report Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -83,14 +79,15 @@ jobs:
           path: allure-report
           retention-days: 7
 
+      # 1️⃣2️⃣ Upload Allure history artifact (for trends)
       - name: Upload Allure History Artifact
         uses: actions/upload-artifact@v4
         with:
           name: allure-history
-          path: allure-report/history
+          path: allure-results/history
           retention-days: 30
 
-      # 1️⃣2️⃣ Deploy Allure Report to GitHub Pages
+      # 1️⃣3️⃣ Deploy to GitHub Pages
       - name: Configure Pages
         uses: actions/configure-pages@v4
 
@@ -102,7 +99,7 @@ jobs:
       - name: Deploy Pages
         uses: actions/deploy-pages@v4
 
-      # 1️⃣3️⃣ Optional: Send email notification
+      # 1️⃣4️⃣ Optional: Send email notification
       - name: Send Allure Report via Email
         if: always()
         uses: dawidd6/action-send-mail@v4
