@@ -25,7 +25,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       # 1️⃣ Checkout & Setup Node.js
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -46,44 +45,39 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: allure-history
-          path: temp-history
+          path: allure-results/history
         continue-on-error: true
 
-      # 3️⃣ Copy Previous History into allure-results
-      - name: Copy Allure History
-        run: npx ts-node utils/allure-reporting/copyAllureHistory.ts
-
-      # 4️⃣ Debug: Verify Allure History Files
-      - name: Debug Allure History
+      # 3️⃣ Debug: Verify History Was Downloaded
+      - name: Debug downloaded history
         run: |
-          echo "🔍 Checking contents of allure-results/history"
+          echo "🔍 Checking history downloaded into allure-results/history"
           if [ -d "allure-results/history" ]; then
-            ls -lR allure-results/history
-            file_count=$(find allure-results/history -type f | wc -l)
-            if [ "$file_count" -eq 0 ]; then
-              echo "⚠ No files found in history folder! Trends will be missing."
-            else
-              echo "✔ Found $file_count file(s) in history folder. Trends should work."
-            fi
+            ls -lR allure-results/history || true
           else
-            echo "⚠ History folder does not exist! Trends will be missing."
+            echo "⚠ No history found (first run or missing artifact)"
           fi
 
-      # 5️⃣ Run Playwright Tests
+      # 4️⃣ Run Playwright Tests
       - name: Run Playwright Tests
-        run: npx playwright test tests/1-RegisterAccount.test.ts
+        run: npx playwright test
 
-      # 6️⃣ Generate Allure Report (history included)
+      # 5️⃣ Generate Allure Report (KEEP OLD HISTORY)
       - name: Generate Allure Report
-        run: npx allure generate allure-results -o allure-report --clean=false
+        run: |
+          # DO NOT use --clean=false (it breaks history)
+          # CORRECT COMMAND:
+          npx allure generate allure-results -o allure-report --clean
 
-      # 7️⃣ Debug: Verify Allure Report & trends
-      - name: Debug Generated Report
+      # 6️⃣ Debug Report
+      - name: Debug generated report
         run: |
           echo "🔍 Checking contents of allure-report"
           ls -lR allure-report
+          echo "🔍 History files inside report:"
+          ls -lR allure-report/history
 
-      # 8️⃣ Upload Allure Artifacts
+      # 7️⃣ Upload Allure Artifacts
       - name: Upload Allure Report Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -98,7 +92,7 @@ jobs:
           path: allure-report/history
           retention-days: 30
 
-      # 9️⃣ Deploy Allure Report to GitHub Pages
+      # 8️⃣ Deploy Report to GitHub Pages
       - name: Configure Pages
         uses: actions/configure-pages@v4
 
@@ -110,7 +104,7 @@ jobs:
       - name: Deploy Pages
         uses: actions/deploy-pages@v4
 
-      # 🔟 Send Email with Direct Link
+      # 🔟 Email Notification
       - name: Send Allure Report via Email
         if: always()
         uses: dawidd6/action-send-mail@v4
@@ -128,7 +122,7 @@ jobs:
             The latest Playwright test run is complete.
 
             📊 Direct Allure Report:
-            https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/index.html
+            https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
 
             Regards,
             CI Bot
