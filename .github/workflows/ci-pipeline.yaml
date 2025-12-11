@@ -55,8 +55,11 @@ jobs:
       - name: Merge Allure History
         run: |
           mkdir -p allure-results/history
-          if [ -d temp-allure-history ]; then
+          if [ -d temp-allure-history ] && [ "$(ls -A temp-allure-history)" ]; then
             cp -r temp-allure-history/* allure-results/history/ || true
+            echo "Previous history merged successfully."
+          else
+            echo "No previous history found. Starting fresh."
           fi
 
       # 7️⃣ Run Playwright tests
