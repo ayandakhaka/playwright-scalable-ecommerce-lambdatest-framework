@@ -21,13 +21,11 @@ env:
 
 jobs:
   run-tests:
-    name: Run Playwright Tests
     runs-on: ubuntu-latest
     name: Run Playwright Tests
 
     steps:
       # 1️⃣ Checkout repository
-      - name: Checkout code
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -45,21 +43,8 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      # 5️⃣ Ensure allure-results folder exists
-      - name: Prepare Allure results folder
-        run: mkdir -p allure-results/history
-
-      # 6️⃣ Download previous Allure history (optional for trends)
+      # 5️⃣ Download previous Allure history (optional for trends)
       - name: Download previous Allure History
-      - name: Install dependencies
-        run: npm ci
-
-      # 4️⃣ Install Playwright browsers
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
-
-      # 5️⃣ Download previous Allure history (if exists)
-      - name: Download Allure History
         uses: actions/download-artifact@v4
         with:
           name: allure-history
@@ -84,13 +69,8 @@ jobs:
       # 8️⃣ Generate Allure report with trends
       - name: Generate Allure Report
         run: |
-          # Ensure report folder exists
           mkdir -p allure-report
-
-          # Generate report (history is preserved)
           npx allure generate allure-results -o allure-report --clean
-
-          # Copy history into report folder for trends and next run
           mkdir -p allure-report/history
           cp -r allure-results/history/* allure-report/history/ || true
 
@@ -147,4 +127,4 @@ jobs:
           echo "### 📊 Allure Test Report" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "[Open Allure Report](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/)" >> $GITHUB_STEP_SUMMARY
-
+          echo "" >> $GITHUB_STEP_SUMMARY
