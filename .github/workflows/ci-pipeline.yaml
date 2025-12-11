@@ -78,11 +78,16 @@ jobs:
       - name: Debug Report
         run: ls -lR allure-report || true
 
-      # 🔟 Copy history for next run (for uploading)
+      # 🔟 Copy history for next run safely
       - name: Copy Allure history for next run
         run: |
           mkdir -p allure-report/history
-          cp -r allure-results/history/* allure-report/history/ || true
+          if [ -d allure-results/history ] && [ "$(ls -A allure-results/history)" ]; then
+            cp -r allure-results/history/* allure-report/history/
+            echo "History copied for next run."
+          else
+            echo "No history to copy (first run)."
+          fi
 
       # 🔟 Upload history artifact
       - name: Upload Allure History
