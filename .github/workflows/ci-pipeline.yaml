@@ -110,6 +110,12 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v4
 
+      - name: Debug Pages Artifact Folder
+        run: |
+          echo "📦 Final GitHub Pages content:"
+          ls -lR allure-report
+
+
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
