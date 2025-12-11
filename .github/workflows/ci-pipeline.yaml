@@ -27,12 +27,11 @@ jobs:
     name: Run Playwright Tests
 
     steps:
-
-      # 1️⃣ Checkout
+      # 1️⃣ Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Node.js setup
+      # 2️⃣ Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -46,103 +45,59 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      # 5️⃣ Download previous Allure History
+      # 5️⃣ Download previous Allure history
       - name: Download previous Allure History
         uses: actions/download-artifact@v4
         with:
           name: allure-history
-          path: temp-allure-history
+          path: allure-results/history
         continue-on-error: true
 
-     # 6️⃣ Merge history into current allure-results BEFORE running tests
-      - name: Merge Allure History
-        run: |
-          echo "Preparing allure-results/history..."
-          mkdir -p allure-results/history
+      # 6️⃣ Merge history folder (optional, in case artifact is empty)
+      - name: Ensure history folder exists
+        run: mkdir -p allure-results/history
 
-          if [ -d temp-allure-history ] && [ "$(ls -A temp-allure-history)" ]; then
-            echo "Merging previous history..."
-            cp -r temp-allure-history/* allure-results/history/
-          else
-            echo "No previous history found."
-          fi
-
-          echo "Current history folder:"
-          ls -lR allure-results/history || true
-
-      # 7️⃣ Run tests
+      # 7️⃣ Run Playwright tests
       - name: Run Playwright Tests
         run: npx playwright test --reporter=allure-playwright
 
-      - name: Validate history before generating report
-        run: |
-          echo "Checking allure-results/history..."
-          ls -lR allure-results/history || true
-
-
-      # 8️⃣ Generate Allure report (history included)
+      # 8️⃣ Generate Allure report
       - name: Generate Allure Report
         run: |
           mkdir -p allure-report
           npx allure generate allure-results -o allure-report --clean
 
+      # 9️⃣ Verify Allure trends
       - name: Verify Allure Trends in Pipeline
         run: |
           echo "Checking Allure report history..."
           if [ -d allure-report/history ]; then
-            echo "History folder exists. Listing contents:"
-            ls -l allure-report/history
-
-            echo "Checking required trend files..."
-            for file in duration-trend.json history-trend.json retry-trend.json categories-trend.json history.json; do
-              if [ -f "allure-report/history/$file" ]; then
-                echo "✔ $file found"
-              else
-                echo "❌ $file MISSING"
-              fi
-            done
+            ls -lR allure-report/history
           else
             echo "❌ No history folder inside allure-report/"
           fi
 
-
-      # 9️⃣ Debug report
-      - name: Debug Report
-        run: ls -lR allure-report || true
-
-      # 🔟 Upload correct history (IMPORTANT FIX)
+      # 🔟 Upload history artifact for next run
       - name: Upload Allure History
         uses: actions/upload-artifact@v4
         with:
           name: allure-history
-          path: allure-report/history   # <-- FIXED HERE
+          path: allure-report/history
 
       # 1️⃣1️⃣ Deploy to GitHub Pages
       - name: Configure Pages
         uses: actions/configure-pages@v4
 
-      - name: Debug Pages Artifact Folder
-        run: |
-          echo "📦 Final GitHub Pages content:"
-          ls -lR allure-report
-
-      - name: Ensure history is included in final report
-        run: |
-          echo "Forcing inclusion of history folder..."
-          mkdir -p allure-report/history
-          cp -r allure-results/history/* allure-report/history/ || true
-          ls -lR allure-report/history
-
-
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: allure-report
+          retention-days: 1
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
 
-      # 1️⃣2️⃣ Email report (optional)
+      # 1️⃣2️⃣ Send Allure report via email (optional)
       - name: Send Allure Report via Email
         if: always()
         uses: dawidd6/action-send-mail@v4
@@ -165,7 +120,7 @@ jobs:
             Regards,
             CI Bot
 
-      # 1️⃣3️⃣ Add summary link
+      # 1️⃣3️⃣ Add summary link in GitHub UI
       - name: Add Allure Report Link to Workflow Summary
         if: always()
         run: |
