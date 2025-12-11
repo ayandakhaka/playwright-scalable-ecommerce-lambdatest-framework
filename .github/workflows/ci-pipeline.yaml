@@ -23,10 +23,12 @@ jobs:
   run-tests:
     name: Run Playwright Tests
     runs-on: ubuntu-latest
+    name: Run Playwright Tests
 
     steps:
       # 1️⃣ Checkout repository
       - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       # 2️⃣ Setup Node.js
@@ -49,57 +51,73 @@ jobs:
 
       # 6️⃣ Download previous Allure history (optional for trends)
       - name: Download previous Allure History
+      - name: Install dependencies
+        run: npm ci
+
+      # 4️⃣ Install Playwright browsers
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      # 5️⃣ Download previous Allure history (if exists)
+      - name: Download Allure History
         uses: actions/download-artifact@v4
         with:
           name: allure-history
-          path: allure-results/history
-          if-no-files-found: ignore
+          path: temp-allure-history
         continue-on-error: true
 
-      # 7️⃣ Run all Playwright tests
+      # 6️⃣ Merge history into current allure-results
+      - name: Merge Allure History
+        run: |
+          mkdir -p allure-results/history
+          if [ -d temp-allure-history ] && [ "$(ls -A temp-allure-history)" ]; then
+            cp -r temp-allure-history/* allure-results/history/ || true
+            echo "Previous history merged successfully."
+          else
+            echo "No previous history found. Starting fresh."
+          fi
+
+      # 7️⃣ Run Playwright tests
       - name: Run Playwright Tests
-        run: npx playwright test
+        run: npx playwright test --reporter=allure-playwright
 
-      # 8️⃣ Debug: list test results
-      - name: Debug Allure Results
-        run: ls -lR allure-results || true
-
-      # 9️⃣ Generate Allure report
+      # 8️⃣ Generate Allure report with trends
       - name: Generate Allure Report
-        run: npx allure generate allure-results -o allure-report --clean
+        run: |
+          # Ensure report folder exists
+          mkdir -p allure-report
 
-      # 🔟 Debug: list report
-      - name: Debug Allure Report
+          # Generate report (history is preserved)
+          npx allure generate allure-results -o allure-report --clean
+
+          # Copy history into report folder for trends and next run
+          mkdir -p allure-report/history
+          cp -r allure-results/history/* allure-report/history/ || true
+
+      # 9️⃣ Debug report folder
+      - name: Debug Report
         run: ls -lR allure-report || true
 
-      # 1️⃣1️⃣ Upload artifacts
-      - name: Upload Allure Report Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-report
-          path: allure-report
-          retention-days: 7
-
-      - name: Upload Allure History Artifact
+      # 🔟 Upload merged history for next run
+      - name: Upload Allure History
         uses: actions/upload-artifact@v4
         with:
           name: allure-history
           path: allure-report/history
-          retention-days: 30
 
-      # 1️⃣2️⃣ Deploy to GitHub Pages
+      # 1️⃣1️⃣ Deploy to GitHub Pages
       - name: Configure Pages
         uses: actions/configure-pages@v4
 
-      - name: Upload to Pages Artifact
+      - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: allure-report
 
-      - name: Deploy Pages
+      - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
 
-      # 1️⃣3️⃣ Optional: Send email notification
+      # 1️⃣2️⃣ Optional: Send Allure report via email
       - name: Send Allure Report via Email
         if: always()
         uses: dawidd6/action-send-mail@v4
@@ -121,3 +139,12 @@ jobs:
 
             Regards,
             CI Bot
+
+      # 1️⃣3️⃣ Add Allure Report link to workflow summary
+      - name: Add Allure Report Link to Workflow Summary
+        if: always()
+        run: |
+          echo "### 📊 Allure Test Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "[Open Allure Report](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/)" >> $GITHUB_STEP_SUMMARY
+
