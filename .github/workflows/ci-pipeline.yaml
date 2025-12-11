@@ -67,15 +67,33 @@ jobs:
           mkdir -p allure-report
           npx allure generate allure-results -o allure-report --clean
 
-      # 9️⃣ Verify Allure trends
+      # 9️⃣ Verify Allure trends (fail workflow if missing)
       - name: Verify Allure Trends in Pipeline
         run: |
           echo "Checking Allure report history..."
-          if [ -d allure-report/history ]; then
-            ls -lR allure-report/history
-          else
+          REQUIRED_FILES=(duration-trend.json history-trend.json retry-trend.json categories-trend.json history.json)
+
+          if [ ! -d allure-report/history ]; then
             echo "❌ No history folder inside allure-report/"
+            exit 1
           fi
+
+          MISSING=0
+          for file in "${REQUIRED_FILES[@]}"; do
+            if [ ! -f "allure-report/history/$file" ]; then
+              echo "❌ $file MISSING"
+              MISSING=$((MISSING+1))
+            else
+              echo "✔ $file found"
+            fi
+          done
+
+          if [ $MISSING -ne 0 ]; then
+            echo "❌ Workflow failed: $MISSING trend files missing!"
+            exit 1
+          fi
+
+          echo "✅ All trend files are present."
 
       # 🔟 Upload history artifact for next run
       - name: Upload Allure History
