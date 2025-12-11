@@ -27,11 +27,12 @@ jobs:
     name: Run Playwright Tests
 
     steps:
-      # 1️⃣ Checkout repository
+
+      # 1️⃣ Checkout
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Setup Node.js
+      # 2️⃣ Node.js setup
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -45,7 +46,7 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      # 5️⃣ Download previous Allure history
+      # 5️⃣ Download previous history (if exists)
       - name: Download previous Allure History
         uses: actions/download-artifact@v4
         with:
@@ -53,50 +54,50 @@ jobs:
           path: temp-allure-history
         continue-on-error: true
 
-      # 6️⃣ Merge history into current allure-results
+      # 6️⃣ Merge history into allure-results BEFORE generating report
       - name: Merge Allure History
         run: |
           mkdir -p allure-results/history
           if [ -d temp-allure-history ] && [ "$(ls -A temp-allure-history)" ]; then
+            echo "Merging previous history..."
             cp -r temp-allure-history/* allure-results/history/ || true
-            echo "Previous history merged successfully."
           else
             echo "No previous history found. Starting fresh."
           fi
 
-      # 7️⃣ Run Playwright tests
+      # 7️⃣ Run tests and produce fresh allure-results
       - name: Run Playwright Tests
         run: npx playwright test --reporter=allure-playwright
 
-      # 8️⃣ Generate Allure report (trends included)
+      # 8️⃣ Generate Allure report (now trends will work!)
       - name: Generate Allure Report
         run: |
           mkdir -p allure-report
           npx allure generate allure-results -o allure-report --clean
 
-      # 9️⃣ Debug report folder
+      # 9️⃣ Debug report (see if history is inside)
       - name: Debug Report
         run: ls -lR allure-report || true
 
-      # 🔟 Copy history for next run safely
+      # 🔟 Prepare history for next run
       - name: Copy Allure history for next run
         run: |
           mkdir -p allure-report/history
           if [ -d allure-results/history ] && [ "$(ls -A allure-results/history)" ]; then
             cp -r allure-results/history/* allure-report/history/
-            echo "History copied for next run."
+            echo "History prepared for next run."
           else
-            echo "No history to copy (first run)."
+            echo "No history generated yet."
           fi
 
-      # 🔟 Upload history artifact
+      # 1️⃣1️⃣ Upload history artifact
       - name: Upload Allure History
         uses: actions/upload-artifact@v4
         with:
           name: allure-history
           path: allure-report/history
 
-      # 1️⃣1️⃣ Deploy to GitHub Pages
+      # 1️⃣2️⃣ Deploy to GitHub Pages
       - name: Configure Pages
         uses: actions/configure-pages@v4
 
@@ -108,7 +109,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
 
-      # 1️⃣2️⃣ Optional: Send Allure report via email
+      # 1️⃣3️⃣ Send email report (optional)
       - name: Send Allure Report via Email
         if: always()
         uses: dawidd6/action-send-mail@v4
@@ -125,13 +126,13 @@ jobs:
 
             The latest Playwright test run is complete.
 
-            📊 Direct Allure Report:
+            📊 Allure Report:
             https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
 
             Regards,
             CI Bot
 
-      # 1️⃣3️⃣ Add Allure Report link to workflow summary
+      # 1️⃣4️⃣ Add summary link in GitHub UI
       - name: Add Allure Report Link to Workflow Summary
         if: always()
         run: |
