@@ -63,6 +63,9 @@ jobs:
       - name: Debug report
         run: ls -lR allure-report || true
 
+      - name: Ensure History Folder Exists
+        run: mkdir -p allure-report/history
+
       # 5️⃣ Upload History for next run
       - name: Upload Allure History
         uses: actions/upload-artifact@v4
