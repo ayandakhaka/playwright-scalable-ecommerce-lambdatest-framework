@@ -62,7 +62,7 @@ test.describe("Register Account Tests", () => {
     await step("Verify privacy policy warning message", async () => {
       await actionHelper.verifyText(
         "div.alert.alert-danger.alert-dismissible",
-        "You must agree to the Privacy Policy!",
+        " Warning: You must agree to the Privacy Policy!",
         "Privacy Policy Warning"
       );
     });

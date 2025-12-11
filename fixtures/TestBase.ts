@@ -15,7 +15,8 @@ import { generateFakeUser, saveRegisteredUser, getRegisteredUsers } from "../uti
 
 /**
  * Define custom fixtures for Playwright tests.
- * Fixtures allow us to provide page objects, helpers, and data to tests in a clean, reusable way.
+ * Fixtures allow us to provide page objects, helpers, and data to tests in a clean, 
+ * reusable way.
  */
 type MyFixtures = {
   homePage: HomePage;                // Page object for Home page actions

@@ -154,5 +154,17 @@
     "accountName": "Hayley Pfeffer",
     "accountNumber": "9193886602",
     "swiftCode": "LPKQFNU5"
+  },
+  {
+    "firstName": "Kendall",
+    "lastName": "Barrows",
+    "email": "kendall.barrows27@hotmail.com",
+    "phone": "(693) 937-4394",
+    "password": "aK1SbZngHw29@2025",
+    "companyName": "Lemke Inc",
+    "taxId": "3042058459",
+    "accountName": "Kendall Barrows",
+    "accountNumber": "0029397469",
+    "swiftCode": "EXJ6J3MP"
   }
 ]
