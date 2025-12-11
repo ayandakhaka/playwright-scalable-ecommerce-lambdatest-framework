@@ -72,18 +72,20 @@ jobs:
       - name: Generate Allure Report
         run: |
           mkdir -p allure-report
-          # Generate report using merged history
           npx allure generate allure-results -o allure-report --clean
 
       # 9️⃣ Debug report folder
       - name: Debug Report
         run: ls -lR allure-report || true
 
-      # 🔟 Upload history for next run
-      - name: Upload Allure History
+      # 🔟 Copy history for next run (for uploading)
+      - name: Copy Allure history for next run
         run: |
           mkdir -p allure-report/history
           cp -r allure-results/history/* allure-report/history/ || true
+
+      # 🔟 Upload history artifact
+      - name: Upload Allure History
         uses: actions/upload-artifact@v4
         with:
           name: allure-history
