@@ -45,7 +45,7 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      # 5️⃣ Download previous Allure history (optional for trends)
+      # 5️⃣ Download previous Allure history
       - name: Download previous Allure History
         uses: actions/download-artifact@v4
         with:
@@ -68,20 +68,22 @@ jobs:
       - name: Run Playwright Tests
         run: npx playwright test --reporter=allure-playwright
 
-      # 8️⃣ Generate Allure report with trends
+      # 8️⃣ Generate Allure report (trends included)
       - name: Generate Allure Report
         run: |
           mkdir -p allure-report
+          # Generate report using merged history
           npx allure generate allure-results -o allure-report --clean
-          mkdir -p allure-report/history
-          cp -r allure-results/history/* allure-report/history/ || true
 
       # 9️⃣ Debug report folder
       - name: Debug Report
         run: ls -lR allure-report || true
 
-      # 🔟 Upload merged history for next run
+      # 🔟 Upload history for next run
       - name: Upload Allure History
+        run: |
+          mkdir -p allure-report/history
+          cp -r allure-results/history/* allure-report/history/ || true
         uses: actions/upload-artifact@v4
         with:
           name: allure-history
@@ -129,3 +131,4 @@ jobs:
           echo "### 📊 Allure Test Report" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "[Open Allure Report](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
