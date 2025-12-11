@@ -75,6 +75,26 @@ jobs:
           mkdir -p allure-report
           npx allure generate allure-results -o allure-report --clean
 
+      - name: Verify Allure Trends in Pipeline
+        run: |
+          echo "Checking Allure report history..."
+          if [ -d allure-report/history ]; then
+            echo "History folder exists. Listing contents:"
+            ls -l allure-report/history
+
+            echo "Checking required trend files..."
+            for file in duration-trend.json history-trend.json retry-trend.json categories-trend.json history.json; do
+              if [ -f "allure-report/history/$file" ]; then
+                echo "✔ $file found"
+              else
+                echo "❌ $file MISSING"
+              fi
+            done
+          else
+            echo "❌ No history folder inside allure-report/"
+          fi
+
+
       # 9️⃣ Debug report
       - name: Debug Report
         run: ls -lR allure-report || true
