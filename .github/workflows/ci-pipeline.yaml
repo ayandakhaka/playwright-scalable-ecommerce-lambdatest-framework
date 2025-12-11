@@ -115,6 +115,13 @@ jobs:
           echo "📦 Final GitHub Pages content:"
           ls -lR allure-report
 
+      - name: Ensure history is included in final report
+        run: |
+          echo "Forcing inclusion of history folder..."
+          mkdir -p allure-report/history
+          cp -r allure-results/history/* allure-report/history/ || true
+          ls -lR allure-report/history
+
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
