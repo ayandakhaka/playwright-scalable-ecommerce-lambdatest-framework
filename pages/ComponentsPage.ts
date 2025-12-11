@@ -147,7 +147,7 @@ export default class ComponentsPage {
     }
 
     async verifyAlertPopUpSuccessTextForTwoItems(expectedItems: number, expectedTotal: number) {
-        const cartSummary = this.page.locator(this.cartSummary).nth(1);
+        const cartSummary = this.page.locator(this.cartSummaryLocator).nth(1);
         await expect(cartSummary).toBeVisible({ timeout: 10000 });
 
         const formattedTotal = `$${expectedTotal.toFixed(2)}`;
@@ -157,7 +157,7 @@ export default class ComponentsPage {
     }
 
     async verifyCartSummary(expectedItems: number, expectedTotal: number) {
-        const cartSummary = this.page.locator(this.cartSummary);
+        const cartSummary = this.page.locator(this.cartSummaryLocator);
         await expect(cartSummary).toBeVisible({ timeout: 10000 });
 
         const formattedTotal = `$${expectedTotal.toFixed(2)}`;
