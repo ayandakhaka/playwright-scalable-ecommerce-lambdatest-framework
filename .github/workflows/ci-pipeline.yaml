@@ -54,20 +54,31 @@ jobs:
           path: temp-allure-history
         continue-on-error: true
 
-      # 6️⃣ Merge history
+     # 6️⃣ Merge history into current allure-results BEFORE running tests
       - name: Merge Allure History
         run: |
+          echo "Preparing allure-results/history..."
           mkdir -p allure-results/history
+
           if [ -d temp-allure-history ] && [ "$(ls -A temp-allure-history)" ]; then
             echo "Merging previous history..."
-            cp -r temp-allure-history/* allure-results/history/ || true
+            cp -r temp-allure-history/* allure-results/history/
           else
-            echo "No previous history found. Starting fresh."
+            echo "No previous history found."
           fi
+
+          echo "Current history folder:"
+          ls -lR allure-results/history || true
 
       # 7️⃣ Run tests
       - name: Run Playwright Tests
         run: npx playwright test --reporter=allure-playwright
+
+      - name: Validate history before generating report
+        run: |
+          echo "Checking allure-results/history..."
+          ls -lR allure-results/history || true
+
 
       # 8️⃣ Generate Allure report (history included)
       - name: Generate Allure Report
