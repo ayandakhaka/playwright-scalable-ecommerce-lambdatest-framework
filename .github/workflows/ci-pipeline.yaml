@@ -40,32 +40,36 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-            # 1️⃣ Download previous history
-      - name: Download previous Allure History
+            # 1️⃣ Download previous Allure history (if exists)
+      - name: Download Allure History
         uses: actions/download-artifact@v4
         with:
           name: allure-history
           path: allure-results/history
         continue-on-error: true
 
-      # 2️⃣ Run tests
+      # 2️⃣ Run Playwright tests
       - name: Run Playwright Tests
         run: npx playwright test --reporter=allure-playwright
 
-      # 3️⃣ Generate Allure report
+      # 3️⃣ Generate Allure Report and merge history
       - name: Generate Allure Report
         run: |
           npx allure generate allure-results -o allure-report --clean
           mkdir -p allure-report/history
           cp -r allure-results/history/* allure-report/history/ || true
 
-      # 4️⃣ Upload new history
-      - name: Upload Allure History Artifact
+      # 4️⃣ Debug the report folder
+      - name: Debug report
+        run: ls -lR allure-report || true
+
+      # 5️⃣ Upload History for next run
+      - name: Upload Allure History
         uses: actions/upload-artifact@v4
         with:
           name: allure-history
           path: allure-report/history
-          retention-days: 30
+
 
       # ---------------------------------------------------------
       # 6️⃣ Deploy to GitHub Pages
