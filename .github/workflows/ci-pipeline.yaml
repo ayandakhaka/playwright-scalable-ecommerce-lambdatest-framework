@@ -46,7 +46,7 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      # 5️⃣ Download previous history (if exists)
+      # 5️⃣ Download previous Allure History
       - name: Download previous Allure History
         uses: actions/download-artifact@v4
         with:
@@ -54,7 +54,7 @@ jobs:
           path: temp-allure-history
         continue-on-error: true
 
-      # 6️⃣ Merge history into allure-results BEFORE generating report
+      # 6️⃣ Merge history
       - name: Merge Allure History
         run: |
           mkdir -p allure-results/history
@@ -65,39 +65,28 @@ jobs:
             echo "No previous history found. Starting fresh."
           fi
 
-      # 7️⃣ Run tests and produce fresh allure-results
+      # 7️⃣ Run tests
       - name: Run Playwright Tests
         run: npx playwright test --reporter=allure-playwright
 
-      # 8️⃣ Generate Allure report (now trends will work!)
+      # 8️⃣ Generate Allure report (history included)
       - name: Generate Allure Report
         run: |
           mkdir -p allure-report
           npx allure generate allure-results -o allure-report --clean
 
-      # 9️⃣ Debug report (see if history is inside)
+      # 9️⃣ Debug report
       - name: Debug Report
         run: ls -lR allure-report || true
 
-      # 🔟 Prepare history for next run
-      - name: Copy Allure history for next run
-        run: |
-          mkdir -p allure-report/history
-          if [ -d allure-results/history ] && [ "$(ls -A allure-results/history)" ]; then
-            cp -r allure-results/history/* allure-report/history/
-            echo "History prepared for next run."
-          else
-            echo "No history generated yet."
-          fi
-
-      # 1️⃣1️⃣ Upload history artifact
+      # 🔟 Upload correct history (IMPORTANT FIX)
       - name: Upload Allure History
         uses: actions/upload-artifact@v4
         with:
           name: allure-history
-          path: allure-report/history
+          path: allure-report/history   # <-- FIXED HERE
 
-      # 1️⃣2️⃣ Deploy to GitHub Pages
+      # 1️⃣1️⃣ Deploy to GitHub Pages
       - name: Configure Pages
         uses: actions/configure-pages@v4
 
@@ -109,7 +98,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
 
-      # 1️⃣3️⃣ Send email report (optional)
+      # 1️⃣2️⃣ Email report (optional)
       - name: Send Allure Report via Email
         if: always()
         uses: dawidd6/action-send-mail@v4
@@ -132,7 +121,7 @@ jobs:
             Regards,
             CI Bot
 
-      # 1️⃣4️⃣ Add summary link in GitHub UI
+      # 1️⃣3️⃣ Add summary link
       - name: Add Allure Report Link to Workflow Summary
         if: always()
         run: |
