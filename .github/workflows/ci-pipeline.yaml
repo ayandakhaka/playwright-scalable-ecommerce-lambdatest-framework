@@ -40,49 +40,31 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      # ---------------------------------------------------------
-      # 1️⃣ Download previous Allure history (correct location)
-      # ---------------------------------------------------------
+            # 1️⃣ Download previous history
       - name: Download previous Allure History
         uses: actions/download-artifact@v4
         with:
           name: allure-history
-          path: allure-results/history   # FIXED!
+          path: allure-results/history
         continue-on-error: true
 
-      - name: Debug History Before Tests
-        run: ls -lR allure-results/history || true
-
-      # ---------------------------------------------------------
       # 2️⃣ Run tests
-      # ---------------------------------------------------------
       - name: Run Playwright Tests
         run: npx playwright test --reporter=allure-playwright
 
-      # ---------------------------------------------------------
-      # 3️⃣ Generate Allure Report
-      # ---------------------------------------------------------
+      # 3️⃣ Generate Allure report
       - name: Generate Allure Report
-        run: npx allure generate allure-results -o allure-report --clean
+        run: |
+          npx allure generate allure-results -o allure-report --clean
+          mkdir -p allure-report/history
+          cp -r allure-results/history/* allure-report/history/ || true
 
-      # ---------------------------------------------------------
-      # 4️⃣ Upload full report
-      # ---------------------------------------------------------
-      - name: Upload Allure Report Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-report
-          path: allure-report
-          retention-days: 7
-
-      # ---------------------------------------------------------
-      # 5️⃣ Upload new history for next pipeline run (correct!)
-      # ---------------------------------------------------------
+      # 4️⃣ Upload new history
       - name: Upload Allure History Artifact
         uses: actions/upload-artifact@v4
         with:
           name: allure-history
-          path: allure-report/history   # FIXED!
+          path: allure-report/history
           retention-days: 30
 
       # ---------------------------------------------------------
